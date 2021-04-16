@@ -5,6 +5,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Login from './src/views/Index/index.js';
 import Home from './src/views/Home/home.js';
+import HomeAprendizaje from './src/views/Aprendizaje/homeAprendizaje.js';
+import HomeRetos from './src/views/Retos/homeRetos.js';
 
 const Stack = createStackNavigator();
 
@@ -14,6 +16,8 @@ function App() {
       <Stack.Navigator>
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="HomeAprendizaje" component={HomeAprendizaje} />
+        <Stack.Screen name="HomeRetos" component={HomeRetos} />
       </Stack.Navigator>
     </NavigationContainer>
   );
