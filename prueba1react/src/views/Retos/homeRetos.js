@@ -1,21 +1,24 @@
-import React from 'react';
-import {Text,View,StyleSheet,} from "react-native";
+import * as React from 'react';
+import { Drawer } from 'react-native-paper';
 
-export default function HomeRetos(){
-    return(
-        <View style={styles.container}>
-            <Text>Bienvenido a el Modulo de Retos</Text>
-              
-        </View>
+const MyComponent = () => {
+  const [active, setActive] = React.useState('');
 
-    );
-}
 
-const styles = StyleSheet.create ({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: 'white',
-    }
-});
+  return (
+    <Drawer.Section title="Some title">
+      <Drawer.Item
+        label="First Item"
+        active={active === 'first'}
+        onPress={() => setActive('first')}
+      />
+      <Drawer.Item
+        label="Second Item"
+        active={active === 'second'}
+        onPress={() => setActive('second')}
+      />
+    </Drawer.Section>
+  );
+};
+
+export default MyComponent;

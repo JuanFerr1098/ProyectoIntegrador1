@@ -1,38 +1,64 @@
-import React from 'react';
-import {Text, View, Button,  StyleSheet,
-  TouchableOpacity,
-  TextInput,} from "react-native";
+/*import React from 'react';*/
+import * as React from 'react';
+import {Text, View,TouchableOpacity,StyleSheet} from "react-native";
+import { TextInput, Button, Title } from 'react-native-paper';
+//
+/*import firebase from './../fire.js';*/
+/*import firebase from './fire.js';*/
 
-export default function Index({navigation}){
+ /*
+import styles from './styles.js';*/
+/*import firebase from 'firebase';
+import {firebaseConfig} from './config';
+firebase.initializeApp(firebaseConfig);*/
+
+export default function  Index({navigation}) {
 
   const [text, onChangeText] = React.useState ('Useless Text');
-  const [number, onChangeNumber] = React.useState (null);
+  const [email, setEmail] = React.useState (null);
+  const [password, setPassword] = React.useState (null);
 
+  const signUp = async()=>{
+    try{
+      firebase.auth().createUserWithEmailAndPasswordd(email,password);
+      navigation.navigate('Home');
+    }catch(err){
+      setError(err.message);
+    }
+  }
+ 
   return(
   <View style={styles.container}>
-    <Text> INGRESE </Text>
 
-    <TextInput
-        style={styles.textBoxStyle}
-        onChangeText={onChangeNumber}
-        value={number}
-        placeholder="Usuario"
+    <Title style={styles.textStyle}>INGRESE</Title>
+
+    <TextInput style={styles.input}
+        mode ="flat"
+        onChangeText={setEmail}
+        value={email}
+        placeholder="Email"
         /*keyboardType="numeric"*/
       />
-      <TextInput
-        style={styles.textBoxStyle}
-        onChangeText={onChangeNumber}
-        value={number}
+      <TextInput  style={styles.input}
+        mode ="flat"
+        onChangeText={setPassword}
+        value={password}
+        secureTextEntry
         placeholder="Contraseña"
-        keyboardType="numeric"
-      />
+             />
+    
 
-    <TouchableOpacity
-        onPress={()=>navigation.navigate('Home')}
-        style={styles.button}
-      >
-        <Text style={styles.buttonText}>Ingresar</Text>
-      </TouchableOpacity>
+      <Button mode="contained" style={styles.buttonPurple} 
+      /*onPress={()=>signUp}>*/
+      onPress={()=>navigation.navigate('Home')}>
+      Ingresar
+      </Button>
+
+      <Button mode="text" style={styles.buttonText} 
+      onPress = {()=>alert('Entro con Google')}>
+      <Text style={styles.textBoton}>Sign in With Google</Text>
+      </Button>
+     
    
   </View>
 
@@ -45,12 +71,18 @@ const styles = StyleSheet.create ({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+    /*alignItems: 'center',
+    backgroundColor: 'white',*/
   },
   title: {fontSize: 30, color: '#ffff'},
-
+  textStyle:{
+    fontWeight: "bold",
+    color : "#00c49a",
+    fontSize: 20,
+    textAlign:'center',
+  },
   button: {
-    backgroundColor: 'black',
+    backgroundColor: 'cyan',
     padding: 7,
     marginTop: 10,
   },
@@ -66,6 +98,26 @@ const styles = StyleSheet.create ({
     width: 200,
     margin: 12,
     borderWidth: 3
+  },
+  buttonPurple: {
+    padding:10,
+    marginTop: 30,
+    width: 200,
+    backgroundColor:"#00c49a",
+  },
+
+  buttonText: {
+    padding:10,
+    marginTop: 10,
+    width: 300,
+  },
+
+  textBoton : {
+    color : "#00c49a",
+  },
+
+  input:{
+    margin:10,
+    width:300,
   }
 });
-  

@@ -1,25 +1,25 @@
 import React from 'react';
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
+import {Button,} from 'react-native-paper';
+
+
 
 export default function Home ({navigation}) {
   return (
+
     <View style={styles.container}>
-      <Text>Bienvenido a Newton App</Text>
-      <Text>Quieres ir a...</Text>
+   
+    
+      <Text style={styles.titulo}>Bienvenido a Newton App</Text>
+      <Text style={styles.titulo}>Quieres ir a...</Text>
 
-      <TouchableOpacity
-        onPress={() => navigation.navigate ('HomeAprendizaje')}
-        style={styles.button}
-      >
-        <Text style={styles.buttonText}>Aprendizaje</Text>
-      </TouchableOpacity>
+      <Button mode="contained" style={styles.buttonPurple} onPress={() => navigation.navigate ('Aprendizaje')}>
+      <Text style={styles.textoBoton}>Aprendizaje</Text>
+      </Button>
 
-      <TouchableOpacity
-        onPress={() => navigation.navigate ('HomeRetos')}
-        style={styles.button}
-      >
-        <Text style={styles.buttonText}>Retos</Text>
-      </TouchableOpacity>
+      <Button mode="contained" style={styles.buttonPurple} onPress={() => navigation.navigate ('Retos')}>
+      <Text style={styles.textoBoton}>Retos</Text>
+      </Button>
 
     </View>
   );
@@ -30,7 +30,8 @@ const styles = StyleSheet.create ({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor:"#00c49a",
+    //backgroundColor: 'white',
   },
   button: {
     backgroundColor: 'black',
@@ -39,6 +40,29 @@ const styles = StyleSheet.create ({
   },
   buttonText: {
     color: 'white',
+    fontSize: 20,
+    padding:5,
+    marginTop: 5,
+  },
+
+  buttonPurple: {
+    backgroundColor:"#FFFFFF",
+    width: 200,
+    padding:10,
+    marginTop: 10,
+  },
+
+  textoBoton:{
+    //fontColor: "#172A3A",
+    fontWeight: "bold",
+    color:"#00c49a",
+
+  },
+  titulo:{
+    //fontColor: "#172A3A",
+    fontWeight: "bold",
+    color : "#FFFFFF",
+    //color : "#00c49a",
     fontSize: 20,
   },
 });
