@@ -7,6 +7,7 @@ import Home from './src/views/Home/home.js';
 import HomeAprendizaje from './src/views/Aprendizaje/homeAprendizaje.js';
 import HomeRetos from './src/views/Retos/homeRetos.js';
 import Curso from './src/views/Aprendizaje/curso.js';
+import Truco from './src/views/Aprendizaje/trucos.js';
 
 const Stack = createStackNavigator();
 
@@ -24,8 +25,10 @@ function App() {
         <Stack.Screen name="Aprendizaje" component={HomeAprendizaje} />
         <Stack.Screen name="Retos" component={HomeRetos} />
         <Stack.Screen name="Curso" component={Curso} />
+        <Stack.Screen name="Trucos" component={Truco} /> 
       </Stack.Navigator>
-
+      
+           
     </NavigationContainer>
   );
 }

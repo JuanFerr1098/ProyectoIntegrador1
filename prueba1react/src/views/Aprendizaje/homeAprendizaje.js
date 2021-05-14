@@ -38,7 +38,7 @@ export default function HomeAprendizaje ({navigation}) {
           >
           <Appbar.BackAction onPress={()=>navigation.navigate('Home')} color="#FFFFFF"  />
             
-            <Appbar.Content title="Cursos" color="#FFFFFF" />
+            <Appbar.Content title="Aprendizaje" color="#FFFFFF" />
        
          
               {/* <Appbar.Action icon="magnify" onPress={() => {}} /> */}
@@ -93,7 +93,7 @@ export default function HomeAprendizaje ({navigation}) {
                     onPress={()=>navigation.navigate('Home')}>
                     <Text style={styles.botonText}>C2</Text>
                 </Button>
-            </View>
+            </View> 
               <View style={styles.botonContainer}>
                 <Button mode="contained"  style={styles.buttonPurple} 
                     onPress={()=>navigation.navigate('Curso')}>
@@ -133,6 +133,7 @@ export default function HomeAprendizaje ({navigation}) {
 const styles = StyleSheet.create ({
   container: {
     flex: 1,
+    
     alignItems: 'center',
     backgroundColor: '#EFEEEE',
   },
@@ -153,6 +154,8 @@ const styles = StyleSheet.create ({
   },
 
   header :{
+    paddingHorizontal: 20,
+    
     backgroundColor:"#00c49a",
   },
   areaSegura:{

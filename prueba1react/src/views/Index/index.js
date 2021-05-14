@@ -2,15 +2,7 @@
 import * as React from 'react';
 import {Text, View,TouchableOpacity,StyleSheet} from "react-native";
 import { TextInput, Button, Title } from 'react-native-paper';
-//
-/*import firebase from './../fire.js';*/
-/*import firebase from './fire.js';*/
 
- /*
-import styles from './styles.js';*/
-/*import firebase from 'firebase';
-import {firebaseConfig} from './config';
-firebase.initializeApp(firebaseConfig);*/
 
 export default function  Index({navigation}) {
 

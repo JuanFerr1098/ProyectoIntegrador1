@@ -1,11 +1,15 @@
 import React from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, SafeAreaView} from 'react-native';
 import {Button, Appbar} from 'react-native-paper';
+import {Entypo} from '@expo/vector-icons';
+
 
 const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
 
+
 export default function Curso1 ({navigation}) {
   
+
   return (
 
     <View style={styles.container}>
@@ -16,15 +20,16 @@ export default function Curso1 ({navigation}) {
           >
           <Appbar.BackAction onPress={()=>navigation.navigate('Aprendizaje')} color="#FFFFFF"  />
             
-            <Appbar.Content title="Cursos" color="#FFFFFF" />
+            <Appbar.Content title="Curso 1" color="#FFFFFF" />
               {/* <Appbar.Action icon="magnify" onPress={() => {}} /> */}
               <Appbar.Action icon={MORE_ICON} onPress={() => {}} color="#FFFFFF" />
+        
           </Appbar.Header>
           </View>
           
         <View style={styles.botonContainer}> 
-          <Button mode="contained" style={styles.buttonPurple} onPress={() => navigation.navigate ('Aprendizaje')}>
-          Tema 1
+          <Button mode="contained" style={styles.buttonPurple} onPress={() => navigation.navigate ('Trucos')}>
+          Truco
           </Button>
           <Button mode="contained" style={styles.buttonPurple} onPress={() => navigation.navigate ('Retos')}>
           Tema 2
@@ -87,6 +92,7 @@ const styles = StyleSheet.create ({
 
   },
   header :{
+    paddingHorizontal: 20,
     backgroundColor:"#00c49a",
   },
   buttonPurple: {
