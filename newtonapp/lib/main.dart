@@ -45,6 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
             padding: const EdgeInsets.all(10),
@@ -54,16 +55,20 @@ class _MyHomePageState extends State<MyHomePage> {
           Container(
             padding: const EdgeInsets.all(10),
             alignment: Alignment.center,
+            
             child: SignInButtonBuilder(
                 // Boton Logueo
                 icon: Icons.verified_user,
-                backgroundColor: Colors.orange,
+                iconColor:Colors.purple.shade700,
+                backgroundColor: Colors.white,
                 text: 'Login',
+                textColor: Colors.purple.shade700,
                 onPressed: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => SignInPage()));
                 },
                 ),
+
           ),
           Container(
               padding: const EdgeInsets.all(10),
@@ -71,7 +76,9 @@ class _MyHomePageState extends State<MyHomePage> {
               child: SignInButtonBuilder(
                   // Boton Registro
                   icon: Icons.person_add,
-                backgroundColor: Colors.indigo,
+                  iconColor:Colors.purple.shade700,
+                backgroundColor: Colors.white,
+                textColor: Colors.purple.shade700,
                 text: 'Register',
                   onPressed: () {
                     Navigator.push(context,
@@ -81,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
-      backgroundColor: Colors.purple.shade200,
+      backgroundColor: Colors.purple.shade700,
     );
   }
 }

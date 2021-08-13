@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:newtonapp/pages/register_page.dart';
+import 'package:newtonapp/pages/signin_page.dart';
+import 'package:newtonapp/pages/index_page.dart';
 //import 'package:firebase_core/firebase_core.dart';
 //import 'package:google_sign_in/google_sign_in.dart';
 //import 'package:flutter/foundation.dart'show kIsWeb;
@@ -70,10 +73,13 @@ class _SignInPageState extends State<SignInPage> {
               alignment: Alignment.center,
               child: SignInButton(Buttons.Email, text: 'Ingresar',
                   onPressed: () async {
-                if (_formKey.currentState!.validate()) {
+                    Navigator.push(context,
+                      MaterialPageRoute(builder: (context) =>IndexPage()));
+                
+                /*if (_formKey.currentState!.validate()) {
                   await _signInWithEmailAndPassword();
-                }
-                  }
+                }*/
+                  },
               )
           ),
           Container(
