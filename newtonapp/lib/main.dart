@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false, // desaparecer el cosito de debug arriba
       title: 'Newton APP',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -39,10 +40,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      
+      /*appBar: AppBar(
         title: Text('La Newton App Re-Loco'),
         backgroundColor: Colors.blueAccent,
-      ),
+      ),*/
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -50,7 +52,12 @@ class _MyHomePageState extends State<MyHomePage> {
           Container(
             padding: const EdgeInsets.all(10),
             alignment: Alignment.center,
-            child: Text('Bienvenido a su App para dominar el Calculo Mental'),
+            child: Text('Bienvenido a Newton App',
+            style: TextStyle(
+              color: Colors.white,
+              fontFamily: 'montserrat',
+            )
+            ),
           ),          
           Container(
             padding: const EdgeInsets.all(10),
@@ -61,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 icon: Icons.verified_user,
                 iconColor:Colors.purple.shade700,
                 backgroundColor: Colors.white,
-                text: 'Login',
+                text: 'Ingresar',
                 textColor: Colors.purple.shade700,
                 onPressed: () {
                   Navigator.push(context,
@@ -79,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   iconColor:Colors.purple.shade700,
                 backgroundColor: Colors.white,
                 textColor: Colors.purple.shade700,
-                text: 'Register',
+                text: 'Registrarte',
                   onPressed: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => RegisterPage()));
