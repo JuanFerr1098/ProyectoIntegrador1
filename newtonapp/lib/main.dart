@@ -1,9 +1,5 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_signin_button/button_builder.dart';
 import 'package:newtonapp/pages/register_page.dart';
 import 'package:newtonapp/pages/signin_page.dart';
@@ -48,47 +44,47 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
+            //Texto inicial en la App
             padding: const EdgeInsets.all(10),
             alignment: Alignment.center,
             child: Text('Bienvenido a su App para dominar el Calculo Mental'),
-          ),          
-          Container(
-            padding: const EdgeInsets.all(10),
-            alignment: Alignment.center,
-            
-            child: SignInButtonBuilder(
-                // Boton Logueo
-                icon: Icons.verified_user,
-                iconColor:Colors.purple.shade700,
-                backgroundColor: Colors.white,
-                text: 'Login',
-                textColor: Colors.purple.shade700,
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignInPage()));
-                },
-                ),
-
           ),
           Container(
+            //Boton Para ir al Login de la App
+            padding: const EdgeInsets.all(10),
+            alignment: Alignment.center,
+            child: SignInButtonBuilder(
+              //Aqui esta las config del Boton
+              icon: Icons.verified_user,
+              iconColor: Colors.purple.shade700,
+              backgroundColor: Colors.white,
+              text: 'Login',
+              textColor: Colors.purple.shade700,
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SignInPage()));
+              },
+            ),
+          ),
+          Container(
+              //Boton para ir al Registro de la App
               padding: const EdgeInsets.all(10),
               alignment: Alignment.center,
               child: SignInButtonBuilder(
-                  // Boton Registro
-                  icon: Icons.person_add,
-                  iconColor:Colors.purple.shade700,
+                //Aqui esta las config del boton
+                icon: Icons.person_add,
+                iconColor: Colors.purple.shade700,
                 backgroundColor: Colors.white,
                 textColor: Colors.purple.shade700,
                 text: 'Register',
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => RegisterPage()));
-                  },
-                  )
-          ),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => RegisterPage()));
+                },
+              )),
         ],
       ),
-      backgroundColor: Colors.purple.shade700,
+      backgroundColor: Colors.purple.shade700, //Fonde de la pantalla
     );
   }
 }
