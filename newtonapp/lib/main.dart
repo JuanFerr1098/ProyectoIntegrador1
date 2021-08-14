@@ -46,52 +46,47 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
+            //Texto inicial en la App
             padding: const EdgeInsets.all(10),
             alignment: Alignment.center,
-            child: Text('Bienvenido a Newton App',
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'montserrat',
-            )
-            ),
-          ),          
-          Container(
-            padding: const EdgeInsets.all(10),
-            alignment: Alignment.center,
-            
-            child: SignInButtonBuilder(
-                // Boton Logueo
-                icon: Icons.verified_user,
-                iconColor:Colors.purple.shade700,
-                backgroundColor: Colors.white,
-                text: 'Ingresar',
-                textColor: Colors.purple.shade700,
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignInPage()));
-                },
-                ),
-
+            child: Text('Bienvenido a su App para dominar el Calculo Mental'),
           ),
           Container(
+            //Boton Para ir al Login de la App
+            padding: const EdgeInsets.all(10),
+            alignment: Alignment.center,
+            child: SignInButtonBuilder(
+              //Aqui esta las config del Boton
+              icon: Icons.verified_user,
+              iconColor: Colors.purple.shade700,
+              backgroundColor: Colors.white,
+              text: 'Login',
+              textColor: Colors.purple.shade700,
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SignInPage()));
+              },
+            ),
+          ),
+          Container(
+              //Boton para ir al Registro de la App
               padding: const EdgeInsets.all(10),
               alignment: Alignment.center,
               child: SignInButtonBuilder(
-                  // Boton Registro
-                  icon: Icons.person_add,
-                  iconColor:Colors.purple.shade700,
+                //Aqui esta las config del boton
+                icon: Icons.person_add,
+                iconColor: Colors.purple.shade700,
                 backgroundColor: Colors.white,
                 textColor: Colors.purple.shade700,
-                text: 'Registrarte',
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => RegisterPage()));
-                  },
-                  )
-          ),
+                text: 'Register',
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => RegisterPage()));
+                },
+              )),
         ],
       ),
-      backgroundColor: Colors.purple.shade700,
+      backgroundColor: Colors.purple.shade700, //Fonde de la pantalla
     );
   }
 }
