@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false, // desaparecer el cosito de debug arriba
       title: 'Newton APP',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -35,10 +36,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      
+      /*appBar: AppBar(
         title: Text('La Newton App Re-Loco'),
         backgroundColor: Colors.blueAccent,
-      ),
+      ),*/
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
