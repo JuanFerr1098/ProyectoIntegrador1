@@ -27,4 +27,4 @@ flutter:
 
 fonts:
   family: montserrat
-  asset: fonts/Montserrat-Regular.ttf
+  asset: newtonapp/fonts/Montserrat-Regular.ttf
