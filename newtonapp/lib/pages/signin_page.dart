@@ -28,14 +28,15 @@ class _SignInPageState extends State<SignInPage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Container(//Ingreso del Email del Login
+          Container(
+            //Ingreso del Email del Login
             padding: const EdgeInsets.all(10),
             alignment: Alignment.center,
-            child: TextFormField(//Aqui esta la entrada de texto
+            child: TextFormField(
+              //Aqui esta la entrada de texto
               controller: _emailController,
               decoration: const InputDecoration(
-                  hintText: 'Ingresa tu Email', 
-                  border: OutlineInputBorder()),
+                  hintText: 'Ingresa tu Email', border: OutlineInputBorder()),
               /*validator: (String? value) {//Es probable que no se necesite, lo dejamos ahi por ahora
                 if (value == null || value.isEmpty) {
                   return 'Please enter some text';
@@ -44,10 +45,12 @@ class _SignInPageState extends State<SignInPage> {
               },*/
             ),
           ),
-          Container(//Ingreso de la Contraseña del Login
+          Container(
+            //Ingreso de la Contraseña del Login
             padding: const EdgeInsets.all(10),
             alignment: Alignment.center,
-            child: TextFormField(//Aqui esta la entrada de texto
+            child: TextFormField(
+              //Aqui esta la entrada de texto
               controller: _passwordController,
               decoration: const InputDecoration(
                   hintText: 'Ingresa tu Contraseña',
@@ -58,13 +61,15 @@ class _SignInPageState extends State<SignInPage> {
                 }
                 return null;
               },*/
-              obscureText: true,//Esto hace que aparezca ******
+              obscureText: true, //Esto hace que aparezca ******
             ),
           ),
-          Container(//Boton para Ingresar
+          Container(
+              //Boton para Ingresar
               padding: const EdgeInsets.all(10),
               alignment: Alignment.center,
-              child: SignInButtonBuilder(//Aqui  está el Boton
+              child: SignInButtonBuilder(
+                //Aqui  está el Boton
                 icon: Icons.email,
                 backgroundColor: Colors.pink,
                 text: 'Ingresar',
@@ -75,10 +80,12 @@ class _SignInPageState extends State<SignInPage> {
                   }*/
                 },
               )),
-          Container(//Boton para Retroceder
+          Container(
+              //Boton para Retroceder
               padding: const EdgeInsets.all(10),
               alignment: Alignment.center,
-              child: SignInButtonBuilder(//Aqui  está el Boton
+              child: SignInButtonBuilder(
+                  //Aqui  está el Boton
                   icon: Icons.backspace,
                   backgroundColor: Colors.pink,
                   onPressed: () async {
@@ -92,18 +99,36 @@ class _SignInPageState extends State<SignInPage> {
 
 //Funcion que me permire realizar el ingreso a la App mediante Correo y Contraseña
   Future<void> _signInWithEmailAndPassword() async {
-    final user = (await _auth.signInWithEmailAndPassword(
-      email: _emailController.text,
-      password: _passwordController.text,
-    )).user;
-    Future.delayed(Duration(milliseconds: 100), () {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => IndexPage()));
-    });
+    try {
+      final user = (await _auth.signInWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passwordController.text,
+      ))
+          .user;
+      Future.delayed(Duration(milliseconds: 100), () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => IndexPage()));
+      });
+    } catch (e) {
+      showDialog<String>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('Error al ingresar'),
+          content: const Text(
+              'El correo o la contraseña son incorrectos o estan vacios los campos'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'OK'),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
+    }
   }
 
 //El dispose limpia las variables, creo que es para evitar errores en la logica
-   @override
+  @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();

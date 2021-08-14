@@ -100,7 +100,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       text: 'Atras')),
               Container(
                 alignment: Alignment.center,
-                child: Text(_success == null
+                child: Text(_success == false
                     ? ''
                     : (_success
                         ? 'Successfully registered ' + _userEmail
@@ -113,20 +113,37 @@ class _RegisterPageState extends State<RegisterPage> {
 
   //Funcion que me permite realizar el registro de una persona
   Future<void> _register() async {
-    final user = (await _auth.createUserWithEmailAndPassword(
-      email: _emailController.text,
-      password: _passwordController.text,
-    ))
-        .user;
-    if (user != null) {
-      setState(() {
-        _success = true;
-        _userEmail = user.email.toString();
-      });
-    } else {
-      setState(() {
-        _success = true;
-      });
+    try {
+      final user = (await _auth.createUserWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passwordController.text,
+      ))
+          .user;
+      if (user != null) {
+        setState(() {
+          _success = true;
+          _userEmail = user.email.toString();
+        });
+      } else {
+        setState(() {
+          _success = true;
+        });
+      }
+    } catch (e) {
+      showDialog<String>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('Error al registrar'),
+          content: const Text(
+              'El correo o la contraseña son incorrectos o estan vacios los campos'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'OK'),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
     }
   }
 
