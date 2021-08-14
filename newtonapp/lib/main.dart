@@ -49,7 +49,10 @@ class _MyHomePageState extends State<MyHomePage> {
             //Texto inicial en la App
             padding: const EdgeInsets.all(10),
             alignment: Alignment.center,
-            child: Text('Bienvenido a su App para dominar el Calculo Mental'),
+            child: Text('Bienvenido a Newton App',
+            style: TextStyle(
+              color: Colors.white,
+            )),
           ),
           Container(
             //Boton Para ir al Login de la App
