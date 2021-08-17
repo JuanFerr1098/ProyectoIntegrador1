@@ -3,11 +3,13 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_signin_button/button_builder.dart';
 
 class IndexPage extends StatelessWidget {
+  const IndexPage({Key? key}) : super(key: key);
+
   @override
    Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('La Newton App Re-Loco'),
+        title: const Text('La Newton App Re-Loco'),
         backgroundColor: Colors.blueAccent,
         automaticallyImplyLeading: false,
       ),
@@ -18,7 +20,7 @@ class IndexPage extends StatelessWidget {
             //Texto inicial en la App
             padding: const EdgeInsets.all(10),
             alignment: Alignment.center,
-            child: Text('Elija a donde quere ir'),
+            child: const Text('Elija a donde quere ir'),
           ),          
           Container(// Boton para ir a la zona de Aprendizaje
             padding: const EdgeInsets.all(10),
@@ -55,3 +57,7 @@ class IndexPage extends StatelessWidget {
     );
   }
 }
+
+/*Widget _TextoInicial(){
+
+}*/

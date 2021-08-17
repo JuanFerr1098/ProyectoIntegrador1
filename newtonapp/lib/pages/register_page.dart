@@ -1,12 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_builder.dart';
+import 'package:newtonapp/pages/signin_page.dart';
+//import 'package:newtonapp/controller/register_controller.dart';
 
+//final Register_Controller register_controller = Register_Controller();
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class RegisterPage extends StatefulWidget {
   /// The page title.
   final String title = 'Registrate';
+
+  const RegisterPage({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _RegisterPageState();
@@ -124,26 +129,46 @@ class _RegisterPageState extends State<RegisterPage> {
           _success = true;
           _userEmail = user.email.toString();
         });
+        Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const SignInPage()));
       } else {
         setState(() {
           _success = true;
         });
       }
     } catch (e) {
-      showDialog<String>(
-        context: context,
-        builder: (BuildContext context) => AlertDialog(
-          title: const Text('Error al registrar'),
-          content: const Text(
-              'El correo o la contraseña son incorrectos o estan vacios los campos'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () => Navigator.pop(context, 'OK'),
-              child: const Text('OK'),
-            ),
-          ],
-        ),
-      );
+      if (_passwordController.text.length < 6) {
+        showDialog<String>(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+            title: const Text('Error al registrar'),
+            content:
+                const Text('La contraseña debe tener al menos 6 caracteres'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.pop(context, 'OK'),
+                child: const Text('OK'),
+              ),
+            ],
+          ),
+        );
+      }else if(e.toString() == "firebase_auth/email-already-in-use"){}
+       else {
+        showDialog<String>(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+            title: const Text('Error al registrar'),
+            content: const Text(
+                'El correo digitado ya se encuentra registrado'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.pop(context, 'OK'),
+                child: const Text('OK'),
+              ),
+            ],
+          ),
+        );
+      }
     }
   }
 
@@ -154,4 +179,5 @@ class _RegisterPageState extends State<RegisterPage> {
     _passwordController.dispose();
     super.dispose();
   }
+  
 }

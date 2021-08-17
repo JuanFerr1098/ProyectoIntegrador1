@@ -36,11 +36,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-      /*appBar: AppBar(
-        title: Text('La Newton App Re-Loco'),
-        backgroundColor: Colors.blueAccent,
-      ),*/
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -49,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
             //Texto inicial en la App
             padding: const EdgeInsets.all(10),
             alignment: Alignment.center,
-            child: Text('Bienvenido a Newton App',
+            child: const Text('Bienvenido a Newton App',
             style: TextStyle(
               color: Colors.white,
             )),
@@ -67,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
               textColor: Colors.purple.shade700,
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SignInPage()));
+                    MaterialPageRoute(builder: (context) => const SignInPage()));
               },
             ),
           ),
@@ -84,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 text: 'Register',
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => RegisterPage()));
+                      MaterialPageRoute(builder: (context) => const RegisterPage()));
                 },
               )),
         ],
