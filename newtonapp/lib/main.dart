@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_signin_button/button_builder.dart';
 import 'package:newtonapp/pages/register_page.dart';
 import 'package:newtonapp/pages/signin_page.dart';
+import 'package:newtonapp/pages/prueba.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,6 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
           titulo(),
           botonLogin(),
           botonRegister(),
+          prueba(),
         ],
       ),
       backgroundColor: Colors.purple.shade700, //Fonde de la pantalla
@@ -96,6 +98,26 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
               )
               );
+  }
+  Widget prueba() {
+  return Container(
+                    //Boton para ir al Registro de la App
+                    padding: const EdgeInsets.all(10),
+                    alignment: Alignment.center,
+                    child: SignInButtonBuilder(
+                      //Aqui esta las config del boton
+                      icon: Icons.person_add,
+                      iconColor: Colors.purple.shade700,
+                      backgroundColor: Colors.white,
+                      textColor: Colors.purple.shade700,
+                      text: 'Prueba',
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Prueba()));
+                      },
+              )
+              );
+
   }
 }
 
