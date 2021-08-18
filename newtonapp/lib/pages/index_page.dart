@@ -33,7 +33,6 @@ class IndexPage extends StatelessWidget {
       child: const Text('Elija a donde quere ir'),
     );
   }
-
   Widget botonAprendizaje() {
     return Container(
       // Boton para ir a la zona de Aprendizaje
@@ -51,7 +50,6 @@ class IndexPage extends StatelessWidget {
       ),
     );
   }
-
   Widget botonRetos() {
     return Container(
         //Boton para ir a los Retos de la App

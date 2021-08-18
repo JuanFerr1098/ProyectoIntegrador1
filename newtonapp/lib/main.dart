@@ -40,16 +40,27 @@ class _MyHomePageState extends State<MyHomePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Container(
-            //Texto inicial en la App
-            padding: const EdgeInsets.all(10),
-            alignment: Alignment.center,
-            child: const Text('Bienvenido a Newton App',
-            style: TextStyle(
-              color: Colors.white,
-            )),
-          ),
-          Container(
+          titulo(),
+          botonLogin(),
+          botonRegister(),
+        ],
+      ),
+      backgroundColor: Colors.purple.shade700, //Fonde de la pantalla
+    );
+  }
+
+  Widget titulo() {
+  return Container(
+    padding: const EdgeInsets.all(10),
+                alignment: Alignment.center,
+                child: const Text('Bienvenido a Newton App',
+                style: TextStyle(
+                  color: Colors.white,
+                )),
+  );
+  }
+  Widget botonLogin() {
+  return Container(
             //Boton Para ir al Login de la App
             padding: const EdgeInsets.all(10),
             alignment: Alignment.center,
@@ -65,8 +76,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     MaterialPageRoute(builder: (context) => const SignInPage()));
               },
             ),
-          ),
-          Container(
+          );
+}
+  Widget botonRegister() {
+    return Container(
               //Boton para ir al Registro de la App
               padding: const EdgeInsets.all(10),
               alignment: Alignment.center,
@@ -81,11 +94,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => const RegisterPage()));
                 },
-              )),
-        ],
-      ),
-      backgroundColor: Colors.purple.shade700, //Fonde de la pantalla
-    );
+              )
+              );
   }
 }
-//Borrra esto
+
+
