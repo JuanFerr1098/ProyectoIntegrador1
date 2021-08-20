@@ -152,14 +152,28 @@ class _RegisterPageState extends State<RegisterPage> {
             ],
           ),
         );
-      }else if(e.toString() == "firebase_auth/email-already-in-use"){}
-       else {
+      }else if(e.toString().contains("firebase_auth/email-already-in-use")){
         showDialog<String>(
           context: context,
           builder: (BuildContext context) => AlertDialog(
             title: const Text('Error al registrar'),
             content: const Text(
-                'El correo digitado ya se encuentra registrado'),
+                'El correo ya existe'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.pop(context, 'OK'),
+                child: const Text('OK'),
+              ),
+            ],
+          ),
+        );
+      } else {
+        showDialog<String>(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+            title: const Text('Error al registrar'),
+            content: const Text(
+                'Por favor ingrese un correo válido'),
             actions: <Widget>[
               TextButton(
                 onPressed: () => Navigator.pop(context, 'OK'),
@@ -178,6 +192,5 @@ class _RegisterPageState extends State<RegisterPage> {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
-  }
-  
+  }  
 }

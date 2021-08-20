@@ -1,9 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_signin_button/button_builder.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:newtonapp/pages/signin_page.dart';
+import 'package:newtonapp/main.dart';
 
-class IndexPage extends StatelessWidget {
+final FirebaseAuth _auth = FirebaseAuth.instance;
+
+class IndexPage extends StatefulWidget {
+  /// The page title.
+  final String title = 'Inicio';
+
   const IndexPage({Key? key}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => _IndexPage();
+}
+
+class _IndexPage extends State<IndexPage> {
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +39,7 @@ class IndexPage extends StatelessWidget {
           textoInicial(),
           botonAprendizaje(),
           botonRetos(),
+          botonDeslogueo(),
         ],
       ),
       backgroundColor: Colors.purple.shade200, //Color de Fondo
@@ -65,5 +86,29 @@ class IndexPage extends StatelessWidget {
                         MaterialPageRoute(builder: (context) => RegisterPage()));*/
           },
         ));
+  }
+
+  Widget botonDeslogueo() {
+    return Container(
+        //Boton para ir a los Retos de la App
+        padding: const EdgeInsets.all(10),
+        alignment: Alignment.center,
+        child: SignInButtonBuilder(
+          //Aqui esta las config del Boton
+          icon: Icons.logout,
+          backgroundColor: Colors.indigo,
+          text: 'SAlIR',
+          onPressed: () async {
+            await _logOut();
+            /*Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => RegisterPage()));*/
+          },
+        ));
+  }
+
+  Future<void> _logOut() async {
+    print("object");
+    await FirebaseAuth.instance.signOut();
+    Navigator.push(context, MaterialPageRoute(builder: (context) => const SignInPage()));
   }
 }
