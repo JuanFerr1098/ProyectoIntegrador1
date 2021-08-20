@@ -16,12 +16,13 @@ class Register_Controller extends State<RegisterPage>{
   bool _success = false;
   String _userEmail = '';
 
-  Future<void> _register() async {
+  Future<void> register() async {
     try {
       final user = (await _auth.createUserWithEmailAndPassword(
         email: _emailController.text,
         password: _passwordController.text,
-      )).user;
+      ))
+          .user;
       if (user != null) {
         setState(() {
           _success = true;
@@ -50,14 +51,28 @@ class Register_Controller extends State<RegisterPage>{
             ],
           ),
         );
-      }else if(e.toString() == "firebase_auth/email-already-in-use"){}
-       else {
+      }else if(e.toString().contains("firebase_auth/email-already-in-use")){
         showDialog<String>(
           context: context,
           builder: (BuildContext context) => AlertDialog(
             title: const Text('Error al registrar'),
             content: const Text(
-                'El correo digitado ya se encuentra registrado'),
+                'El correo ya existe'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.pop(context, 'OK'),
+                child: const Text('OK'),
+              ),
+            ],
+          ),
+        );
+      } else {
+        showDialog<String>(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+            title: const Text('Error al registrar'),
+            content: const Text(
+                'Por favor ingrese un correo'),
             actions: <Widget>[
               TextButton(
                 onPressed: () => Navigator.pop(context, 'OK'),
