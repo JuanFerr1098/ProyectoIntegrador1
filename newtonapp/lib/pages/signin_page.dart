@@ -25,17 +25,22 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+          //backgroundColor: Colors.purple.shade700, //Fondo de la pantalla
       appBar: AppBar(
+        backgroundColor: Colors.purple.shade700,
         title: const Text('Logueate'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Container(
+            
             //Ingreso del Email del Login
             padding: const EdgeInsets.all(10),
             alignment: Alignment.center,
             child: TextFormField(
+              //backgroundColor: Colors.white,
+              //fillColor: Colors.white,
               //Aqui esta la entrada de texto
               controller: _emailController,
               decoration: const InputDecoration(
@@ -49,6 +54,7 @@ class _SignInPageState extends State<SignInPage> {
             ),
           ),
           Container(
+            
             //Ingreso de la Contraseña del Login
             padding: const EdgeInsets.all(10),
             alignment: Alignment.center,
@@ -74,7 +80,7 @@ class _SignInPageState extends State<SignInPage> {
               child: SignInButtonBuilder(
                 //Aqui  está el Boton
                 icon: Icons.email,
-                backgroundColor: Colors.pink,
+                backgroundColor: Colors.purple.shade700,
                 text: 'Ingresar',
                 onPressed: () async {
                   _signInWithEmailAndPassword();
@@ -90,8 +96,9 @@ class _SignInPageState extends State<SignInPage> {
               child: SignInButtonBuilder(
                 //Aqui  está el Boton
                 icon: Icons.emoji_emotions,
-                backgroundColor: Colors.pink,
+                backgroundColor: Colors.purple.shade700,
                 text: 'Google',
+                textColor: Colors.white,
                 onPressed: () async {
                   _signInWithGoogle();
                   /*if (_formKey.currentState!.validate()) {
@@ -106,7 +113,7 @@ class _SignInPageState extends State<SignInPage> {
               child: SignInButtonBuilder(
                   //Aqui  está el Boton
                   icon: Icons.backspace,
-                  backgroundColor: Colors.pink,
+                  backgroundColor: Colors.purple.shade700,
                   onPressed: () async {
                     Navigator.pop(context);
                   },

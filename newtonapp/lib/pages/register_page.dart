@@ -30,6 +30,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.purple.shade700,
           title: Text(widget.title),
         ),
         body: Form(
@@ -82,8 +83,9 @@ class _RegisterPageState extends State<RegisterPage> {
                   alignment: Alignment.center,
                   child: SignInButtonBuilder(
                     //Aqui esta el Boton
+
                     icon: Icons.person_add,
-                    backgroundColor: Colors.blueGrey,
+                    backgroundColor: Colors.purple.shade700,
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
                         await _register();
@@ -98,7 +100,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: SignInButtonBuilder(
                       //Aqui esta el boton
                       icon: Icons.backspace,
-                      backgroundColor: Colors.pink,
+                      backgroundColor: Colors.purple.shade700,
                       onPressed: () async {
                         Navigator.pop(context);
                       },

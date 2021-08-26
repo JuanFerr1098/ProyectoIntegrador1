@@ -37,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.purple.shade700, //Fondo de la pantalla
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -44,10 +45,11 @@ class _MyHomePageState extends State<MyHomePage> {
           titulo(),
           botonLogin(),
           botonRegister(),
-          prueba(),
+          //prueba(),
+          botonprueba(),
         ],
       ),
-      backgroundColor: Colors.purple.shade700, //Fonde de la pantalla
+      
     );
   }
 
@@ -115,6 +117,40 @@ class _MyHomePageState extends State<MyHomePage> {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => Prueba()));
                       },
+              )
+              );
+
+  }
+
+  Widget botonprueba() {
+  return Container(
+                    //Boton para ir al Registro de la App
+                    padding: const EdgeInsets.all(10),
+                    alignment: Alignment.center,
+                    child: MaterialButton(
+                      minWidth: 220.0,
+                      //weight: 2.0,
+                      height:40.0,
+                      //Aqui esta las config del boton
+                      //icon: Icons.person_add,
+                     // iconColor: Colors.purple.shade700,
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      //textColor: Colors.purple.shade700,
+                      //text: 'Prueba',
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Prueba()));                          
+                      },
+                      child: Text(
+                              'Login',
+                              style: TextStyle(
+                                color: Colors.purple.shade700,
+                                fontSize:20.0,
+                              ),
+                            ),
               )
               );
 
