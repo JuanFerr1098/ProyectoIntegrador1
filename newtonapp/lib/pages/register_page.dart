@@ -30,6 +30,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.purple.shade700,
           title: Text(widget.title),
         ),
         body: Form(
@@ -76,33 +77,36 @@ class _RegisterPageState extends State<RegisterPage> {
                   obscureText: true,
                 ),
               ),
-              Container(
+              
+              botonRegistrar(context),
+              /*Container(
                   //Boton de Registro
                   padding: const EdgeInsets.all(10),
                   alignment: Alignment.center,
                   child: SignInButtonBuilder(
                     //Aqui esta el Boton
+
                     icon: Icons.person_add,
-                    backgroundColor: Colors.blueGrey,
+                    backgroundColor: Colors.purple.shade700,
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
                         await _register();
                       }
                     },
                     text: 'Registrate',
-                  )),
-              Container(
+                  )),*/
+              /*Container(
                   //Boton para retroceder
                   padding: const EdgeInsets.all(10),
                   alignment: Alignment.center,
                   child: SignInButtonBuilder(
                       //Aqui esta el boton
                       icon: Icons.backspace,
-                      backgroundColor: Colors.pink,
+                      backgroundColor: Colors.purple.shade700,
                       onPressed: () async {
                         Navigator.pop(context);
                       },
-                      text: 'Atras')),
+                      text: 'Atras')),*/
               Container(
                 alignment: Alignment.center,
                 child: Text(_success == false
@@ -114,6 +118,34 @@ class _RegisterPageState extends State<RegisterPage> {
             ],
           ),
         ));
+  }
+Widget botonRegistrar(context) {
+  return Container(
+                    //Boton para ir al Registro de la App
+                    padding: const EdgeInsets.all(10),
+                    alignment: Alignment.center,
+                    child: MaterialButton(
+                      minWidth: 230.0,
+                      height:60.0,
+                      color: Colors.purple.shade700,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                      ),
+                        onPressed: ()async {
+                      if (_formKey.currentState!.validate()) {
+                        await _register();
+                      }
+                                      },
+                      child: Text(
+                              'Registrar',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize:20.0,
+                                //fontWeight: FontWeight.bold,
+                              ),
+                            ),
+              )
+              );
   }
 
   //Funcion que me permite realizar el registro de una persona
@@ -185,7 +217,6 @@ class _RegisterPageState extends State<RegisterPage> {
       }
     }
   }
-
 //El dispose limpia las variables, creo que es para evitar errores en la logica
   @override
   void dispose() {

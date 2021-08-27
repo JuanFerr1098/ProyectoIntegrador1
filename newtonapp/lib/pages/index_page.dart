@@ -26,64 +26,92 @@ class _IndexPage extends State<IndexPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('La Newton App Re-Loco'),
-        backgroundColor: Colors.blueAccent,
-        automaticallyImplyLeading: false,
-      ),
-      body: Column(
+       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          textoInicial(),
-          botonAprendizaje(),
-          botonRetos(),
-          botonDeslogueo(),
+          textoInicial(context),
+          botonAprendizaje2(context),
+          botonRetos2(context),
         ],
       ),
-      backgroundColor: Colors.purple.shade200, //Color de Fondo
+      backgroundColor: Colors.white, //Color de Fondo
     );
   }
-
-  Widget textoInicial() {
-    return Container(
-      //Texto inicial en la App
-      padding: const EdgeInsets.all(10),
-      alignment: Alignment.center,
-      child: const Text('Elija a donde quere ir'),
-    );
+  Widget textoInicial(context) {
+  return Container(
+    //color: Colors.amber[600],
+    width: double.infinity,
+    height:MediaQuery.of(context).size.height*.5,
+    padding: const EdgeInsets.all(50),
+    
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+                  Text('¿A donde quieres ir?',
+                  style:TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30.0,
+                    color: Colors.purple.shade700,
+                  ),
+                  ),                      
+                ]
+    ),
+  );
   }
-  Widget botonAprendizaje() {
+  Widget botonAprendizaje2(context) {
     return Container(
-      // Boton para ir a la zona de Aprendizaje
-      padding: const EdgeInsets.all(10),
-      alignment: Alignment.center,
-      child: SignInButtonBuilder(
-        //Aqui esta las config del Boton
-        icon: Icons.verified_user,
-        backgroundColor: Colors.orange,
-        text: 'Aprendizaje',
-        onPressed: () {
-          /*Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignInPage()));*/
-        },
-      ),
-    );
+                    //Boton para ir al Registro de la App
+                    padding: const EdgeInsets.all(10),
+                    alignment: Alignment.center,
+                    child: MaterialButton(
+                      minWidth: 220.0,
+                      height:60.0,
+                      color: Colors.purple.shade700,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                      ),
+                        onPressed: () {
+                        /*Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => const RegisterPage()));*/                     
+                      },
+                      child: Text(
+                              'Aprendizaje',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize:25.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+              )
+              );
   }
-  Widget botonRetos() {
+  Widget botonRetos2(context) {
     return Container(
-        //Boton para ir a los Retos de la App
-        padding: const EdgeInsets.all(10),
-        alignment: Alignment.center,
-        child: SignInButtonBuilder(
-          //Aqui esta las config del Boton
-          icon: Icons.person_add,
-          backgroundColor: Colors.indigo,
-          text: 'Retos',
-          onPressed: () {
-            /*Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => RegisterPage()));*/
-          },
-        ));
+                    //Boton para ir al Registro de la App
+                    padding: const EdgeInsets.all(10),
+                    alignment: Alignment.center,
+                    child: MaterialButton(
+                      minWidth: 220.0,
+                      height:60.0,
+                      color: Colors.purple.shade700,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                      ),
+                        onPressed: () {
+                        /*Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => const RegisterPage()));*/                     
+                      },
+                      child: Text(
+                              'Retos',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize:25.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+              )
+              );
   }
 
   Widget botonDeslogueo() {

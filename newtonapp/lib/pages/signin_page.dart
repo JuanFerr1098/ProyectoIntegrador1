@@ -25,17 +25,24 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+          //backgroundColor: Colors.purple.shade700, //Fondo de la pantalla
       appBar: AppBar(
-        title: const Text('Logueate'),
+        backgroundColor: Colors.purple.shade700,
+        title: const Text('Login'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
+            
             //Ingreso del Email del Login
             padding: const EdgeInsets.all(10),
             alignment: Alignment.center,
             child: TextFormField(
+              
+              //backgroundColor: Colors.white,
+              //fillColor: Colors.white,
               //Aqui esta la entrada de texto
               controller: _emailController,
               decoration: const InputDecoration(
@@ -48,6 +55,7 @@ class _SignInPageState extends State<SignInPage> {
               },*/
             ),
           ),
+
           Container(
             //Ingreso de la Contraseña del Login
             padding: const EdgeInsets.all(10),
@@ -67,14 +75,14 @@ class _SignInPageState extends State<SignInPage> {
               obscureText: true, //Esto hace que aparezca ******
             ),
           ),
-          Container(
+         /* Container(
               //Boton para Ingresar
               padding: const EdgeInsets.all(10),
               alignment: Alignment.center,
               child: SignInButtonBuilder(
                 //Aqui  está el Boton
                 icon: Icons.email,
-                backgroundColor: Colors.pink,
+                backgroundColor: Colors.purple.shade700,
                 text: 'Ingresar',
                 onPressed: () async {
                   _signInWithEmailAndPassword();
@@ -82,7 +90,8 @@ class _SignInPageState extends State<SignInPage> {
                     await _signInWithEmailAndPassword();
                   }*/
                 },
-              )),
+              )),*/
+              /*
           Container(
               //Boton para Retroceder
               padding: const EdgeInsets.all(10),
@@ -90,14 +99,43 @@ class _SignInPageState extends State<SignInPage> {
               child: SignInButtonBuilder(
                   //Aqui  está el Boton
                   icon: Icons.backspace,
-                  backgroundColor: Colors.pink,
+                  backgroundColor: Colors.purple.shade700,
                   onPressed: () async {
                     Navigator.pop(context);
                   },
-                  text: 'Atras')),
+                  text: 'Atras')),*/
+            botonIngresar(context),
         ],
       ),
     );
+
+  }
+
+Widget botonIngresar(context) {
+  return Container(
+                    //Boton para ir al Registro de la App
+                    padding: const EdgeInsets.all(10),
+                    alignment: Alignment.center,
+                    child: MaterialButton(
+                      minWidth: 230.0,
+                      height:60.0,
+                      color: Colors.purple.shade700,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                      ),
+                        onPressed: () async {
+                  _signInWithEmailAndPassword();                    
+                      },
+                      child: Text(
+                              'Ingresar',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize:20.0,
+                                //fontWeight: FontWeight.bold,
+                              ),
+                            ),
+              )
+              );
   }
 
 //Funcion que me permire realizar el ingreso a la App mediante Correo y Contraseña
@@ -130,7 +168,6 @@ class _SignInPageState extends State<SignInPage> {
       );
     }
   }
-
 //El dispose limpia las variables, creo que es para evitar errores en la logica
   @override
   void dispose() {
