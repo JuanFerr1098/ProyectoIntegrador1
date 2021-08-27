@@ -76,37 +76,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   obscureText: true,
                 ),
-              ),
-              
+              ),              
               botonRegistrar(context),
-              /*Container(
-                  //Boton de Registro
-                  padding: const EdgeInsets.all(10),
-                  alignment: Alignment.center,
-                  child: SignInButtonBuilder(
-                    //Aqui esta el Boton
-
-                    icon: Icons.person_add,
-                    backgroundColor: Colors.purple.shade700,
-                    onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        await _register();
-                      }
-                    },
-                    text: 'Registrate',
-                  )),*/
-              /*Container(
-                  //Boton para retroceder
-                  padding: const EdgeInsets.all(10),
-                  alignment: Alignment.center,
-                  child: SignInButtonBuilder(
-                      //Aqui esta el boton
-                      icon: Icons.backspace,
-                      backgroundColor: Colors.purple.shade700,
-                      onPressed: () async {
-                        Navigator.pop(context);
-                      },
-                      text: 'Atras')),*/
               Container(
                 alignment: Alignment.center,
                 child: Text(_success == false

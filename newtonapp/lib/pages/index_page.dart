@@ -32,6 +32,7 @@ class _IndexPage extends State<IndexPage> {
           textoInicial(context),
           botonAprendizaje2(context),
           botonRetos2(context),
+          botonDeslogueo(),
         ],
       ),
       backgroundColor: Colors.white, //Color de Fondo
