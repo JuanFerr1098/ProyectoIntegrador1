@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_signin_button/button_builder.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:newtonapp/pages/signin_page.dart';
-import 'package:newtonapp/main.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -109,8 +107,7 @@ class _IndexPage extends State<IndexPage> {
   }
 
   Future<void> _logOut() async {
-    print("object");
-    await FirebaseAuth.instance.signOut();
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const SignInPage()));
+    await _auth.signOut();
+    Navigator.of(context).pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
   }
 }

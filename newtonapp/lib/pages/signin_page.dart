@@ -84,22 +84,6 @@ class _SignInPageState extends State<SignInPage> {
                 },
               )),
           Container(
-              //Boton para Ingresar por Google
-              padding: const EdgeInsets.all(10),
-              alignment: Alignment.center,
-              child: SignInButtonBuilder(
-                //Aqui  está el Boton
-                icon: Icons.emoji_emotions,
-                backgroundColor: Colors.pink,
-                text: 'Google',
-                onPressed: () async {
-                  _signInWithGoogle();
-                  /*if (_formKey.currentState!.validate()) {
-                    await _signInWithGoogle();
-                  }*/
-                },
-              )),
-          Container(
               //Boton para Retroceder
               padding: const EdgeInsets.all(10),
               alignment: Alignment.center,
@@ -136,49 +120,6 @@ class _SignInPageState extends State<SignInPage> {
           title: const Text('Error al ingresar'),
           content: const Text(
               'El correo o la contraseña son incorrectos o estan vacios los campos'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () => Navigator.pop(context, 'OK'),
-              child: const Text('OK'),
-            ),
-          ],
-        ),
-      );
-    }
-  }
-
-  //El codigo para registrar con Google
-  Future<void> _signInWithGoogle() async {
-    try {
-      // ignore: unused_local_variable
-      UserCredential userCredential;
-      if (kIsWeb) {
-        var googleProvider = GoogleAuthProvider();
-        userCredential = await _auth.signInWithPopup(googleProvider);
-      } else {
-        final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-        if (googleUser == null) {
-          return;
-        }
-        final GoogleSignInAuthentication googleAuth =
-            await googleUser.authentication;
-        final googleAuthCredential = GoogleAuthProvider.credential(
-          accessToken: googleAuth.accessToken,
-          idToken: googleAuth.idToken,
-        );
-        userCredential = await _auth.signInWithCredential(googleAuthCredential);
-      }
-      /*final user = userCredential.user;
-      Scaffold.of(context).showSnackBar(SnackBar(
-        content: Text('Sign In ${user.uid} with Google'),
-      ));*/
-    } catch (e) {
-      showDialog<String>(
-        context: context,
-        builder: (BuildContext context) => AlertDialog(
-          title: const Text('Error al ingresar'),
-          content: const Text(
-              'EL correo de Goolge es invalido'),
           actions: <Widget>[
             TextButton(
               onPressed: () => Navigator.pop(context, 'OK'),
