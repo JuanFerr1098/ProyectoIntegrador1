@@ -28,10 +28,11 @@ class _SignInPageState extends State<SignInPage> {
           //backgroundColor: Colors.purple.shade700, //Fondo de la pantalla
       appBar: AppBar(
         backgroundColor: Colors.purple.shade700,
-        title: const Text('Logueate'),
+        title: const Text('Login'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
             
@@ -39,6 +40,7 @@ class _SignInPageState extends State<SignInPage> {
             padding: const EdgeInsets.all(10),
             alignment: Alignment.center,
             child: TextFormField(
+              
               //backgroundColor: Colors.white,
               //fillColor: Colors.white,
               //Aqui esta la entrada de texto
@@ -53,8 +55,8 @@ class _SignInPageState extends State<SignInPage> {
               },*/
             ),
           ),
+
           Container(
-            
             //Ingreso de la Contraseña del Login
             padding: const EdgeInsets.all(10),
             alignment: Alignment.center,
@@ -73,7 +75,7 @@ class _SignInPageState extends State<SignInPage> {
               obscureText: true, //Esto hace que aparezca ******
             ),
           ),
-          Container(
+         /* Container(
               //Boton para Ingresar
               padding: const EdgeInsets.all(10),
               alignment: Alignment.center,
@@ -88,7 +90,8 @@ class _SignInPageState extends State<SignInPage> {
                     await _signInWithEmailAndPassword();
                   }*/
                 },
-              )),
+              )),*/
+              /*
           Container(
               //Boton para Ingresar por Google
               padding: const EdgeInsets.all(10),
@@ -117,10 +120,39 @@ class _SignInPageState extends State<SignInPage> {
                   onPressed: () async {
                     Navigator.pop(context);
                   },
-                  text: 'Atras')),
+                  text: 'Atras')),*/
+            botonIngresar(context),
         ],
       ),
     );
+
+  }
+
+Widget botonIngresar(context) {
+  return Container(
+                    //Boton para ir al Registro de la App
+                    padding: const EdgeInsets.all(10),
+                    alignment: Alignment.center,
+                    child: MaterialButton(
+                      minWidth: 230.0,
+                      height:60.0,
+                      color: Colors.purple.shade700,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                      ),
+                        onPressed: () async {
+                  _signInWithEmailAndPassword();                    
+                      },
+                      child: Text(
+                              'Ingresar',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize:20.0,
+                                //fontWeight: FontWeight.bold,
+                              ),
+                            ),
+              )
+              );
   }
 
 //Funcion que me permire realizar el ingreso a la App mediante Correo y Contraseña
@@ -153,7 +185,6 @@ class _SignInPageState extends State<SignInPage> {
       );
     }
   }
-
   //El codigo para registrar con Google
   Future<void> _signInWithGoogle() async {
     try {
@@ -196,7 +227,6 @@ class _SignInPageState extends State<SignInPage> {
       );
     }
   }
-
 //El dispose limpia las variables, creo que es para evitar errores en la logica
   @override
   void dispose() {

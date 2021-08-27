@@ -1,25 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_signin_button/button_builder.dart';
+import 'package:newtonapp/pages/register_page.dart';
+import 'package:newtonapp/pages/signin_page.dart';
+import 'package:newtonapp/pages/prueba.dart';
 
-class IndexPage extends StatelessWidget {
-  const IndexPage({Key? key}) : super(key: key);
-
+class Index extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          textoInicial(context),
-          botonAprendizaje2(context),
-          botonRetos2(context),
-        ],
+      backgroundColor: Colors.purple.shade700, //Fondo de la pantalla
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: Column(
+        //crossAxisAlignment: CrossAxisAlignment.center,
+        //mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+                titulo(context),
+                botones(context),
+                  ],
+        ),
       ),
-      backgroundColor: Colors.white, //Color de Fondo
     );
   }
-  Widget textoInicial(context) {
+  Widget titulo(context) {
   return Container(
     //color: Colors.amber[600],
     width: double.infinity,
@@ -30,45 +35,71 @@ class IndexPage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-                  Text('¿A donde quieres ir?',
+                  Text('Bienvenido a',
                   style:TextStyle(
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 30.0,
-                    color: Colors.purple.shade700,
                   ),
-                  ),                      
+                  ),
+                  Text('Newton App',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30.0,
+                  ),
+                  )                  
                 ]
     ),
   );
   }
-  Widget botonAprendizaje2(context) {
+  Widget botones(context) { 
     return Container(
-                    //Boton para ir al Registro de la App
-                    padding: const EdgeInsets.all(10),
-                    alignment: Alignment.center,
-                    child: MaterialButton(
-                      minWidth: 220.0,
-                      height:60.0,
-                      color: Colors.purple.shade700,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                      ),
-                        onPressed: () {
-                        /*Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const RegisterPage()));*/                     
-                      },
-                      child: Text(
-                              'Aprendizaje',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize:25.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-              )
-              );
+   // color: Colors.white60,
+    width: double.infinity,
+    height:MediaQuery.of(context).size.height*.5,
+    padding: const EdgeInsets.all(30),
+
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      //crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+                botonlogin(context),
+                botonRegistro(context),                   
+                ]
+    ),
+  );
   }
-  Widget botonRetos2(context) {
+  Widget botonlogin(context) {
+  return Container(
+                    //Boton para ir al Registro de la App
+                    padding: const EdgeInsets.all(10),
+                    alignment: Alignment.center,
+                    child: MaterialButton(
+                      minWidth: 220.0,
+                      height:60.0,
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5.0),
+                      ),
+                        onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => const SignInPage()));                     
+                      },
+                      child: Text(
+                              'Login',
+                              style: TextStyle(
+                                color: Colors.purple.shade700,
+                                fontSize:25.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+              )
+              );
+
+  }
+  Widget botonRegistro(context) {
     return Container(
                     //Boton para ir al Registro de la App
                     padding: const EdgeInsets.all(10),
@@ -76,23 +107,24 @@ class IndexPage extends StatelessWidget {
                     child: MaterialButton(
                       minWidth: 220.0,
                       height:60.0,
-                      color: Colors.purple.shade700,
+                      color: Colors.white,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5.0),
                       ),
                         onPressed: () {
-                        /*Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const RegisterPage()));*/                     
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => const RegisterPage()));                     
                       },
                       child: Text(
-                              'Retos',
+                              'Registro',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.purple.shade700,
                                 fontSize:25.0,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
               )
               );
+
   }
 }
