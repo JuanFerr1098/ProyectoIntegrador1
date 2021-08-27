@@ -5,7 +5,16 @@ import 'package:newtonapp/pages/register_page.dart';
 import 'package:newtonapp/pages/signin_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/':  (context) => const MyApp(),
+        'login': (context) => const SignInPage(),
+        'register': (context) => const RegisterPage()
+      }
+    ),
+    );
 }
 
 class MyApp extends StatelessWidget {
@@ -72,8 +81,8 @@ class _MyHomePageState extends State<MyHomePage> {
               text: 'Login',
               textColor: Colors.purple.shade700,
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const SignInPage()));
+                //Navigator.pushNamed(context, 'login');
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const SignInPage()));
               },
             ),
           );
@@ -91,8 +100,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 textColor: Colors.purple.shade700,
                 text: 'Register',
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const RegisterPage()));
+                  //Navigator.pushNamed(context, 'register');
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const RegisterPage()));
                 },
               )
               );
