@@ -25,7 +25,7 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          backgroundColor: Colors.tealAccent, //Fondo de la pantalla
+          //backgroundColor: Colors.purple.shade700, //Fondo de la pantalla
       appBar: AppBar(
         backgroundColor: Colors.purple.shade700,
         title: const Text('Login'),
@@ -35,18 +35,18 @@ class _SignInPageState extends State<SignInPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
+            
             //Ingreso del Email del Login
             padding: const EdgeInsets.all(10),
             alignment: Alignment.center,
             child: TextFormField(
+              
+              //backgroundColor: Colors.white,
+              //fillColor: Colors.white,
               //Aqui esta la entrada de texto
               controller: _emailController,
-              decoration: const InputDecoration(                  
-                  hintText: 'Ingresa tu Email', 
-                  border: InputBorder.none,
-                  fillColor: Colors.white,
-                  filled: true
-                  ),
+              decoration: const InputDecoration(
+                  hintText: 'Ingresa tu Email', border: OutlineInputBorder()),
               /*validator: (String? value) {//Es probable que no se necesite, lo dejamos ahi por ahora
                 if (value == null || value.isEmpty) {
                   return 'Please enter some text';
@@ -55,6 +55,7 @@ class _SignInPageState extends State<SignInPage> {
               },*/
             ),
           ),
+
           Container(
             //Ingreso de la Contraseña del Login
             padding: const EdgeInsets.all(10),
@@ -64,10 +65,7 @@ class _SignInPageState extends State<SignInPage> {
               controller: _passwordController,
               decoration: const InputDecoration(
                   hintText: 'Ingresa tu Contraseña',
-                  border: InputBorder.none,
-                  fillColor: Colors.white,
-                  filled: true
-                  ),
+                  border: OutlineInputBorder()),
               /*validator: (String? value) {//Es probable que no se necesite, lo dejamos ahi por ahora
                 if (value == null || value.isEmpty) {
                   return 'Please enter some text';
@@ -77,6 +75,35 @@ class _SignInPageState extends State<SignInPage> {
               obscureText: true, //Esto hace que aparezca ******
             ),
           ),
+         /* Container(
+              //Boton para Ingresar
+              padding: const EdgeInsets.all(10),
+              alignment: Alignment.center,
+              child: SignInButtonBuilder(
+                //Aqui  está el Boton
+                icon: Icons.email,
+                backgroundColor: Colors.purple.shade700,
+                text: 'Ingresar',
+                onPressed: () async {
+                  _signInWithEmailAndPassword();
+                  /*if (_formKey.currentState!.validate()) {
+                    await _signInWithEmailAndPassword();
+                  }*/
+                },
+              )),*/
+              /*
+          Container(
+              //Boton para Retroceder
+              padding: const EdgeInsets.all(10),
+              alignment: Alignment.center,
+              child: SignInButtonBuilder(
+                  //Aqui  está el Boton
+                  icon: Icons.backspace,
+                  backgroundColor: Colors.purple.shade700,
+                  onPressed: () async {
+                    Navigator.pop(context);
+                  },
+                  text: 'Atras')),*/
             botonIngresar(context),
         ],
       ),
