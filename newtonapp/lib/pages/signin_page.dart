@@ -44,7 +44,7 @@ class _SignInPageState extends State<SignInPage> {
               //Aqui esta la entrada de texto
               controller: _emailController,
               decoration: const InputDecoration(
-                  hintText: 'Ingresa tu Email',
+                  labelText: 'Ingresa tu Email',
                   border: InputBorder.none,
                   fillColor: Colors.white,
                   filled: true),
@@ -65,7 +65,7 @@ class _SignInPageState extends State<SignInPage> {
               //Aqui esta la entrada de texto
               controller: _passwordController,
               decoration: const InputDecoration(
-                  hintText: 'Ingresa tu Contraseña',
+                  labelText: 'Ingresa tu Contraseña',
                   border: InputBorder.none,
                   fillColor: Colors.white,
                   filled: true),
