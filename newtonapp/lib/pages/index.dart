@@ -85,10 +85,10 @@ class Index extends StatelessWidget{
                           borderRadius: BorderRadius.circular(5.0),
                       ),
                         onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const SignInPage()));                   
-                          /* Navigator.push(context,
-                            MaterialPageRoute(builder: (context) =>  IndexPage()));  */
+                       /* Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => const SignInPage()));   */                
+                           Navigator.push(context,
+                            MaterialPageRoute(builder: (context) =>  IndexPage())); 
                       },
                       child: Text(
                               'Login',

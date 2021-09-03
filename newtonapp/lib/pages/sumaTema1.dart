@@ -6,52 +6,47 @@ import 'package:flutter_signin_button/button_builder.dart';
 class SumaTema1 extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.purple.shade700, //Fondo de la pantalla
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        child: Column(
-        //crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-                titulo(context),
-                //botones(context),
-                  ],
+
+      return Scaffold(
+     
+        body: Container(
+          margin: const EdgeInsets.symmetric(vertical: 20.0),
+          height: 200.0,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: <Widget>[
+              Container(
+                width: 160.0,
+                height: 250.0,
+                color: Colors.red,
+              ),
+              Container(
+                width: 160.0,
+                color: Colors.blue,
+              ),
+              Container(
+                width: 160.0,
+                color: Colors.green,
+              ),
+              Container(
+                width: 160.0,
+                color: Colors.yellow,
+              ),
+              Container(
+                width: 160.0,
+                color: Colors.orange,
+              ),
+            ],
+          ),
         ),
-      ),
+      );
+   }
+
+  Widget carrusel(){
+    return Row(
+
     );
   }
-  Widget titulo(context) {
-  return Container(
-    //color: Colors.amber[600],
-    width: double.infinity,
-    //height:MediaQuery.of(context).size.height*.5,
-    padding: const EdgeInsets.all(50),
-    
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-                  Text('Bienvenido a',
-                  style:TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30.0,
-                  ),
-                  ),
-                  Text('Tema 1',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30.0,
-                  ),
-                  )                  
-                ]
-    ),
-  );
-  }
-
 }
 
 
