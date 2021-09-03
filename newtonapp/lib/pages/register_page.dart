@@ -39,59 +39,62 @@ class _RegisterPageState extends State<RegisterPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Container(
-                //Ingreso del Nombre del Registro
-                padding: const EdgeInsets.all(10),
-                alignment: Alignment.center,
-                child: TextFormField(
-                  //Aqui esta la entrada de texto
-                  controller: _nameController,
-                  decoration: const InputDecoration(
-                    labelText: 'Ingresa tu Nombre',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-              ),
-              Container(
-                //Ingreso del Correo del Registro
-                padding: const EdgeInsets.all(10),
-                alignment: Alignment.center,
-                child: TextFormField(
-                  //Aqui esta la entrada de texto
-                  controller: _emailController,
-                  decoration: const InputDecoration(
-                    labelText: 'Ingresa tu Correo',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-              ),
-              Container(
-                //Ingreso de la Contaseña del Registro
-                padding: const EdgeInsets.all(10),
-                alignment: Alignment.center,
-                child: TextFormField(
-                  //Aqui esta la entrada de texto
-                  controller: _passwordController,
-                  decoration: const InputDecoration(
-                    labelText: 'Ingresa tu Contraseña',
-                    border: OutlineInputBorder(),
-                  ),
-                  obscureText: true,
-                ),
-              ),
-              
+              nameText(),
+              emailText(),
+              passwordText(),
               botonRegistrar(context),
-              /*Container(
-                alignment: Alignment.center,
-                child: Text(_success == false
-                    ? ''
-                    : (_success
-                        ? 'Successfully registered ' + _userEmail
-                        : 'Registration failed')),
-              )*/
             ],
           ),
         ));
+  }
+
+  Widget nameText() {
+    return Container(
+      //Ingreso del Nombre del Registro
+      padding: const EdgeInsets.all(10),
+      alignment: Alignment.center,
+      child: TextFormField(
+        //Aqui esta la entrada de texto
+        controller: _nameController,
+        decoration: const InputDecoration(
+          labelText: 'Ingresa tu Nombre',
+          border: OutlineInputBorder(),
+        ),
+      ),
+    );
+  }
+
+  Widget emailText() {
+    return Container(
+      //Ingreso del Correo del Registro
+      padding: const EdgeInsets.all(10),
+      alignment: Alignment.center,
+      child: TextFormField(
+        //Aqui esta la entrada de texto
+        controller: _emailController,
+        decoration: const InputDecoration(
+          labelText: 'Ingresa tu Correo',
+          border: OutlineInputBorder(),
+        ),
+      ),
+    );
+  }
+
+  Widget passwordText() {
+    return Container(
+      //Ingreso de la Contaseña del Registro
+      padding: const EdgeInsets.all(10),
+      alignment: Alignment.center,
+      child: TextFormField(
+        //Aqui esta la entrada de texto
+        controller: _passwordController,
+        decoration: const InputDecoration(
+          labelText: 'Ingresa tu Contraseña',
+          border: OutlineInputBorder(),
+        ),
+        obscureText: true,
+      ),
+    );
   }
 
   Widget botonRegistrar(context) {
@@ -148,7 +151,7 @@ class _RegisterPageState extends State<RegisterPage> {
       }
     } catch (e) {
       String aviso;
-      if(_nameController.text == '') {
+      if (_nameController.text == '') {
         aviso = "Por favor ingrese su nombre";
       } else if (e.toString().contains("firebase_auth/email-already-in-use")) {
         aviso = "El correo ya existe";

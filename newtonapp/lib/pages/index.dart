@@ -67,7 +67,7 @@ class Index extends StatelessWidget {
           ]),
     );
   }
-  
+
   Widget botonlogin(context) {
     return Container(
         //Boton para ir al Registro de la App

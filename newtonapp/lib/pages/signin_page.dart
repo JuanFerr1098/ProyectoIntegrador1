@@ -7,7 +7,7 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class SignInPage extends StatefulWidget {
   /// The page title.
-  final String title = 'Logueate';
+  final String title = 'Login';
 
   const SignInPage({Key? key}) : super(key: key);
 
@@ -23,63 +23,68 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.tealAccent, //Fondo de la pantalla
+      //backgroundColor: Colors.tealAccent, //Fondo de la pantalla
       appBar: AppBar(
         backgroundColor: Colors.purple.shade700,
-        title: const Text('Login'),
+        title: Text(widget.title),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Container(
-            
-            //Ingreso del Email del Login
-            padding: const EdgeInsets.all(10),
-            alignment: Alignment.center,
-            child: TextFormField(
-              
-              //backgroundColor: Colors.white,
-              //fillColor: Colors.white,
-              //Aqui esta la entrada de texto
-              controller: _emailController,
-              decoration: const InputDecoration(
-                  labelText: 'Ingresa tu Email',
-                  border: InputBorder.none,
-                  fillColor: Colors.white,
-                  filled: true),
-              /*validator: (String? value) {//Es probable que no se necesite, lo dejamos ahi por ahora
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },*/
-            ),
-          ),
-
-          Container(
-            //Ingreso de la Contraseña del Login
-            padding: const EdgeInsets.all(10),
-            alignment: Alignment.center,
-            child: TextFormField(
-              //Aqui esta la entrada de texto
-              controller: _passwordController,
-              decoration: const InputDecoration(
-                  labelText: 'Ingresa tu Contraseña',
-                  border: InputBorder.none,
-                  fillColor: Colors.white,
-                  filled: true),
-              /*validator: (String? value) {//Es probable que no se necesite, lo dejamos ahi por ahora
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-                return null;
-              },*/
-              obscureText: true, //Esto hace que aparezca ******
-            ),
-          ),
+          loginText(),
+          passwordText(),
           botonIngresar(context),
         ],
+      ),
+    );
+  }
+
+  Widget loginText() {
+    return Container(
+      //Ingreso del Email del Login
+      padding: const EdgeInsets.all(10),
+      alignment: Alignment.center,
+      child: TextFormField(
+        //backgroundColor: Colors.white,
+        //fillColor: Colors.white,
+        //Aqui esta la entrada de texto
+        controller: _emailController,
+        decoration: const InputDecoration(
+            labelText: 'Ingresa tu Email',
+            border: InputBorder.none,
+            fillColor: Colors.white,
+            filled: true),
+        /*validator: (String? value) {//Es probable que no se necesite, lo dejamos ahi por ahora
+                if (value == null || value.isEmpty) {
+                  return 'Please enter some text';
+                }
+                return null;
+              },*/
+      ),
+    );
+  }
+
+  Widget passwordText() {
+    return Container(
+      //Ingreso de la Contraseña del Login
+      padding: const EdgeInsets.all(10),
+      alignment: Alignment.center,
+      child: TextFormField(
+        //Aqui esta la entrada de texto
+        controller: _passwordController,
+        decoration: const InputDecoration(
+            labelText: 'Ingresa tu Contraseña',
+            border: InputBorder.none,
+            fillColor: Colors.white,
+            filled: true),
+        /*validator: (String? value) {//Es probable que no se necesite, lo dejamos ahi por ahora
+                if (value == null || value.isEmpty) {
+                  return 'Please enter some text';
+                }
+                return null;
+              },*/
+        obscureText: true, //Esto hace que aparezca ******
       ),
     );
   }
