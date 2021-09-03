@@ -1,16 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/button_builder.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:newtonapp/pages/signin_page.dart';
-//import 'package:newtonapp/controller/register_controller.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 //final Register_Controller register_controller = Register_Controller();
 final FirebaseAuth _auth = FirebaseAuth.instance;
+final FirebaseFirestore db = FirebaseFirestore.instance;
 
 class RegisterPage extends StatefulWidget {
   /// The page title.
   final String title = 'Registrate';
-
   const RegisterPage({Key? key}) : super(key: key);
 
   @override
@@ -19,6 +19,7 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   //Los controller es donde guarda las variables, creo que funciona asi
@@ -44,8 +45,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 alignment: Alignment.center,
                 child: TextFormField(
                   //Aqui esta la entrada de texto
+                  controller: _nameController,
                   decoration: const InputDecoration(
-                    hintText: 'Ingresa tu Nombre',
+                    labelText: 'Ingresa tu Nombre',
                     border: OutlineInputBorder(),
                   ),
                 ),
@@ -58,7 +60,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   //Aqui esta la entrada de texto
                   controller: _emailController,
                   decoration: const InputDecoration(
-                    hintText: 'Ingresa tu Correo',
+                    labelText: 'Ingresa tu Correo',
                     border: OutlineInputBorder(),
                   ),
                 ),
@@ -71,7 +73,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   //Aqui esta la entrada de texto
                   controller: _passwordController,
                   decoration: const InputDecoration(
-                    hintText: 'Ingresa tu Contraseña',
+                    labelText: 'Ingresa tu Contraseña',
                     border: OutlineInputBorder(),
                   ),
                   obscureText: true,
@@ -80,72 +82,44 @@ class _RegisterPageState extends State<RegisterPage> {
               
               botonRegistrar(context),
               /*Container(
-                  //Boton de Registro
-                  padding: const EdgeInsets.all(10),
-                  alignment: Alignment.center,
-                  child: SignInButtonBuilder(
-                    //Aqui esta el Boton
-
-                    icon: Icons.person_add,
-                    backgroundColor: Colors.purple.shade700,
-                    onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        await _register();
-                      }
-                    },
-                    text: 'Registrate',
-                  )),*/
-              /*Container(
-                  //Boton para retroceder
-                  padding: const EdgeInsets.all(10),
-                  alignment: Alignment.center,
-                  child: SignInButtonBuilder(
-                      //Aqui esta el boton
-                      icon: Icons.backspace,
-                      backgroundColor: Colors.purple.shade700,
-                      onPressed: () async {
-                        Navigator.pop(context);
-                      },
-                      text: 'Atras')),*/
-              Container(
                 alignment: Alignment.center,
                 child: Text(_success == false
                     ? ''
                     : (_success
                         ? 'Successfully registered ' + _userEmail
                         : 'Registration failed')),
-              )
+              )*/
             ],
           ),
         ));
   }
-Widget botonRegistrar(context) {
-  return Container(
-                    //Boton para ir al Registro de la App
-                    padding: const EdgeInsets.all(10),
-                    alignment: Alignment.center,
-                    child: MaterialButton(
-                      minWidth: 230.0,
-                      height:60.0,
-                      color: Colors.purple.shade700,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5.0),
-                      ),
-                        onPressed: ()async {
-                      if (_formKey.currentState!.validate()) {
-                        await _register();
-                      }
-                                      },
-                      child: Text(
-                              'Registrar',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize:20.0,
-                                //fontWeight: FontWeight.bold,
-                              ),
-                            ),
-              )
-              );
+
+  Widget botonRegistrar(context) {
+    return Container(
+        //Boton para ir al Registro de la App
+        padding: const EdgeInsets.all(10),
+        alignment: Alignment.center,
+        child: MaterialButton(
+          minWidth: 230.0,
+          height: 60.0,
+          color: Colors.purple.shade700,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5.0),
+          ),
+          onPressed: () async {
+            if (_formKey.currentState!.validate()) {
+              await _register();
+            }
+          },
+          child: Text(
+            'Registrar',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20.0,
+              //fontWeight: FontWeight.bold,
+            ),
+          ),
+        ));
   }
 
   //Funcion que me permite realizar el registro de una persona
@@ -161,67 +135,44 @@ Widget botonRegistrar(context) {
           _success = true;
           _userEmail = user.email.toString();
         });
+
+        db.collection('pensadores').doc(user.uid).set(
+            {'nombre': _nameController.text, 'correo': _emailController.text});
+
         Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const SignInPage()));
+            MaterialPageRoute(builder: (context) => const SignInPage()));
       } else {
         setState(() {
           _success = true;
         });
       }
     } catch (e) {
-      if (_passwordController.text.length < 6) {
-        showDialog<String>(
-          context: context,
-          builder: (BuildContext context) => AlertDialog(
-            title: const Text('Error al registrar'),
-            content:
-                const Text('La contraseña debe tener al menos 6 caracteres'),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () => Navigator.pop(context, 'OK'),
-                child: const Text('OK'),
-              ),
-            ],
-          ),
-        );
-      }else if(e.toString().contains("firebase_auth/email-already-in-use")){
-        showDialog<String>(
-          context: context,
-          builder: (BuildContext context) => AlertDialog(
-            title: const Text('Error al registrar'),
-            content: const Text(
-                'El correo ya existe'),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () => Navigator.pop(context, 'OK'),
-                child: const Text('OK'),
-              ),
-            ],
-          ),
-        );
+      String aviso;
+      if(_nameController.text == '') {
+        aviso = "Por favor ingrese su nombre";
+      } else if (e.toString().contains("firebase_auth/email-already-in-use")) {
+        aviso = "El correo ya existe";
+      } else if (_passwordController.text.length < 6) {
+        aviso = "La contraseña debe tener 6 caracteres minimo";
       } else {
-        showDialog<String>(
-          context: context,
-          builder: (BuildContext context) => AlertDialog(
-            title: const Text('Error al registrar'),
-            content: const Text(
-                'Por favor ingrese un correo válido'),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () => Navigator.pop(context, 'OK'),
-                child: const Text('OK'),
-              ),
-            ],
-          ),
-        );
+        aviso = "Por favor ingrese un correo válido";
       }
+      Fluttertoast.showToast(
+          msg: aviso,
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0);
     }
   }
+
 //El dispose limpia las variables, creo que es para evitar errores en la logica
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
-  }  
+  }
 }
