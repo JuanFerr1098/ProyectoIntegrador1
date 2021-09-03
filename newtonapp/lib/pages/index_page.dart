@@ -98,7 +98,7 @@ class _IndexPage extends State<IndexPage> {
           ),
           onPressed: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const Retos()));
+                MaterialPageRoute(builder: (context) => Retos()));
           },
           child: Text(
             'Retos',

@@ -44,7 +44,7 @@ class _SignInPageState extends State<SignInPage> {
               //Aqui esta la entrada de texto
               controller: _emailController,
               decoration: const InputDecoration(
-                  hintlText: 'Ingresa tu Email',
+                  hintText: 'Ingresa tu Email',
                   border: InputBorder.none,
                   fillColor: Colors.white,
                   filled: true),
