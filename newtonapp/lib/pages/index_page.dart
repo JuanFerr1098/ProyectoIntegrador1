@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_signin_button/button_builder.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:newtonapp/pages/aprendizaje.dart';
+import 'package:newtonapp/pages/retos.dart';
+
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -72,8 +75,8 @@ class _IndexPage extends State<IndexPage> {
                           borderRadius: BorderRadius.circular(5.0),
                       ),
                         onPressed: () {
-                        /*Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const RegisterPage()));*/                     
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) =>  Aprendizaje()));                   
                       },
                       child: Text(
                               'Aprendizaje',
@@ -99,8 +102,8 @@ class _IndexPage extends State<IndexPage> {
                           borderRadius: BorderRadius.circular(5.0),
                       ),
                         onPressed: () {
-                        /*Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const RegisterPage()));*/                     
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) =>  Retos()));                     
                       },
                       child: Text(
                               'Retos',

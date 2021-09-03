@@ -3,7 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_signin_button/button_builder.dart';
 import 'package:newtonapp/pages/register_page.dart';
 import 'package:newtonapp/pages/signin_page.dart';
-import 'package:newtonapp/pages/prueba.dart';
+import 'package:newtonapp/pages/aprendizaje.dart';
+import 'package:newtonapp/pages/index_page.dart';
 
 class Index extends StatelessWidget{
   @override
@@ -85,7 +86,9 @@ class Index extends StatelessWidget{
                       ),
                         onPressed: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const SignInPage()));                     
+                            MaterialPageRoute(builder: (context) => const SignInPage()));                   
+                          /* Navigator.push(context,
+                            MaterialPageRoute(builder: (context) =>  IndexPage()));  */
                       },
                       child: Text(
                               'Login',
