@@ -4,7 +4,7 @@ import 'package:flutter_signin_button/button_builder.dart';
 import 'package:newtonapp/pages/register_page.dart';
 import 'package:newtonapp/pages/signin_page.dart';
 import 'package:newtonapp/pages/prueba.dart';
-import 'package:newtonapp/pages/aprendizajeSuma.dart';
+import 'package:newtonapp/pages/aprendizaje_suma.dart';
 
 class Aprendizaje extends StatelessWidget {
   @override
