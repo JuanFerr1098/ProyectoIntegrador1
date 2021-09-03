@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_signin_button/button_builder.dart';
 
 
-class Retos extends StatelessWidget{
+class SumaTema1 extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +40,7 @@ class Retos extends StatelessWidget{
                     fontSize: 30.0,
                   ),
                   ),
-                  Text('Retos',
+                  Text('Tema 1',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
