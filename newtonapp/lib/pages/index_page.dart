@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_signin_button/button_builder.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:newtonapp/pages/aprendizaje.dart';
-import 'package:newtonapp/pages/perfil_page.dart';
-import 'package:newtonapp/pages/retos.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -40,7 +36,6 @@ class _IndexPage extends State<IndexPage> {
       width: double.infinity,
       height: MediaQuery.of(context).size.height * .5,
       padding: const EdgeInsets.all(50),
-
       child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,7 +54,6 @@ class _IndexPage extends State<IndexPage> {
 
   Widget botonAprendizaje2(context) {
     return Container(
-        //Boton para ir al Registro de la App
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
@@ -70,8 +64,7 @@ class _IndexPage extends State<IndexPage> {
             borderRadius: BorderRadius.circular(5.0),
           ),
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => Aprendizaje()));
+            Navigator.of(context).pushNamed('aprendizaje');
           },
           child: Text(
             'Aprendizaje',
@@ -86,7 +79,6 @@ class _IndexPage extends State<IndexPage> {
 
   Widget botonRetos2(context) {
     return Container(
-        //Boton para ir al Registro de la App
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
@@ -97,8 +89,7 @@ class _IndexPage extends State<IndexPage> {
             borderRadius: BorderRadius.circular(5.0),
           ),
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => Retos()));
+            Navigator.of(context).pushNamed('retos');
           },
           child: Text(
             'Retos',
@@ -113,7 +104,6 @@ class _IndexPage extends State<IndexPage> {
 
   Widget botonPerfil(context) {
     return Container(
-        //Boton para ir al Registro de la App
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
@@ -124,8 +114,7 @@ class _IndexPage extends State<IndexPage> {
             borderRadius: BorderRadius.circular(5.0),
           ),
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const PerfilUser()));
+            Navigator.of(context).pushNamed('perfil');
           },
           child: Text(
             'Perfil',
@@ -140,19 +129,26 @@ class _IndexPage extends State<IndexPage> {
 
   Widget botonDeslogueo() {
     return Container(
-        //Boton para ir a los Retos de la App
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
-        child: SignInButtonBuilder(
-          //Aqui esta las config del Boton
-          icon: Icons.logout,
-          backgroundColor: Colors.indigo,
-          text: 'SALIR',
+        child: MaterialButton(
+          minWidth: 220.0,
+          height: 60.0,
+          color: Colors.purple.shade700,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5.0),
+          ),
           onPressed: () async {
             await _logOut();
-            /*Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => RegisterPage()));*/
           },
+          child: Text(
+            'Salir',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 25.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ));
   }
 

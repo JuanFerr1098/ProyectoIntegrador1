@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:newtonapp/pages/register_page.dart';
-import 'package:newtonapp/pages/signin_page.dart';
-import 'package:newtonapp/pages/aprendizaje.dart';
-import 'package:newtonapp/pages/index_page.dart';
 
 class Index extends StatelessWidget {
   const Index({Key? key}) : super(key: key);
@@ -37,7 +33,7 @@ class Index extends StatelessWidget {
       child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
+          children: const <Widget>[
             Text(
               'Bienvenido a \nNewton App',
               style: TextStyle(
@@ -56,7 +52,6 @@ class Index extends StatelessWidget {
       width: double.infinity,
       height: MediaQuery.of(context).size.height * .5,
       padding: const EdgeInsets.all(30),
-
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -70,7 +65,6 @@ class Index extends StatelessWidget {
 
   Widget botonlogin(context) {
     return Container(
-        //Boton para ir al Registro de la App
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
@@ -81,8 +75,7 @@ class Index extends StatelessWidget {
             borderRadius: BorderRadius.circular(5.0),
           ),
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const SignInPage()));
+            Navigator.of(context).pushNamed('login');
           },
           child: Text(
             'Login',
@@ -97,7 +90,6 @@ class Index extends StatelessWidget {
 
   Widget botonRegistro(context) {
     return Container(
-        //Boton para ir al Registro de la App
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
@@ -108,8 +100,7 @@ class Index extends StatelessWidget {
             borderRadius: BorderRadius.circular(5.0),
           ),
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const RegisterPage()));
+            Navigator.of(context).pushNamed('register');
           },
           child: Text(
             'Registro',

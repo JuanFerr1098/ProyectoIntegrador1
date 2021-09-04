@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_signin_button/button_builder.dart';
-import 'package:newtonapp/pages/register_page.dart';
-import 'package:newtonapp/pages/signin_page.dart';
-import 'package:newtonapp/pages/prueba.dart';
-import 'package:newtonapp/pages/suma_tema1.dart';
 
 class AprendizajeSuma extends StatelessWidget {
+  const AprendizajeSuma({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white, //Fondo de la pantalla
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: Column(
@@ -29,10 +26,8 @@ class AprendizajeSuma extends StatelessWidget {
     return Container(
       // color: Colors.white60,
       width: double.infinity,
-
       //height:MediaQuery.of(context).size.height*.5,
       padding: const EdgeInsets.all(30),
-
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -50,7 +45,6 @@ class AprendizajeSuma extends StatelessWidget {
 
   Widget botonTema1(context) {
     return Container(
-        //Boton para ir al Registro de la App
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
@@ -61,8 +55,7 @@ class AprendizajeSuma extends StatelessWidget {
             borderRadius: BorderRadius.circular(30.0),
           ),
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => SumaTema1()));
+            Navigator.of(context).pushNamed('sumaTema1');
           },
           child: Text(
             'Tema 1',
@@ -77,7 +70,6 @@ class AprendizajeSuma extends StatelessWidget {
 
   Widget botonTema2(context) {
     return Container(
-        //Boton para ir al Registro de la App
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
@@ -87,10 +79,7 @@ class AprendizajeSuma extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
           ),
-          onPressed: () {
-            /* Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const RegisterPage()));      */
-          },
+          onPressed: () {},
           child: Text(
             'Tema 2',
             style: TextStyle(
@@ -104,7 +93,6 @@ class AprendizajeSuma extends StatelessWidget {
 
   Widget botonTema3(context) {
     return Container(
-        //Boton para ir al Registro de la App
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
@@ -114,10 +102,7 @@ class AprendizajeSuma extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
           ),
-          onPressed: () {
-            /* Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const RegisterPage()));      */
-          },
+          onPressed: () {},
           child: Text(
             'Tema 3',
             style: TextStyle(
@@ -131,7 +116,6 @@ class AprendizajeSuma extends StatelessWidget {
 
   Widget botonTema4(context) {
     return Container(
-        //Boton para ir al Registro de la App
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
@@ -141,10 +125,7 @@ class AprendizajeSuma extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
           ),
-          onPressed: () {
-            /* Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const RegisterPage()));      */
-          },
+          onPressed: () {},
           child: Text(
             'Tema 4',
             style: TextStyle(
@@ -158,7 +139,6 @@ class AprendizajeSuma extends StatelessWidget {
 
   Widget botonTema5(context) {
     return Container(
-        //Boton para ir al Registro de la App
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
@@ -168,10 +148,7 @@ class AprendizajeSuma extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
           ),
-          onPressed: () {
-            /* Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const RegisterPage()));      */
-          },
+          onPressed: () {},
           child: Text(
             'Tema 5',
             style: TextStyle(
@@ -185,7 +162,6 @@ class AprendizajeSuma extends StatelessWidget {
 
   Widget botonTema6(context) {
     return Container(
-        //Boton para ir al Registro de la App
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
@@ -195,10 +171,7 @@ class AprendizajeSuma extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
           ),
-          onPressed: () {
-            /* Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const RegisterPage()));      */
-          },
+          onPressed: () {},
           child: Text(
             'Tema 6',
             style: TextStyle(

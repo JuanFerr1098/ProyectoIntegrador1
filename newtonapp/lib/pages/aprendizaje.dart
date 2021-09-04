@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_signin_button/button_builder.dart';
-import 'package:newtonapp/pages/register_page.dart';
-import 'package:newtonapp/pages/signin_page.dart';
-import 'package:newtonapp/pages/prueba.dart';
-import 'package:newtonapp/pages/aprendizaje_suma.dart';
 
 class Aprendizaje extends StatelessWidget {
+  const Aprendizaje({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.purple.shade700, //Fondo de la pantalla
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: Column(
@@ -36,7 +33,7 @@ class Aprendizaje extends StatelessWidget {
       child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
+          children: const <Widget>[
             Text(
               'Bienvenido a',
               style: TextStyle(
@@ -61,10 +58,8 @@ class Aprendizaje extends StatelessWidget {
     return Container(
       // color: Colors.white60,
       width: double.infinity,
-
       //height:MediaQuery.of(context).size.height*.5,
       padding: const EdgeInsets.all(30),
-
       child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -81,7 +76,6 @@ class Aprendizaje extends StatelessWidget {
 
   Widget botonSuma(context) {
     return Container(
-        //Boton para ir al Registro de la App
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
@@ -92,8 +86,7 @@ class Aprendizaje extends StatelessWidget {
             borderRadius: BorderRadius.circular(50.0),
           ),
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => AprendizajeSuma()));
+            Navigator.of(context).pushNamed('aprendizajeSuma');
           },
           child: Icon(
             Icons.add,
@@ -105,7 +98,6 @@ class Aprendizaje extends StatelessWidget {
 
   Widget botonResta(context) {
     return Container(
-        //Boton para ir al Registro de la App
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
@@ -115,10 +107,7 @@ class Aprendizaje extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(50.0),
           ),
-          onPressed: () {
-            /* Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const RegisterPage()));      */
-          },
+          onPressed: () {},
           child: Icon(
             Icons.remove,
             color: Colors.purple.shade700,
@@ -129,7 +118,6 @@ class Aprendizaje extends StatelessWidget {
 
   Widget botonMult(context) {
     return Container(
-        //Boton para ir al Registro de la App
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
@@ -139,10 +127,7 @@ class Aprendizaje extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(50.0),
           ),
-          onPressed: () {
-            /* Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const RegisterPage()));      */
-          },
+          onPressed: () {},
           child: Icon(
             Icons.clear,
             color: Colors.purple.shade700,
@@ -153,7 +138,6 @@ class Aprendizaje extends StatelessWidget {
 
   Widget botonDiv(context) {
     return Container(
-        //Boton para ir al Registro de la App
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
@@ -163,10 +147,7 @@ class Aprendizaje extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(50.0),
           ),
-          onPressed: () {
-            /* Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const RegisterPage()));      */
-          },
+          onPressed: () {},
           child: Icon(
             Icons.north_east,
             color: Colors.purple.shade700,

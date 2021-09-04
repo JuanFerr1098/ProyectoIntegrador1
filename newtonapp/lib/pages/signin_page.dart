@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:newtonapp/pages/index_page.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -8,9 +7,7 @@ final FirebaseAuth _auth = FirebaseAuth.instance;
 class SignInPage extends StatefulWidget {
   /// The page title.
   final String title = 'Login';
-
   const SignInPage({Key? key}) : super(key: key);
-
   @override
   State<StatefulWidget> createState() => _SignInPageState();
 }
@@ -122,8 +119,9 @@ class _SignInPageState extends State<SignInPage> {
         email: _emailController.text,
         password: _passwordController.text,
       );
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const IndexPage()));
+      /*Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const IndexPage()));*/
+      Navigator.of(context).pushNamedAndRemoveUntil('index', (route) => false);
     } catch (e) {
       Fluttertoast.showToast(
           msg: "El correo o la contraseña son incorrectos",

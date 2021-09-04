@@ -1,10 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:newtonapp/pages/signin_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-//final Register_Controller register_controller = Register_Controller();
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final FirebaseFirestore db = FirebaseFirestore.instance;
 
@@ -138,12 +136,9 @@ class _RegisterPageState extends State<RegisterPage> {
           _success = true;
           _userEmail = user.email.toString();
         });
-
         db.collection('pensadores').doc(user.uid).set(
             {'nombre': _nameController.text, 'correo': _emailController.text});
-
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const SignInPage()));
+        Navigator.of(context).pushNamed('login');
       } else {
         setState(() {
           _success = true;
