@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
-final FirebaseAuth _auth = FirebaseAuth.instance;
+import 'package:newtonapp/providers/auth.dart';
 
 class IndexPage extends StatefulWidget {
   /// The page title.
@@ -13,6 +11,8 @@ class IndexPage extends StatefulWidget {
 }
 
 class _IndexPage extends State<IndexPage> {
+  final AuthService _authS = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -139,7 +139,9 @@ class _IndexPage extends State<IndexPage> {
             borderRadius: BorderRadius.circular(5.0),
           ),
           onPressed: () async {
-            await _logOut();
+            await _authS.logOut();
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
           },
           child: Text(
             'Salir',
@@ -150,11 +152,5 @@ class _IndexPage extends State<IndexPage> {
             ),
           ),
         ));
-  }
-
-  Future<void> _logOut() async {
-    await _auth.signOut();
-    Navigator.of(context)
-        .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
   }
 }

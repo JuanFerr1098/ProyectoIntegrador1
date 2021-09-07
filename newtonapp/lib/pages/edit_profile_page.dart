@@ -1,11 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:newtonapp/providers/user_provider.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
-final UserProvider up = UserProvider();
 
 class EditProfile extends StatefulWidget {
   final String title = 'Editar el Perfil';
@@ -23,7 +21,7 @@ class _EditPerfil extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<DocumentSnapshot>(
-        future: up.getUsers(_auth.currentUser!.uid),
+        future: UserProvider(uid: _auth.currentUser!.uid).getUsers(),
         builder:
             (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.hasData) {
@@ -93,6 +91,7 @@ class _EditPerfil extends State<EditProfile> {
             borderRadius: BorderRadius.circular(25.0),
           ),
           onPressed: () async {
+            UserProvider(uid: _auth.currentUser!.uid).
             actualizarDatos(data, _nameController.text, _edadController.text);
             Navigator.of(context).pushNamedAndRemoveUntil(
                 'perfil', ModalRoute.withName('index'));
@@ -131,29 +130,5 @@ class _EditPerfil extends State<EditProfile> {
             ),
           ),
         ));
-  }
-
-  Future<void> actualizarDatos(
-      Map<String, dynamic> data, String? name, String? age) async {
-    if (name == '') {
-      name = data['nombre'];
-    }
-    if (age == '') {
-      age = data['edad'];
-    }
-    try {
-      return await up
-          .getRealTimeUsers(_auth.currentUser!.uid)
-          .set({'nombre': name, 'edad': age, 'correo': data['correo']});
-    } catch (e) {
-      Fluttertoast.showToast(
-          msg: "Por favor ingrese todos los datos",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.black,
-          textColor: Colors.white,
-          fontSize: 16.0);
-    }
-  }
+  }  
 }

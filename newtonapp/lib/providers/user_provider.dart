@@ -1,30 +1,68 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:newtonapp/models/user.dart';
 
 class UserProvider {
-  late CollectionReference userData;
+  final String uid;
+  UserProvider({required this.uid});
 
-  UserProvider() {
-    userData = FirebaseFirestore.instance.collection('pensadores');
+  final CollectionReference userData =
+      FirebaseFirestore.instance.collection('pensadores');
+
+  Future<DocumentSnapshot> getUsers() {
+    return userData.doc(uid).get();
   }
 
-  Future<DocumentSnapshot> getUsers(String id) {
-    return userData.doc(id).get();
+  DocumentReference getRealTimeUsers() {
+    return userData.doc(uid);
   }
 
-  DocumentReference getRealTimeUsers(String id) {
-    return userData.doc(id);
+  Future<void> createUser(String name, String email) {
+    return userData.doc(uid).set({'nombre': name, 'correo': email});
   }
 
-  Future<void> createUser(User user) {
-    return userData.doc(user.id).set(user);
+  UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
+    return UserData(
+      uid: uid,
+      name: snapshot.get('nombre'),
+      email: snapshot.get('correo'),
+      age: snapshot.get('edad')
+    );
   }
 
-  Future<void> updateUser(User user) {
+  Stream<UserData> get userDataBase {
+    return userData.doc(uid).snapshots()
+    .map(_userDataFromSnapshot);
+  }
+
+  Future<void> actualizarDatos(
+      Map<String, dynamic> data, String? name, String? age) async {
+    if (name == '') {
+      name = data['nombre'];
+    }
+    if (age == '') {
+      age = data['edad'];
+    }
+    try {
+      return await getRealTimeUsers()
+          .set({'nombre': name, 'edad': age, 'correo': data['correo']});
+    } catch (e) {
+      Fluttertoast.showToast(
+          msg: "Por favor ingrese todos los datos",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.black,
+          textColor: Colors.white,
+          fontSize: 16.0);
+    }
+  }
+  /*Future<void> updateUser(UserN user) {
     Map<String, Object> map = {};
     map.update('nombre', (value) => value = user.name);
     map.update('correo', (value) => value = user.email);
     map.update('edad', (value) => value = user.age);
     return userData.doc(user.id).update(map);
-  }
+  }*/
 }
