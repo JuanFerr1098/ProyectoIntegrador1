@@ -16,18 +16,24 @@ class _IndexPage extends State<IndexPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
+      drawer: Drawer(
+     // Populate the Drawer in the next step.
+  ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          //appBar(),
           textoInicial(context),
           botonAprendizaje2(context),
           botonRetos2(context),
           botonPerfil(context),
-          botonDeslogueo(),
+          //botonDeslogueo(),
         ],
       ),
       backgroundColor: Colors.white, //Color de Fondo
     );
+
   }
 
   Widget textoInicial(context) {
@@ -152,5 +158,65 @@ class _IndexPage extends State<IndexPage> {
             ),
           ),
         ));
+  }
+
+  Widget appBar(){
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal:15.0, vertical:5.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          IconButton(
+            iconSize: 40.0,
+            onPressed: (){
+
+              Drawer(
+                // Add a ListView to the drawer. This ensures the user can scroll
+                // through the options in the drawer if there isn't enough vertical
+                // space to fit everything.
+                child: ListView(
+                  // Important: Remove any padding from the ListView.
+                  padding: EdgeInsets.zero,
+                  children: [
+                    const DrawerHeader(
+                      decoration: BoxDecoration(
+                        color: Colors.blue,
+                      ),
+                      child: Text('Drawer Header'),
+                    ),
+                    ListTile(
+                      title: const Text('Item 1'),
+                      onTap: () {
+                        // Update the state of the app.
+                        // ...
+                      },
+                    ),
+                    ListTile(
+                      title: const Text('Item 2'),
+                      onTap: () {
+                        // Update the state of the app.
+                        // ...
+                      },
+                    ),
+                  ],
+                ),
+              );
+            }, 
+            icon: Icon(Icons.more_vert),
+            color: Colors.purple.shade700,
+            ),
+          IconButton(
+            iconSize: 40.0,
+            onPressed: () async {
+            await _authS.logOut();
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+            }, 
+            icon: Icon(Icons.arrow_back),
+            color: Colors.purple.shade700,
+            ),
+        ],
+      ),
+    );
   }
 }

@@ -80,9 +80,11 @@ class Index extends StatelessWidget {
           child: Text(
             'Login',
             style: TextStyle(
+              fontFamily: 'Botones',
+              fontStyle: FontStyle.italic,
               color: Colors.purple.shade700,
               fontSize: 25.0,
-              fontWeight: FontWeight.bold,
+              //fontWeight: FontWeight.bold,
             ),
           ),
         ));

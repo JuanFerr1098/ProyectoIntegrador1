@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false, // desaparecer el cosito de debug arriba
       title: 'Newton APP',
       theme: ThemeData(
+        fontFamily: 'Montserrat',
         primarySwatch: Colors.blue,
       ),
       home: const Index(),
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         'aprendizajeSuma': (_) => const AprendizajeSuma(),
         'sumaTema1': (_) => const SumaTema1()
       }
+
     );
   }
 }
