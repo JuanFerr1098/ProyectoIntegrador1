@@ -1,13 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:newtonapp/models/user.dart';
-import 'package:newtonapp/pages/perfil_page.dart';
 import 'package:newtonapp/providers/user_provider.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
-final UserProvider up = UserProvider();
 
 class EditProfile extends StatefulWidget {
   final String title = 'Editar el Perfil';
@@ -25,7 +21,7 @@ class _EditPerfil extends State<EditProfile> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<DocumentSnapshot>(
-        future: up.getUsers(_auth.currentUser!.uid),
+        future: UserProvider(uid: _auth.currentUser!.uid).getUsers(),
         builder:
             (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.hasData) {
@@ -33,7 +29,7 @@ class _EditPerfil extends State<EditProfile> {
                 snapshot.data!.data() as Map<String, dynamic>;
             return editarPerfil(data);
           } else {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
         });
   }
@@ -67,7 +63,7 @@ class _EditPerfil extends State<EditProfile> {
             decoration: InputDecoration(
                 labelText: 'Ingresa tu nombre',
                 hintText: data['nombre'],
-                border: OutlineInputBorder())));
+                border: const OutlineInputBorder())));
   }
 
   Widget editarEdad(data) {
@@ -80,7 +76,7 @@ class _EditPerfil extends State<EditProfile> {
             decoration: InputDecoration(
                 labelText: 'Ingresa tu edad',
                 hintText: data['edad'],
-                border: OutlineInputBorder())));
+                border: const OutlineInputBorder())));
   }
 
   Widget botonActualizar(data) {
@@ -95,11 +91,10 @@ class _EditPerfil extends State<EditProfile> {
             borderRadius: BorderRadius.circular(25.0),
           ),
           onPressed: () async {
+            UserProvider(uid: _auth.currentUser!.uid).
             actualizarDatos(data, _nameController.text, _edadController.text);
-            //Navigator.of(context).popAndPushNamed((BuildContext context) => new PerfilUser());
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const PerfilUser()));
-            //Navigator.pop(context);
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                'perfil', ModalRoute.withName('index'));
           },
           child: Text(
             'Actualizar',
@@ -135,34 +130,5 @@ class _EditPerfil extends State<EditProfile> {
             ),
           ),
         ));
-  }
-
-  Future<void> actualizarDatos(
-      Map<String, dynamic> data, String? name, String? age) async {
-    //User user;
-    //name ??= data['nombre'];
-    if (name == '') {
-      name = data['nombre'];
-    }
-    //age ??= data['edad'];
-    if (age == '') {
-      age = data['edad'];
-    }
-    //User(data['correo'], name, age);
-    //up.updateUser();
-    try {
-      return await up
-          .getRealTimeUsers(_auth.currentUser!.uid)
-          .set({'nombre': name, 'edad': age, 'correo': data['correo']});
-    } catch (e) {
-      Fluttertoast.showToast(
-          msg: "Por favor ingrese todos los datos",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.black,
-          textColor: Colors.white,
-          fontSize: 16.0);
-    }
-  }
+  }  
 }

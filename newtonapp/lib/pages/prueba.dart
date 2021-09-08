@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_signin_button/button_builder.dart';
-import 'package:newtonapp/pages/register_page.dart';
-import 'package:newtonapp/pages/signin_page.dart';
 
 class Prueba extends StatelessWidget{
   @override

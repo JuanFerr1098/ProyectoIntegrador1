@@ -1,11 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:newtonapp/pages/edit_profile_page.dart';
 import 'package:newtonapp/providers/user_provider.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
-final UserProvider up = UserProvider();
 
 class PerfilUser extends StatefulWidget {
   final String title = 'Perfil';
@@ -20,7 +18,7 @@ class _PerfilUser extends State<PerfilUser> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<DocumentSnapshot>(
-        future: up.getUsers(_auth.currentUser!.uid),
+        future: UserProvider(uid: _auth.currentUser!.uid).getUsers(),
         builder:
             (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.hasData) {
@@ -28,9 +26,10 @@ class _PerfilUser extends State<PerfilUser> {
                 snapshot.data!.data() as Map<String, dynamic>;
             return perfil(data);
           } else {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
         });
+    
   }
 
   Widget perfil(Map<String, dynamic> data) {
@@ -104,8 +103,7 @@ class _PerfilUser extends State<PerfilUser> {
             borderRadius: BorderRadius.circular(25.0),
           ),
           onPressed: () async {
-            Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const EditProfile()));
+            Navigator.of(context).pushNamed('editarPerfil');
           },
           child: Text(
             'Editar Perfil',
