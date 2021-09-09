@@ -27,4 +27,10 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
+  fonts:
+    # Tipografia
+    
+    # Iconos
+    - family: MathIcons
+      fonts:
+        - asset: assets/icons/MathIcons.ttf

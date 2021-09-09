@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:newtonapp/shared/icons.dart';
 
 class Aprendizaje extends StatelessWidget {
   const Aprendizaje({Key? key}) : super(key: key);
@@ -89,9 +90,9 @@ class Aprendizaje extends StatelessWidget {
             Navigator.of(context).pushNamed('aprendizajeSuma');
           },
           child: Icon(
-            Icons.add,
+            MyIcons.add,
             color: Colors.purple.shade700,
-            size: 60,
+            size: 35,
           ),
         ));
   }
@@ -109,9 +110,9 @@ class Aprendizaje extends StatelessWidget {
           ),
           onPressed: () {},
           child: Icon(
-            Icons.remove,
+            MyIcons.minus,
             color: Colors.purple.shade700,
-            size: 60,
+            size: 35,
           ),
         ));
   }
@@ -129,9 +130,9 @@ class Aprendizaje extends StatelessWidget {
           ),
           onPressed: () {},
           child: Icon(
-            Icons.clear,
+            MyIcons.mult,
             color: Colors.purple.shade700,
-            size: 60,
+            size: 35,
           ),
         ));
   }
@@ -149,9 +150,9 @@ class Aprendizaje extends StatelessWidget {
           ),
           onPressed: () {},
           child: Icon(
-            Icons.north_east,
+            MyIcons.divide,
             color: Colors.purple.shade700,
-            size: 60,
+            size: 35,
           ),
         ));
   }
