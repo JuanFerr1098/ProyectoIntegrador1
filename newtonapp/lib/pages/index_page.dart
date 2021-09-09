@@ -16,14 +16,61 @@ class _IndexPage extends State<IndexPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+        leading: Builder(builder: (context) {
+          return IconButton(
+            iconSize: 40.0,
+            icon: Icon(Icons.more_vert),
+            color: Colors.purple.shade700,
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          );
+        }),
+        //title: Text('Hi friend'),
+        actions: <Widget>[
+          IconButton(
+            //atras
+            iconSize: 40.0,
+            onPressed: () async {
+              await _authS.logOut();
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/', (Route<dynamic> route) => false);
+            },
+            icon: Icon(Icons.logout_rounded),
+            color: Colors.purple.shade700,
+          ),
+        ],
+      ),
+
       drawer: Drawer(
-     // Populate the Drawer in the next step.
-  ),
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: [
+            Container(
+                height: MediaQuery.of(context).size.height * .5,
+                padding: const EdgeInsets.all(50),
+                child: Icon(
+                  Icons.account_box,
+                  color: Colors.purple.shade700,
+                  size: 100.0,
+                )),
+            ListTile(
+              title: const Text('Editar Perfil'),
+              onTap: () {
+                Navigator.of(context).pushNamed('editarPerfil');
+              },
+            ),
+          ],
+        ),
+        // Populate the Drawer in the next step.
+      ),
+
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          //appBar(),
+          //appBar(context),
           textoInicial(context),
           botonAprendizaje2(context),
           botonRetos2(context),
@@ -33,7 +80,6 @@ class _IndexPage extends State<IndexPage> {
       ),
       backgroundColor: Colors.white, //Color de Fondo
     );
-
   }
 
   Widget textoInicial(context) {
@@ -160,61 +206,30 @@ class _IndexPage extends State<IndexPage> {
         ));
   }
 
-  Widget appBar(){
+  Widget appBar(context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal:15.0, vertical:5.0),
+      padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           IconButton(
+            //menu
             iconSize: 40.0,
-            onPressed: (){
-
-              Drawer(
-                // Add a ListView to the drawer. This ensures the user can scroll
-                // through the options in the drawer if there isn't enough vertical
-                // space to fit everything.
-                child: ListView(
-                  // Important: Remove any padding from the ListView.
-                  padding: EdgeInsets.zero,
-                  children: [
-                    const DrawerHeader(
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                      ),
-                      child: Text('Drawer Header'),
-                    ),
-                    ListTile(
-                      title: const Text('Item 1'),
-                      onTap: () {
-                        // Update the state of the app.
-                        // ...
-                      },
-                    ),
-                    ListTile(
-                      title: const Text('Item 2'),
-                      onTap: () {
-                        // Update the state of the app.
-                        // ...
-                      },
-                    ),
-                  ],
-                ),
-              );
-            }, 
+            onPressed: () => Scaffold.of(context).openDrawer(),
             icon: Icon(Icons.more_vert),
             color: Colors.purple.shade700,
-            ),
+          ),
           IconButton(
+            //atras
             iconSize: 40.0,
             onPressed: () async {
-            await _authS.logOut();
-            Navigator.of(context)
-                .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
-            }, 
-            icon: Icon(Icons.arrow_back),
+              await _authS.logOut();
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/', (Route<dynamic> route) => false);
+            },
+            icon: Icon(Icons.logout_rounded),
             color: Colors.purple.shade700,
-            ),
+          ),
         ],
       ),
     );
