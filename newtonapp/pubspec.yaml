@@ -28,6 +28,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   fonts:
+    # Tipografia
     - family: Montserrat
       fonts:
       - asset: assets/fonts/Montserrat-Regular.ttf
@@ -36,6 +37,7 @@ flutter:
       - asset: assets/fonts/Montserrat-Bold.ttf
       - asset: assets/fonts/Montserrat-BoldItalic.ttf
         style: italic
-        
-      
-
+    # Iconos
+    - family: MathIcons
+      fonts:
+        - asset: assets/icons/MathIcons.ttf
