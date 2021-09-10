@@ -75,8 +75,8 @@ class Index extends StatelessWidget {
             borderRadius: BorderRadius.circular(5.0),
           ),
           onPressed: () {
-           // Navigator.of(context).pushNamed('login');
-            Navigator.of(context).pushNamed('index');
+           Navigator.of(context).pushNamed('login');
+           //Navigator.of(context).pushNamed('index');
           },
           child: Text(
             'Login',

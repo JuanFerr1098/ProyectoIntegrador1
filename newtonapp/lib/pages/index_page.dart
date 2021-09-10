@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:newtonapp/providers/auth.dart';
+import 'package:newtonapp/shared/drawer_menu.dart';
+import 'package:newtonapp/shared/my_app_bar.dart';
 
 class IndexPage extends StatefulWidget {
   /// The page title.
@@ -16,13 +18,13 @@ class _IndexPage extends State<IndexPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      /*appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
         leading: Builder(builder: (context) {
           return IconButton(
             iconSize: 40.0,
-            icon: Icon(Icons.more_vert),
+            icon: const Icon(Icons.more_vert),
             color: Colors.purple.shade700,
             onPressed: () => Scaffold.of(context).openDrawer(),
           );
@@ -41,32 +43,11 @@ class _IndexPage extends State<IndexPage> {
             color: Colors.purple.shade700,
           ),
         ],
-      ),
+      ),*/
 
-      drawer: Drawer(
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: [
-            Container(
-                height: MediaQuery.of(context).size.height * .5,
-                padding: const EdgeInsets.all(50),
-                child: Icon(
-                  Icons.account_box,
-                  color: Colors.purple.shade700,
-                  size: 100.0,
-                )),
-            ListTile(
-              title: const Text('Editar Perfil'),
-              onTap: () {
-                Navigator.of(context).pushNamed('editarPerfil');
-              },
-            ),
-          ],
-        ),
-        // Populate the Drawer in the next step.
-      ),
-
+      appBar: myAppBar(context),
+      //appBar: MyAppBar(),
+      drawer: DrawerMenu(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
@@ -118,7 +99,7 @@ class _IndexPage extends State<IndexPage> {
           onPressed: () {
             Navigator.of(context).pushNamed('aprendizaje');
           },
-          child: Text(
+          child: const Text(
             'Aprendizaje',
             style: TextStyle(
               color: Colors.white,
@@ -143,7 +124,7 @@ class _IndexPage extends State<IndexPage> {
           onPressed: () {
             Navigator.of(context).pushNamed('retos');
           },
-          child: Text(
+          child: const Text(
             'Retos',
             style: TextStyle(
               color: Colors.white,
@@ -168,7 +149,7 @@ class _IndexPage extends State<IndexPage> {
           onPressed: () {
             Navigator.of(context).pushNamed('perfil');
           },
-          child: Text(
+          child: const Text(
             'Perfil',
             style: TextStyle(
               color: Colors.white,
@@ -195,7 +176,7 @@ class _IndexPage extends State<IndexPage> {
             Navigator.of(context)
                 .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
           },
-          child: Text(
+          child: const Text(
             'Salir',
             style: TextStyle(
               color: Colors.white,
@@ -206,19 +187,20 @@ class _IndexPage extends State<IndexPage> {
         ));
   }
 
-  Widget appBar(context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          IconButton(
-            //menu
+  PreferredSizeWidget? myAppBar(context) {
+    return AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+        leading: Builder(builder: (context) {
+          return IconButton(
             iconSize: 40.0,
-            onPressed: () => Scaffold.of(context).openDrawer(),
-            icon: Icon(Icons.more_vert),
+            icon: const Icon(Icons.more_vert),
             color: Colors.purple.shade700,
-          ),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          );
+        }),
+        title: const Text('NewtonApp'),
+        actions: <Widget>[
           IconButton(
             //atras
             iconSize: 40.0,
@@ -227,11 +209,10 @@ class _IndexPage extends State<IndexPage> {
               Navigator.of(context).pushNamedAndRemoveUntil(
                   '/', (Route<dynamic> route) => false);
             },
-            icon: Icon(Icons.logout_rounded),
+            icon: const Icon(Icons.logout_rounded),
             color: Colors.purple.shade700,
           ),
         ],
-      ),
-    );
+      );
   }
 }

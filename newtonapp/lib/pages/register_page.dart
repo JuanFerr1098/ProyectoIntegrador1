@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:newtonapp/providers/auth.dart';
 
-final FirebaseFirestore db = FirebaseFirestore.instance;
+//final FirebaseFirestore db = FirebaseFirestore.instance;
 
 class RegisterPage extends StatefulWidget {
   /// The page title.
@@ -14,7 +14,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  final AuthService _authS = AuthService(); //Prueba
+  final AuthService _authS = AuthService();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();

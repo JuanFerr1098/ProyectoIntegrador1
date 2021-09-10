@@ -16,6 +16,10 @@ class AuthService {
     return UserN(uid: user.uid);
   }
 
+  String userActualUid(){
+    return _auth.currentUser!.uid;
+  }
+
   Future registerWithEmailAndPassword(
       String name, String email, String password) async {
     try {
