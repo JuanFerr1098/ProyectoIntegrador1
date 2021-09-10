@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:newtonapp/providers/user_provider.dart';
+import 'package:newtonapp/shared/drawer_menu.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -15,6 +16,7 @@ class PerfilUser extends StatefulWidget {
 }
 
 class _PerfilUser extends State<PerfilUser> {
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<DocumentSnapshot>(
@@ -34,10 +36,7 @@ class _PerfilUser extends State<PerfilUser> {
 
   Widget perfil(Map<String, dynamic> data) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.purple.shade700,
-        title: Text(widget.title),
-      ),
+      appBar: myAppBar(context),
       body: Form(
         child: Column(
           children: <Widget>[
@@ -114,5 +113,20 @@ class _PerfilUser extends State<PerfilUser> {
             ),
           ),
         ));
+  }
+
+  PreferredSizeWidget? myAppBar(context) {
+    return AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+        leading: Builder(builder: (context) {
+          return IconButton(
+            iconSize: 40.0,
+            icon: const Icon(Icons.arrow_back_rounded),
+            color: Colors.purple.shade700,
+            onPressed: () => Navigator.of(context).pushNamed('index')
+          );
+        }),
+      );
   }
 }

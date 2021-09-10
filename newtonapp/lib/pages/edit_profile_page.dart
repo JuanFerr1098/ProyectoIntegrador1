@@ -91,8 +91,8 @@ class _EditPerfil extends State<EditProfile> {
             borderRadius: BorderRadius.circular(25.0),
           ),
           onPressed: () async {
-            UserProvider(uid: _auth.currentUser!.uid).
-            actualizarDatos(data, _nameController.text, _edadController.text);
+            UserProvider(uid: _auth.currentUser!.uid).actualizarDatos(
+                data, _nameController.text, _edadController.text);
             Navigator.of(context).pushNamedAndRemoveUntil(
                 'perfil', ModalRoute.withName('index'));
           },
@@ -130,5 +130,5 @@ class _EditPerfil extends State<EditProfile> {
             ),
           ),
         ));
-  }  
+  }
 }

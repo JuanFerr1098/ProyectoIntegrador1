@@ -51,12 +51,9 @@ class _IndexPage extends State<IndexPage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          //appBar(context),
           textoInicial(context),
           botonAprendizaje2(context),
           botonRetos2(context),
-          botonPerfil(context),
-          //botonDeslogueo(),
         ],
       ),
       backgroundColor: Colors.white, //Color de Fondo
@@ -135,7 +132,7 @@ class _IndexPage extends State<IndexPage> {
         ));
   }
 
-  Widget botonPerfil(context) {
+  /*Widget botonPerfil(context) {
     return Container(
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
@@ -158,7 +155,7 @@ class _IndexPage extends State<IndexPage> {
             ),
           ),
         ));
-  }
+  }*/
 
   Widget botonDeslogueo() {
     return Container(
@@ -199,7 +196,6 @@ class _IndexPage extends State<IndexPage> {
             onPressed: () => Scaffold.of(context).openDrawer(),
           );
         }),
-        title: const Text('NewtonApp'),
         actions: <Widget>[
           IconButton(
             //atras
