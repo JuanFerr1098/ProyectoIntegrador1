@@ -45,8 +45,7 @@ class _IndexPage extends State<IndexPage> {
         ],
       ),*/
 
-      appBar: myAppBar(context),
-      //appBar: MyAppBar(),
+      appBar: myAppBar(context),      
       drawer: DrawerMenu(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
