@@ -2,21 +2,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:newtonapp/providers/user_provider.dart';
-import 'package:newtonapp/shared/drawer_menu.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class PerfilUser extends StatefulWidget {
   final String title = 'Perfil';
-
   const PerfilUser({Key? key}) : super(key: key);
-
   @override
   State<StatefulWidget> createState() => _PerfilUser();
 }
 
 class _PerfilUser extends State<PerfilUser> {
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<DocumentSnapshot>(
@@ -31,9 +27,8 @@ class _PerfilUser extends State<PerfilUser> {
             return const Center(child: CircularProgressIndicator());
           }
         });
-    
   }
-
+  
   Widget perfil(Map<String, dynamic> data) {
     return Scaffold(
       appBar: myAppBar(context),
@@ -104,7 +99,7 @@ class _PerfilUser extends State<PerfilUser> {
           onPressed: () async {
             Navigator.of(context).pushNamed('editarPerfil');
           },
-          child: Text(
+          child: const Text(
             'Editar Perfil',
             style: TextStyle(
               color: Colors.white,
@@ -117,16 +112,15 @@ class _PerfilUser extends State<PerfilUser> {
 
   PreferredSizeWidget? myAppBar(context) {
     return AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0.0,
-        leading: Builder(builder: (context) {
-          return IconButton(
+      backgroundColor: Colors.white,
+      elevation: 0.0,
+      leading: Builder(builder: (context) {
+        return IconButton(
             iconSize: 40.0,
             icon: const Icon(Icons.arrow_back_rounded),
             color: Colors.purple.shade700,
-            onPressed: () => Navigator.of(context).pushNamed('index')
-          );
-        }),
-      );
+            onPressed: () => Navigator.of(context).pushNamed('index'));
+      }),
+    );
   }
 }

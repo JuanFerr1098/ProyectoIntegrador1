@@ -9,6 +9,7 @@ import 'package:newtonapp/pages/index_page.dart';
 import 'package:newtonapp/pages/perfil_page.dart';
 import 'package:newtonapp/pages/register_page.dart';
 import 'package:newtonapp/pages/retos.dart';
+import 'package:newtonapp/pages/retos_zone.dart';
 import 'package:newtonapp/pages/signin_page.dart';
 import 'package:newtonapp/pages/suma_tema1.dart';
 
@@ -40,7 +41,8 @@ class MyApp extends StatelessWidget {
         'perfil': (_) => const PerfilUser(),
         'editarPerfil': (_) => const EditProfile(),
         'aprendizajeSuma': (_) => const AprendizajeSuma(),
-        'sumaTema1': (_) => const SumaTema1()
+        'sumaTema1': (_) => const SumaTema1(),
+        'retosZone': (_) => const RetosPage(),
       }
 
     );
