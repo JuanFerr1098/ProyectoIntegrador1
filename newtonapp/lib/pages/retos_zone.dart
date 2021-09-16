@@ -44,18 +44,17 @@ class _RetosZone extends State<RetosZone> {
     "b": Colors.purple.shade700,
     "c": Colors.purple.shade700,
   };
-  String showtimer = "30";
-  int timer = 30;
+  String showtimer = "10";
+  int timer = 10;
   bool canceltimer = false;
   bool disableAnswer = false;
 
   int i = 1;
   int j = 1;
 
-
   @override
   void initState() {
-    //starttimer();
+    starttimer();
     super.initState();
   }
 
@@ -100,13 +99,14 @@ class _RetosZone extends State<RetosZone> {
 
   void nextquestion() {
     canceltimer = false;
-    //timer = 30;
+    timer = 10;
     setState(() {
       btncolor["a"] = Colors.purple.shade700;
       btncolor["b"] = Colors.purple.shade700;
       btncolor["c"] = Colors.purple.shade700;
       disableAnswer = false;
     });
+    starttimer();
   }
 
   @override
@@ -136,11 +136,11 @@ class _RetosZone extends State<RetosZone> {
     int num1 = generatedNumber(a.length);
     int num2 = generatedNumber(b.length);
     int resp = num1 + num2;
-    int inc1 = random.nextInt(17) + 1;
-    int inc2 = random.nextInt(17) + 1;
+    int inc1 = random.nextInt(20) + 1;
+    int inc2 = random.nextInt(20) + 1;
 
     String suma = num1.toString() + '+' + num2.toString();
-    // Validar que no esten repetidos
+    // Falta validar que no esten repetidos
     List<int> opciones = [resp, inc1, inc2];
     int aux = random.nextInt(2);
     int op1 = opciones[aux];
@@ -149,13 +149,24 @@ class _RetosZone extends State<RetosZone> {
     int op2 = opciones[aux];
     opciones.removeAt(aux);
     int op3 = opciones[0];
+    
     return Column(
       children: <Widget>[
-        Text(suma, style: const TextStyle(fontSize: 50)),
-        respuestas(op1, resp, 'a'),
-        respuestas(op2, resp, 'b'),
-        respuestas(op3, resp, 'c'),
-        Text(showtimer),
+        Expanded(
+            flex: 3, child: Text(suma, style: const TextStyle(fontSize: 50))),
+        Expanded(
+            flex: 5,
+            child: Column(
+              children: <Widget>[
+                respuestas(op1, resp, 'a'),
+                respuestas(op2, resp, 'b'),
+                respuestas(op3, resp, 'c'),
+              ],
+            )),
+        Expanded(
+          flex: 2,
+          child: Text(showtimer),
+        )
       ],
     );
   }
