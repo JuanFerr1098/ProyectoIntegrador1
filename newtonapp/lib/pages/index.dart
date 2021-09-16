@@ -6,8 +6,9 @@ class Index extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
-      backgroundColor: Colors.purple.shade700, //Fondo de la pantalla
+      //backgroundColor: Colors.purple.shade700, //Fondo de la pantalla
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
@@ -37,7 +38,8 @@ class Index extends StatelessWidget {
             Text(
               'Bienvenido a \nNewton App',
               style: TextStyle(
-                color: Colors.white,
+                color: Colors.tealAccent,
+                //color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 30.0,
               ),
@@ -64,15 +66,20 @@ class Index extends StatelessWidget {
   }
 
   Widget botonlogin(context) {
+    
     return Container(
+      
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
           minWidth: 220.0,
+          
+          color: Colors.tealAccent.shade400,
           height: 60.0,
-          color: Colors.white,
+          //color: const Color (0x00ffe6),
+          //color: Colors.white,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5.0),
+            borderRadius: BorderRadius.circular(30.0),
           ),
           onPressed: () {
            //Navigator.of(context).pushNamed('login');
@@ -81,9 +88,10 @@ class Index extends StatelessWidget {
           child: Text(
             'Login',
             style: TextStyle(
-              fontFamily: 'Botones',
-              fontStyle: FontStyle.italic,
-              color: Colors.purple.shade700,
+              fontFamily: 'Quicksand',
+              //fontStyle: FontStyle.italic,
+              color: Colors.white,
+              //color: Colors.purple.shade700,
               fontSize: 25.0,
               //fontWeight: FontWeight.bold,
             ),
@@ -98,9 +106,9 @@ class Index extends StatelessWidget {
         child: MaterialButton(
           minWidth: 220.0,
           height: 60.0,
-          color: Colors.white,
+          color: Colors.deepPurple.shade700,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5.0),
+            borderRadius: BorderRadius.circular(30.0),
           ),
           onPressed: () {
             Navigator.of(context).pushNamed('register');
@@ -108,7 +116,8 @@ class Index extends StatelessWidget {
           child: Text(
             'Registro',
             style: TextStyle(
-              color: Colors.purple.shade700,
+              color: Colors.white,
+              //color: Colors.purple.shade700,
               fontSize: 25.0,
               fontWeight: FontWeight.bold,
             ),

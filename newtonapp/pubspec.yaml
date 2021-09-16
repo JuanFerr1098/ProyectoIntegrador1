@@ -38,6 +38,12 @@ flutter:
       - asset: assets/fonts/Montserrat-Bold.ttf
       - asset: assets/fonts/Montserrat-BoldItalic.ttf
         style: italic
+    - family: Quicksand
+      fonts:
+      - asset: assets/fonts/Quicksand/Quicksand-Regular.ttf
+      - asset: assets/fonts/Quicksand/Quicksand-Bold.ttf
+      - asset: assets/fonts/Quicksand/Quicksand-Light.ttf
+      - asset: assets/fonts/Quicksand/Quicksand-Semibold.ttf
     # Iconos
     - family: MathIcons
       fonts:
