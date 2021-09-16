@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter/src/material/colors.dart';
 
 class Index extends StatelessWidget {
   const Index({Key? key}) : super(key: key);
@@ -38,10 +39,12 @@ class Index extends StatelessWidget {
             Text(
               'Bienvenido a \nNewton App',
               style: TextStyle(
-                color: Colors.tealAccent,
+                color: Color.fromRGBO( 123, 31, 162, 1),
+                //color: Colors.purple700,
                 //color: Colors.white,
+                fontFamily: 'QBold',
                 fontWeight: FontWeight.bold,
-                fontSize: 30.0,
+                fontSize: 40.0,
               ),
             ),
           ]),
@@ -74,7 +77,7 @@ class Index extends StatelessWidget {
         child: MaterialButton(
           minWidth: 220.0,
           
-          color: Colors.tealAccent.shade400,
+          color: Color.fromRGBO( 7, 194, 184, 1),
           height: 60.0,
           //color: const Color (0x00ffe6),
           //color: Colors.white,
@@ -88,12 +91,10 @@ class Index extends StatelessWidget {
           child: Text(
             'Login',
             style: TextStyle(
-              fontFamily: 'Quicksand',
-              //fontStyle: FontStyle.italic,
+              fontFamily: 'QRegular',
               color: Colors.white,
-              //color: Colors.purple.shade700,
               fontSize: 25.0,
-              //fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ));
@@ -106,7 +107,8 @@ class Index extends StatelessWidget {
         child: MaterialButton(
           minWidth: 220.0,
           height: 60.0,
-          color: Colors.deepPurple.shade700,
+          color: Color.fromRGBO( 7, 194, 184, 1),
+          //color: Colors.deepPurple.shade700,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
           ),
