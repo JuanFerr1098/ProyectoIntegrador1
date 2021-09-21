@@ -28,7 +28,7 @@ class _PerfilUser extends State<PerfilUser> {
           }
         });
   }
-  
+
   Widget perfil(Map<String, dynamic> data) {
     return Scaffold(
       appBar: myAppBar(context),
