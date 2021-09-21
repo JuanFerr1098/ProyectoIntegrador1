@@ -116,7 +116,7 @@ class _RegisterPageState extends State<RegisterPage> {
               }
             }
           },
-          child: const Text(
+          child: Text(
             'Registrar',
             style: TextStyle(
               color: Colors.white,

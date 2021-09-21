@@ -1,9 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:newtonapp/providers/auth.dart';
-import 'package:newtonapp/providers/user_provider.dart';
 import 'package:newtonapp/shared/drawer_menu.dart';
+import 'package:newtonapp/shared/my_app_bar.dart';
 
 class IndexPage extends StatefulWidget {
   /// The page title.
@@ -18,21 +17,35 @@ class _IndexPage extends State<IndexPage> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<DocumentSnapshot>(
-        future: UserProvider(uid: _authS.userActualUid()).getUsers(),
-        builder:
-            (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-          if (snapshot.hasData) {
-            return _pantalla(context);
-          } else {
-            return const Center(child: CircularProgressIndicator());
-          }
-        });
-  }
-
-  Widget _pantalla(context) {
     return Scaffold(
-      appBar: myAppBar(context),
+      /*appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+        leading: Builder(builder: (context) {
+          return IconButton(
+            iconSize: 40.0,
+            icon: const Icon(Icons.more_vert),
+            color: Colors.purple.shade700,
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          );
+        }),
+        //title: Text('Hi friend'),
+        actions: <Widget>[
+          IconButton(
+            //atras
+            iconSize: 40.0,
+            onPressed: () async {
+              await _authS.logOut();
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/', (Route<dynamic> route) => false);
+            },
+            icon: Icon(Icons.logout_rounded),
+            color: Colors.purple.shade700,
+          ),
+        ],
+      ),*/
+
+      appBar: myAppBar(context),      
       drawer: DrawerMenu(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -105,7 +118,7 @@ class _IndexPage extends State<IndexPage> {
             borderRadius: BorderRadius.circular(5.0),
           ),
           onPressed: () {
-            Navigator.of(context).pushNamed('retosZone');
+            Navigator.of(context).pushNamed('retos');
           },
           child: const Text(
             'Retos',
@@ -118,31 +131,83 @@ class _IndexPage extends State<IndexPage> {
         ));
   }
 
-  PreferredSizeWidget? myAppBar(context) {
-    return AppBar(
-      backgroundColor: Colors.white,
-      elevation: 0.0,
-      leading: Builder(builder: (context) {
-        return IconButton(
-          iconSize: 40.0,
-          icon: const Icon(Icons.more_vert),
+  /*Widget botonPerfil(context) {
+    return Container(
+        padding: const EdgeInsets.all(10),
+        alignment: Alignment.center,
+        child: MaterialButton(
+          minWidth: 220.0,
+          height: 60.0,
           color: Colors.purple.shade700,
-          onPressed: () => Scaffold.of(context).openDrawer(),
-        );
-      }),
-      actions: <Widget>[
-        IconButton(
-          //atras
-          iconSize: 40.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5.0),
+          ),
+          onPressed: () {
+            Navigator.of(context).pushNamed('perfil');
+          },
+          child: const Text(
+            'Perfil',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 25.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ));
+  }*/
+
+  Widget botonDeslogueo() {
+    return Container(
+        padding: const EdgeInsets.all(10),
+        alignment: Alignment.center,
+        child: MaterialButton(
+          minWidth: 220.0,
+          height: 60.0,
+          color: Colors.purple.shade700,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5.0),
+          ),
           onPressed: () async {
             await _authS.logOut();
             Navigator.of(context)
                 .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
           },
-          icon: const Icon(Icons.logout_rounded),
-          color: Colors.purple.shade700,
-        ),
-      ],
-    );
+          child: const Text(
+            'Salir',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 25.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ));
+  }
+
+  PreferredSizeWidget? myAppBar(context) {
+    return AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+        leading: Builder(builder: (context) {
+          return IconButton(
+            iconSize: 40.0,
+            icon: const Icon(Icons.more_vert),
+            color: Colors.purple.shade700,
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          );
+        }),
+        actions: <Widget>[
+          IconButton(
+            //atras
+            iconSize: 40.0,
+            onPressed: () async {
+              await _authS.logOut();
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/', (Route<dynamic> route) => false);
+            },
+            icon: const Icon(Icons.logout_rounded),
+            color: Colors.purple.shade700,
+          ),
+        ],
+      );
   }
 }

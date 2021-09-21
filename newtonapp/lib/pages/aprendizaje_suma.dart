@@ -57,7 +57,7 @@ class AprendizajeSuma extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pushNamed('sumaTema1');
           },
-          child: const Text(
+          child: Text(
             'Tema 1',
             style: TextStyle(
               color: Colors.white,
@@ -80,7 +80,7 @@ class AprendizajeSuma extends StatelessWidget {
             borderRadius: BorderRadius.circular(30.0),
           ),
           onPressed: () {},
-          child: const Text(
+          child: Text(
             'Tema 2',
             style: TextStyle(
               color: Colors.white,
@@ -103,7 +103,7 @@ class AprendizajeSuma extends StatelessWidget {
             borderRadius: BorderRadius.circular(30.0),
           ),
           onPressed: () {},
-          child: const Text(
+          child: Text(
             'Tema 3',
             style: TextStyle(
               color: Colors.white,
@@ -126,7 +126,7 @@ class AprendizajeSuma extends StatelessWidget {
             borderRadius: BorderRadius.circular(30.0),
           ),
           onPressed: () {},
-          child: const Text(
+          child: Text(
             'Tema 4',
             style: TextStyle(
               color: Colors.white,
@@ -149,7 +149,7 @@ class AprendizajeSuma extends StatelessWidget {
             borderRadius: BorderRadius.circular(30.0),
           ),
           onPressed: () {},
-          child: const Text(
+          child: Text(
             'Tema 5',
             style: TextStyle(
               color: Colors.white,
@@ -172,7 +172,7 @@ class AprendizajeSuma extends StatelessWidget {
             borderRadius: BorderRadius.circular(30.0),
           ),
           onPressed: () {},
-          child: const Text(
+          child: Text(
             'Tema 6',
             style: TextStyle(
               color: Colors.white,

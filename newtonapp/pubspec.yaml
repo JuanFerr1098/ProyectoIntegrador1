@@ -19,6 +19,7 @@ dependencies:
   firebase_analytics: ^5.0.2
   cloud_firestore: ^2.5.1
   fluttertoast: ^8.0.8
+  carousel_slider: ^4.0.0
 
 dev_dependencies:
   flutter_test:
@@ -37,6 +38,30 @@ flutter:
       - asset: assets/fonts/Montserrat-Bold.ttf
       - asset: assets/fonts/Montserrat-BoldItalic.ttf
         style: italic
+    - family: QRegular
+      fonts:
+      - asset: assets/fonts/Quicksand/Quicksand-Regular.ttf
+    - family: QBold
+      fonts:
+      - asset: assets/fonts/Quicksand/Quicksand-Bold.ttf
+    - family: QLight
+      fonts:
+      - asset: assets/fonts/Quicksand/Quicksand-Light.ttf
+    - family: QSemiBold
+      fonts: 
+      - asset: assets/fonts/Quicksand/Quicksand-Semibold.ttf
+    - family: PRegular
+      fonts: 
+      - asset: assets/fonts/Poppins/Poppins-Regular.ttf    
+    - family: PLight
+      fonts: 
+      - asset: assets/fonts/Poppins/Poppins-Light.ttf 
+    - family: PMedium
+      fonts: 
+      - asset: assets/fonts/Poppins/Poppins-Medium.ttf 
+    - family: PBold
+      fonts: 
+      - asset: assets/fonts/Poppins/Poppins-Bold.ttf 
     # Iconos
     - family: MathIcons
       fonts:

@@ -97,7 +97,7 @@ class _SignInPageState extends State<SignInPage> {
               }
             }
           },
-          child: const Text(
+          child: Text(
             'Ingresar',
             style: TextStyle(
               color: Colors.white,

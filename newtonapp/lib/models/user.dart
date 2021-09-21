@@ -11,8 +11,9 @@ class UserN {
   String get name => _name;
   String get age => _age;*/
 
-  final String uid;  
-  UserN({required this.uid});  
+  final String uid;
+  
+  UserN({required this.uid});
 }
 
 class UserData {

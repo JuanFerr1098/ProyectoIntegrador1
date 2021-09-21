@@ -1,58 +1,50 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:newtonapp/providers/user_provider.dart';
+import 'package:newtonapp/models/user.dart';
 import 'package:newtonapp/providers/auth.dart';
 
 class DrawerMenu extends StatelessWidget {
-  DrawerMenu({Key? key}) : super(key: key);
-  final AuthService _authS = AuthService();
+  //const DrawerMenu({Key? key}) : super(key: key);
+
+  final AuthService _authS = AuthService(); 
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: FutureBuilder<DocumentSnapshot>(
-          future: UserProvider(uid: _authS.userActualUid()).getUsers(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              Map<String, dynamic>? data =
-                  snapshot.data!.data() as Map<String, dynamic>;
-              return _drawer(data, context);
-            } else {
-              return const Center(child: CircularProgressIndicator());
-            }
-          }),
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: <Widget>[
+          _buildDrawerHeader(),
+          /*_buildDrawerItem(icon: Icons.home, text: 'Home', onTap: () => {
+              Navigator.pushReplacementNamed(context, MyApp.home)
+          }),*/
+          _buildDrawerItem(
+              icon: Icons.account_circle,
+              text: 'Profile',
+              onTap: () => {Navigator.of(context).pushNamed('perfil')}),
+          /*_buildDrawerItem(icon: Icons.movie, text: 'Movies', onTap: () => {
+            Navigator.pushReplacementNamed(context, MyApp.movies)
+          }),*/
+          const Divider(),
+          /*_buildDrawerItem(icon: Icons.contact_phone, text: 'Contact Info', onTap: () => {
+            Navigator.pushReplacementNamed(context, MyApp.contacts)
+          }),*/
+          /*ListTile(
+            title: const Text('App version 1.0.0'),
+            onTap: () {},
+          ),*/
+        ],
+      ),
     );
   }
 
-  Widget _drawer(Map<String, dynamic> data, BuildContext context) {
-    return ListView(
-      padding: EdgeInsets.zero,
-      children: <Widget>[
-        _buildDrawerHeader(data['nombre']),
-        /*_buildDrawerItem(icon: Icons.home, text: 'Home', onTap: () => {
-                      Navigator.pushReplacementNamed(context, MyApp.home)
-                  }),*/
-        _buildDrawerItem(
-            icon: Icons.account_circle,
-            text: 'Profile',
-            onTap: () => {Navigator.of(context).pushNamed('perfil')}),
-        /*_buildDrawerItem(icon: Icons.movie, text: 'Movies', onTap: () => {
-                    Navigator.pushReplacementNamed(context, MyApp.movies)
-                  }),*/
-        const Divider(),
-        /*_buildDrawerItem(icon: Icons.contact_phone, text: 'Contact Info', onTap: () => {
-                    Navigator.pushReplacementNamed(context, MyApp.contacts)
-                  }),*/
-        /*ListTile(
-                    title: const Text('App version 1.0.0'),
-                    onTap: () {},
-                  ),*/
-      ],
-    );
-  }
-
-  Widget _buildDrawerHeader(String name) {
+  Widget _buildDrawerHeader() {
+    UserProvider up = UserProvider(uid: _authS.userActualUid());
+    Stream<UserData> user = up.userDataBase;
+    //UserProvider up = UserProvider(uid: user.uid);
+    String nombre = user.map((value) => value.name).toString();
     return Container(
+        //height: MediaQuery.of().size.height * .5,
         padding: const EdgeInsets.all(50),
         child: Form(
             child: Column(
@@ -62,7 +54,7 @@ class DrawerMenu extends StatelessWidget {
               color: Colors.purple.shade700,
               size: 100.0,
             ),
-            Text(name),
+            Text(nombre),
           ],
         )));
   }
