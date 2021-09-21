@@ -105,7 +105,7 @@ class _IndexPage extends State<IndexPage> {
             borderRadius: BorderRadius.circular(5.0),
           ),
           onPressed: () {
-            Navigator.of(context).pushNamed('retos');
+            Navigator.of(context).pushNamed('retosZone');
           },
           child: const Text(
             'Retos',

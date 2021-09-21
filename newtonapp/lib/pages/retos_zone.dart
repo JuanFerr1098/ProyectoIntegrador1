@@ -3,25 +3,28 @@ import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:newtonapp/pages/resultado_page.dart';
 import 'package:newtonapp/providers/retos_provider.dart';
 
 class RetosPage extends StatelessWidget {
-  const RetosPage({Key? key}) : super(key: key);
+  final List crearReto;
+  const RetosPage({Key? key, required this.crearReto}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {    
 
-    String tipoReto = 'suma';
-    String lvl = 'facil';
+    String tipo = crearReto[0];
+    String operacion = crearReto[1];
+    String lvl = crearReto[2];
 
     return FutureBuilder<DocumentSnapshot>(
-        future: RetosProvider(uid: tipoReto).getRetos(),
+        future: RetosProvider(uid: operacion).getRetos(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             Map<String, dynamic>? data =
                 snapshot.data!.data() as Map<String, dynamic>;
-            return RetosZone(data: data, lvl: lvl, tipoReto: tipoReto);
+            return RetosZone(data: data, lvl: lvl, operacion: operacion, tipo: tipo,);
           } else {
             return const Center(child: CircularProgressIndicator());
           }
@@ -31,21 +34,23 @@ class RetosPage extends StatelessWidget {
 
 class RetosZone extends StatefulWidget {
   final String lvl;
-  final String tipoReto;
+  final String operacion;
+  final String tipo;
   final Map<String, dynamic> data;
   const RetosZone(
-      {Key? key, required this.data, required this.lvl, required this.tipoReto})
+      {Key? key, required this.data, required this.lvl, required this.operacion, required this.tipo})
       : super(key: key);
 
   @override
-  _RetosZone createState() => _RetosZone(data, lvl, tipoReto);
+  _RetosZone createState() => _RetosZone(data, lvl, operacion, tipo);
 }
 
 class _RetosZone extends State<RetosZone> {
   final String lvl;
-  final String tipoReto;
+  final String operacion;
+  final String tipo;
   final Map<String, dynamic> data;
-  _RetosZone(this.data, this.lvl, this.tipoReto);
+  _RetosZone(this.data, this.lvl, this.operacion, this.tipo);
 
   // Mapeo de colores de los botones
   Map<String, Color> btncolor = {
@@ -174,7 +179,7 @@ class _RetosZone extends State<RetosZone> {
       //Talvez no sea aqui
       Navigator.push(context, MaterialPageRoute(
         builder: (BuildContext context) =>
-        Resultado(puntaje: puntaje.toString())));
+        Resultado(puntaje: puntaje.toString(), lvl: lvl, operacion: operacion, tipo: tipo,)));
     } else {
       // Haga el proceso de pregunta
       hacerPregunta();
@@ -191,8 +196,8 @@ class _RetosZone extends State<RetosZone> {
 
   @override
   Widget build(BuildContext context) {
-    //SystemChrome.setPreferredOrientations(
-    //    [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return Scaffold(
       body: Column(
         children: <Widget>[

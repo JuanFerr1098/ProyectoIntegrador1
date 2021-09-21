@@ -12,6 +12,7 @@ import 'package:newtonapp/pages/retos.dart';
 import 'package:newtonapp/pages/retos_zone.dart';
 import 'package:newtonapp/pages/signin_page.dart';
 import 'package:newtonapp/pages/suma_tema1.dart';
+import 'package:newtonapp/pages/tipo_reto.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,12 +38,12 @@ class MyApp extends StatelessWidget {
         'register': (_) => const RegisterPage(),
         'index': (_) => const IndexPage(),
         'aprendizaje': (_) => const Aprendizaje(),
-        'retos': (_) => const Retos(),
+        //'retos': (_) => const Retos(),
         'perfil': (_) => const PerfilUser(),
         'editarPerfil': (_) => const EditProfile(),
         'aprendizajeSuma': (_) => const AprendizajeSuma(),
         'sumaTema1': (_) => const SumaTema1(),
-        'retosZone': (_) => const RetosPage(),
+        'retosZone': (_) => TipoReto(),
       }
 
     );

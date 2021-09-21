@@ -1,25 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:newtonapp/providers/auth.dart';
+import 'package:newtonapp/providers/user_provider.dart';
 
 class Resultado extends StatefulWidget {
   final String puntaje;
-  const Resultado({Key? key, required this.puntaje}) : super(key: key);
+  final String lvl;
+  final String operacion;
+  final String tipo;
+  const Resultado({Key? key, 
+  required this.puntaje, 
+  required this.lvl, 
+  required this.operacion, 
+  required this.tipo}) : super(key: key);
+
   @override
-  State<StatefulWidget> createState() => _Resultado(puntaje);
+  State<Resultado> createState() => _ResultadoState();
 }
 
-class _Resultado extends State<Resultado> {
-  final String puntaje;
-  _Resultado(this.puntaje);
-
+class _ResultadoState extends State<Resultado> {
+  final AuthService _authS = AuthService(); 
   @override
   Widget build(BuildContext context) {
+    return resultado();
+  }
+
+  Widget resultado (){
+    actualizarPuntaje();
     return Scaffold(
       //appBar: myAppBar(context),
       body: Column(
         children: [
-          Text('Su puntaje es ' + puntaje),
+          Text('Su puntaje es ' + widget.puntaje),
           MaterialButton(
-            onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil('index', (Route<dynamic> route) => false),
+            onPressed: () => Navigator.popUntil(context, ModalRoute.withName('index')),
             child: Text(
               'Volver al inicio',
               style: TextStyle(
@@ -34,5 +47,14 @@ class _Resultado extends State<Resultado> {
         ],
       ),
     );
+  }
+
+  actualizarPuntaje() {
+    UserProvider(uid: _authS.userActualUid()).getRealTimeUsers()
+    .collection('puntajes').doc(widget.operacion).set({
+      'tipo': widget.tipo,
+      'puntaje': widget.puntaje,
+      'lvl': widget.lvl
+      });
   }
 }
