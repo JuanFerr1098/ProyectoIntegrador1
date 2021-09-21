@@ -24,16 +24,20 @@ class UserProvider {
 
   UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
     return UserData(
-      uid: uid,
-      name: snapshot.get('nombre'),
-      email: snapshot.get('correo'),
-      age: snapshot.get('edad')
-    );
+        uid: uid,
+        name: snapshot.get('nombre'),
+        email: snapshot.get('correo'),
+        age: snapshot.get('edad'));
+  }
+
+  Stream<QuerySnapshot> readUser() {
+    CollectionReference dataUser =
+        getRealTimeUsers().collection('nombre');
+    return dataUser.snapshots();
   }
 
   Stream<UserData> get userDataBase {
-    return userData.doc(uid).snapshots()
-    .map(_userDataFromSnapshot);
+    return userData.doc(uid).snapshots().map(_userDataFromSnapshot);
   }
 
   Future<void> actualizarDatos(

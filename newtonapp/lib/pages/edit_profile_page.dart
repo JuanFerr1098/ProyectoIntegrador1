@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:newtonapp/providers/auth.dart';
 import 'package:newtonapp/providers/user_provider.dart';
-
-final FirebaseAuth _auth = FirebaseAuth.instance;
 
 class EditProfile extends StatefulWidget {
   final String title = 'Editar el Perfil';
@@ -15,13 +13,14 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditPerfil extends State<EditProfile> {
+  final AuthService _authS = AuthService(); 
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _edadController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<DocumentSnapshot>(
-        future: UserProvider(uid: _auth.currentUser!.uid).getUsers(),
+        future: UserProvider(uid: _authS.userActualUid()).getUsers(),
         builder:
             (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.hasData) {
@@ -91,12 +90,12 @@ class _EditPerfil extends State<EditProfile> {
             borderRadius: BorderRadius.circular(25.0),
           ),
           onPressed: () async {
-            UserProvider(uid: _auth.currentUser!.uid).actualizarDatos(
+            UserProvider(uid: _authS.userActualUid()).actualizarDatos(
                 data, _nameController.text, _edadController.text);
             Navigator.of(context).pushNamedAndRemoveUntil(
                 'perfil', ModalRoute.withName('index'));
           },
-          child: Text(
+          child: const Text(
             'Actualizar',
             style: TextStyle(
               color: Colors.white,
@@ -121,7 +120,7 @@ class _EditPerfil extends State<EditProfile> {
           onPressed: () async {
             Navigator.pop(context);
           },
-          child: Text(
+          child: const Text(
             'Cancelar',
             style: TextStyle(
               color: Colors.white,
