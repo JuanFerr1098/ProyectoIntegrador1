@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:newtonapp/shared/drawer_menu.dart';
 import 'package:newtonapp/shared/icons.dart';
 
 class Aprendizaje extends StatelessWidget {
@@ -8,6 +9,8 @@ class Aprendizaje extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(), // Organizar
+      drawer: DrawerMenu(),
       backgroundColor: Colors.purple.shade700, //Fondo de la pantalla
       body: SizedBox(
         width: double.infinity,

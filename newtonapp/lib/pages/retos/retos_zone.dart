@@ -4,7 +4,7 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:newtonapp/pages/resultado_page.dart';
+import 'package:newtonapp/pages/retos/resultado_page.dart';
 import 'package:newtonapp/providers/retos_provider.dart';
 
 class RetosPage extends StatelessWidget {

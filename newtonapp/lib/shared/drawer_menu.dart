@@ -29,24 +29,28 @@ class DrawerMenu extends StatelessWidget {
       padding: EdgeInsets.zero,
       children: <Widget>[
         _buildDrawerHeader(data['nombre']),
-        /*_buildDrawerItem(icon: Icons.home, text: 'Home', onTap: () => {
-                      Navigator.pushReplacementNamed(context, MyApp.home)
-                  }),*/
+        const Divider(),
+        _buildDrawerItem(
+            icon: Icons.home,
+            text: 'Home',
+            onTap: () => Navigator.of(context).pushNamed('index')),
         _buildDrawerItem(
             icon: Icons.account_circle,
-            text: 'Profile',
-            onTap: () => {Navigator.of(context).pushNamed('perfil')}),
-        /*_buildDrawerItem(icon: Icons.movie, text: 'Movies', onTap: () => {
-                    Navigator.pushReplacementNamed(context, MyApp.movies)
-                  }),*/
+            text: 'Perfil',
+            onTap: () => Navigator.of(context).pushNamed('perfil')),
+        _buildDrawerItem(
+            icon: Icons.book,
+            text: 'Aprendizaje',
+            onTap: () => Navigator.of(context).pushNamed('aprendizaje')),
+        _buildDrawerItem(
+            icon: Icons.my_library_books,
+            text: 'Retos',
+            onTap: () => Navigator.of(context).pushNamed('retosZone')),
         const Divider(),
-        /*_buildDrawerItem(icon: Icons.contact_phone, text: 'Contact Info', onTap: () => {
-                    Navigator.pushReplacementNamed(context, MyApp.contacts)
-                  }),*/
-        /*ListTile(
-                    title: const Text('App version 1.0.0'),
-                    onTap: () {},
-                  ),*/
+        ListTile(
+          title: const Text('App version 1.0.0'),
+          onTap: () {},
+        ),
       ],
     );
   }
