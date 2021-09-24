@@ -23,10 +23,24 @@ class MyIcons {
     matchTextDirection: true
   );
 
-    static const IconData right_open = IconData(
-    0xe89c,
-    fontFamily: 'Flechas',
-    
+  static const IconData rightOpen = IconData(
+    0xe89d,
+    fontFamily: 'Flechas',    
+    matchTextDirection: true
+  );
+  static const IconData leftOpen = IconData(
+    0xe89b,
+    fontFamily: 'Flechas',    
+    matchTextDirection: true
+  );
+  static const IconData left = IconData(
+    0xe89f,
+    fontFamily: 'Flechas',    
+    matchTextDirection: true
+  );
+  static const IconData right = IconData(
+    0xe8a0,
+    fontFamily: 'Flechas',    
     matchTextDirection: true
   );
   

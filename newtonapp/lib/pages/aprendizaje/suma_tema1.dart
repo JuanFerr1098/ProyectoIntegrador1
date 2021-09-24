@@ -89,14 +89,14 @@ class SumaTema1 extends StatelessWidget {
         child: MaterialButton(
           minWidth: 220.0,
           height: 60.0,
-          color: Color.fromRGBO( 7, 194, 184, 1),
+          color: const Color.fromRGBO( 7, 194, 184, 1),
           //color: Colors.deepPurple.shade700,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30.0),
           ),
           onPressed: () => buttonCarouselController.nextPage(
-            duration: Duration(milliseconds: 300), curve: Curves.linear),
-            child: Text(
+            duration: const Duration(milliseconds: 300), curve: Curves.linear),
+            child: const Text(
             'Pasar',
             style: TextStyle(
               color: Colors.white,
@@ -122,12 +122,11 @@ class SumaTema1 extends StatelessWidget {
           onPressed: () => buttonCarouselController.nextPage(
             duration: Duration(milliseconds: 300), curve: Curves.linear),
 
-          child: Icon(
-            Icons.arrow_forward_ios_rounded,
-            //MyIcons.rightOpen,
+          child: const Icon(
+            //Icons.arrow_forward_ios_rounded,
+            MyIcons.right,
             color: Colors.white,
-            size: 45,
-            
+            size: 45,            
           ),
         ));
   }

@@ -52,32 +52,9 @@ class _RetosState extends State<Retos> {
                 fontSize: 30.0,
               ),
             ),
-            //retosSuma(context)
             botonesRetos(context, 'suma', MyIcons.add)
           ]),
     );
-  }
-
-  Widget retosSuma(context) {
-    return Container(
-        padding: const EdgeInsets.all(10),
-        alignment: Alignment.center,
-        child: MaterialButton(
-          minWidth: 90.0,
-          height: 90.0,
-          color: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50.0),
-          ),
-          onPressed: () {
-            Navigator.of(context).pushNamed('retosZone');
-          },
-          child: Icon(
-            MyIcons.add,
-            color: Colors.purple.shade700,
-            size: 35,
-          ),
-        ));
   }
 
   Widget botonesRetos(context, String zona, IconData icono){

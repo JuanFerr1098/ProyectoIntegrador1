@@ -36,7 +36,6 @@ class MyApp extends StatelessWidget {
         'register': (_) => const RegisterPage(),
         'index': (_) => const IndexPage(),
         'aprendizaje': (_) => const Aprendizaje(),
-        //'retos': (_) => const Retos(),
         'perfil': (_) => const PerfilUser(),
         'editarPerfil': (_) => const EditProfile(),
         'aprendizajeSuma': (_) => const AprendizajeSuma(),
@@ -47,4 +46,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-// Truco MAchetazo

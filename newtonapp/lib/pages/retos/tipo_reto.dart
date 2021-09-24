@@ -20,7 +20,9 @@ class _TipoRetoState extends State<TipoReto> {*/
       body: Column(
         children: <Widget>[
           texto(), 
-          botonTipoReto(context, 'time30s', '30 Segundos')],
+          botonTipoReto(context, 'time30s', '30 Segundos'),
+          botonTipoReto(context, '5preg', '5 Preguntas')
+          ],
       ),
     );
   }
@@ -37,7 +39,7 @@ class _TipoRetoState extends State<TipoReto> {*/
         child: MaterialButton(
           minWidth: 220.0,
           height: 60.0,
-          color: Colors.white,
+          color: Colors.green,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0),
           ),
