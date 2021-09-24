@@ -66,3 +66,6 @@ flutter:
     - family: MathIcons
       fonts:
         - asset: assets/icons/MathIcons.ttf
+    - family: Flechas
+      fonts:
+        - asset: assets/icons/MyFlutterApp.ttf

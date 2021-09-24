@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         'perfil': (_) => const PerfilUser(),
         'editarPerfil': (_) => const EditProfile(),
         'aprendizajeSuma': (_) => const AprendizajeSuma(),
-        'sumaTema1': (_) => const SumaTema1(),
+        'sumaTema1': (_) => SumaTema1(),
         'retosZone': (_) => TipoReto(),
       }
 
