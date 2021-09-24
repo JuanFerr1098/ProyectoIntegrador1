@@ -22,4 +22,12 @@ class MyIcons {
     fontFamily: 'MathIcons',
     matchTextDirection: true
   );
+
+    static const IconData right_open = IconData(
+    0xe89c,
+    fontFamily: 'Flechas',
+    
+    matchTextDirection: true
+  );
+  
 }
