@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:newtonapp/pages/aprendizaje.dart';
-import 'package:newtonapp/pages/aprendizaje_suma.dart';
-import 'package:newtonapp/pages/edit_profile_page.dart';
+import 'package:newtonapp/pages/aprendizaje/aprendizaje.dart';
+import 'package:newtonapp/pages/aprendizaje/aprendizaje_suma.dart';
+import 'package:newtonapp/pages/perfil/edit_profile_page.dart';
 import 'package:newtonapp/pages/index.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:newtonapp/pages/index_page.dart';
-import 'package:newtonapp/pages/perfil_page.dart';
-import 'package:newtonapp/pages/register_page.dart';
-import 'package:newtonapp/pages/retos.dart';
-import 'package:newtonapp/pages/retos_zone.dart';
-import 'package:newtonapp/pages/signin_page.dart';
-import 'package:newtonapp/pages/suma_tema1.dart';
-import 'package:newtonapp/pages/tipo_reto.dart';
+import 'package:newtonapp/pages/perfil/perfil_page.dart';
+import 'package:newtonapp/pages/auth/register_page.dart';
+import 'package:newtonapp/pages/auth/signin_page.dart';
+import 'package:newtonapp/pages/aprendizaje/suma_tema1.dart';
+import 'package:newtonapp/pages/retos/tipo_reto.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

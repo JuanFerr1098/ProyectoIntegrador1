@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:newtonapp/pages/retos_zone.dart';
+import 'package:newtonapp/pages/retos/retos_zone.dart';
 
 class Level extends StatelessWidget {
   final List crearReto;

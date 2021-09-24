@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:newtonapp/pages/retos.dart';
+import 'package:newtonapp/pages/retos/retos.dart';
+import 'package:newtonapp/shared/drawer_menu.dart';
 
 class TipoReto extends StatelessWidget {
   TipoReto({Key? key}) : super(key: key);
@@ -14,6 +15,8 @@ class _TipoRetoState extends State<TipoReto> {*/
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(), // Organizar
+      drawer: DrawerMenu(),
       body: Column(
         children: <Widget>[
           texto(), 

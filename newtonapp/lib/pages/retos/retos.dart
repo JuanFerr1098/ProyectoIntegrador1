@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:newtonapp/pages/level_page.dart';
+import 'package:newtonapp/pages/retos/level_page.dart';
 import 'package:newtonapp/shared/icons.dart';
 
 class Retos extends StatelessWidget {
