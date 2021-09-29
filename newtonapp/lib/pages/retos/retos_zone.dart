@@ -12,8 +12,7 @@ class RetosPage extends StatelessWidget {
   const RetosPage({Key? key, required this.crearReto}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {    
-
+  Widget build(BuildContext context) {
     String tipo = crearReto[0];
     String operacion = crearReto[1];
     String lvl = crearReto[2];
@@ -24,7 +23,12 @@ class RetosPage extends StatelessWidget {
           if (snapshot.hasData) {
             Map<String, dynamic>? data =
                 snapshot.data!.data() as Map<String, dynamic>;
-            return RetosZone(data: data, lvl: lvl, operacion: operacion, tipo: tipo,);
+            return RetosZone(
+              data: data,
+              lvl: lvl,
+              operacion: operacion,
+              tipo: tipo,
+            );
           } else {
             return const Center(child: CircularProgressIndicator());
           }
@@ -38,7 +42,11 @@ class RetosZone extends StatefulWidget {
   final String tipo;
   final Map<String, dynamic> data;
   const RetosZone(
-      {Key? key, required this.data, required this.lvl, required this.operacion, required this.tipo})
+      {Key? key,
+      required this.data,
+      required this.lvl,
+      required this.operacion,
+      required this.tipo})
       : super(key: key);
 
   @override
@@ -60,18 +68,29 @@ class _RetosZone extends State<RetosZone> {
     "d": Colors.purple.shade700,
   };
   // Tiempo inicial
-  String showtimer = "30";
-  int timer = 30;
+  String showtimer = '0';
+  int timer = 0;
   // Validaciones del tiempo
   bool canceltimer = false;
   bool disableAnswer = false;
 
+  // Para los retos
   int puntaje = 0;
   List pregunta = [];
   int resp = 0;
+  int cantPreg = 0; // 5 preg
+
+  // Para analisis de la app
+  int errores = 0;
+  int totalPreg = 0;
+
+  DateTime? date;
 
   @override
   void initState() {
+    date = DateTime.now();
+    // Inicializar valores del timer
+    iniciarTimer();
     starttimer();
     // Crear primera pregunta
     hacerPregunta();
@@ -82,6 +101,21 @@ class _RetosZone extends State<RetosZone> {
   void setState(fn) {
     if (mounted) {
       super.setState(fn);
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  void iniciarTimer() {
+    if (tipo == 'time30s') {
+      showtimer = "30";
+      timer = 30;
+    } else if (tipo == '5preg') {
+      showtimer = "7";
+      timer = 7;
     }
   }
 
@@ -105,41 +139,54 @@ class _RetosZone extends State<RetosZone> {
   // Corregir para que use la función modulo para valores mas congruentes a la dificultad
   int generatedNumber(int tam) {
     Random random = Random();
-    return random.nextInt(pow(10, tam).toInt()) + 1;
+    return random.nextInt(pow(10, tam).toInt() - pow(10, tam - 1).toInt() - 1) +
+        pow(10, tam - 1).toInt();
     //return random.nextInt(10 % (tam * 10)) + 1;
   }
 
   hacerPregunta() {
-    String a = data[lvl][0];
-    String b = data[lvl][2];
     Random random = Random();
-    int num1 = generatedNumber(a.length);
-    int num2 = generatedNumber(b.length);
+    int num1 = generatedNumber(data[lvl][0].length);
+    int num2 = generatedNumber(data[lvl][2].length);
     List<int> opciones;
-    String operacion = '';
+    String operacion;
     switch (data[lvl][1]) {
       case '+':
         resp = num1 + num2;
-        operacion = num1.toString() + data[lvl][1] + num2.toString();
         break;
       case '-':
+        if (num1 < num2) {
+          int aux = num1;
+          num1 = num2;
+          num2 = aux;
+        }
         resp = num1 - num2;
         break;
-      default:
-        operacion = 'Error';
+      case '*':
+        resp = num1 * num2;
         break;
+      case '/':
+        int dividendo = num1 * num2;
+        resp = num1;
+        num1 = dividendo;
+        break;
+      default: break;
     }
+    operacion = num1.toString() + ' ' + data[lvl][1] + ' ' + num2.toString();
     opciones = [resp];
+    ///////////////////////////////////////////
+    ///Organizar el metodo para poner opciones incorrectas que dependan de la solucion
     int auxOpc;
     int i = 1;
-    while (i < 4){
+    while (i < 4) {
+      // Corregir para que coincida con cada operacion y lvl
       auxOpc = random.nextInt(20) + 1;
-      if(!opciones.contains(auxOpc)){
+      if (!opciones.contains(auxOpc)) {
         opciones.add(auxOpc);
         i++;
       }
-    }     
-    // Falta validar que no esten repetidos
+    }
+    /////////////////////////////////////////////
     int aux = random.nextInt(3);
     int op0 = opciones[aux];
     opciones.removeAt(aux);
@@ -154,15 +201,17 @@ class _RetosZone extends State<RetosZone> {
     pregunta = [operacion, op0, op1, op2, op3];
   }
 
-  void checkAnswer(int resp, int sum, String k) {
+  void checkAnswer(int resp, int opcionCorrecta, String k) {
     Color color;
-    if (resp == sum) {
+    if (resp == opcionCorrecta) {
       color = Colors.green;
       // Aumento el puntaje que usare luego en otra pantalla
       puntaje = puntaje + 1;
     } else {
       color = Colors.red;
+      errores = errores + 1;
     }
+    totalPreg++;
     setState(() {
       btncolor[k] = color;
       canceltimer = true;
@@ -173,18 +222,26 @@ class _RetosZone extends State<RetosZone> {
 
   void nextquestion() {
     canceltimer = false;
-    //timer = 10;
-    if (timer == 0) {
-      // Navegar a la pantalla de resultado con mi puntaje
-      //Talvez no sea aqui
-      Navigator.push(context, MaterialPageRoute(
-        builder: (BuildContext context) =>
-        Resultado(puntaje: puntaje.toString(), lvl: lvl, operacion: operacion, tipo: tipo,)));
-    } else {
-      // Haga el proceso de pregunta
-      hacerPregunta();
-    }
     setState(() {
+      switch (tipo) {
+        case '5preg':
+          if (cantPreg < 4) {
+            hacerPregunta();
+            cantPreg++;
+          } else {
+            navegarPuntaje();
+          }
+          timer = 7;
+          break;
+        case 'time30s':
+          if (timer == 0) {
+            navegarPuntaje();
+          } else {
+            hacerPregunta();
+          }
+          break;
+        default:
+      }
       btncolor["a"] = Colors.purple.shade700;
       btncolor["b"] = Colors.purple.shade700;
       btncolor["c"] = Colors.purple.shade700;
@@ -192,6 +249,21 @@ class _RetosZone extends State<RetosZone> {
       disableAnswer = false;
     });
     starttimer();
+  }
+
+  void navegarPuntaje() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (BuildContext context) => Resultado(
+                  puntaje: puntaje.toString(),
+                  errores: errores.toString(),
+                  cantPreg: totalPreg.toString(),
+                  lvl: lvl,
+                  operacion: operacion,
+                  tipo: tipo,
+                  date: date.toString(),
+                )));
   }
 
   @override

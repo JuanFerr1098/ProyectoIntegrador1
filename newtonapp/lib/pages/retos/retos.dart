@@ -7,14 +7,6 @@ class Retos extends StatelessWidget {
   final List crearReto;
   const Retos({Key? key, required this.crearReto}) : super(key: key);
 
-  /*@override
-  State<Retos> createState() => _RetosState(crearReto);
-}
-
-class _RetosState extends State<Retos> {
-  List crearReto;
-  _RetosState(this.crearReto);*/
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,13 +44,16 @@ class _RetosState extends State<Retos> {
                 fontSize: 30.0,
               ),
             ),
-            botonesRetos(context, 'suma', MyIcons.add)
+            botonesRetos(context, 'suma', MyIcons.add),
+            botonesRetos(context, 'resta', MyIcons.minus),
+            botonesRetos(context, 'mult', MyIcons.mult),
+            botonesRetos(context, 'div', MyIcons.divide),
           ]),
     );
   }
 
-  Widget botonesRetos(context, String zona, IconData icono){
-    crearReto.add(zona);
+  Widget botonesRetos(context, String zona, IconData icono) {
+    // crearReto.add(zona);
     return Container(
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
@@ -70,8 +65,11 @@ class _RetosState extends State<Retos> {
             borderRadius: BorderRadius.circular(50.0),
           ),
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(
-        builder: (BuildContext context) => Level(crearReto: crearReto)));
+            crearReto.add(zona);
+            Navigator.push(
+                context, MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                        Level(crearReto: crearReto)));
           },
           child: Icon(
             icono,

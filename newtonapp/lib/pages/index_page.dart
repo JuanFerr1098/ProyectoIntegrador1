@@ -137,7 +137,7 @@ class _IndexPage extends State<IndexPage> {
           onPressed: () async {
             await _authS.logOut();
             Navigator.of(context)
-                .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+                .pushNamedAndRemoveUntil('home', (Route<dynamic> route) => false);
           },
           icon: const Icon(Icons.logout_rounded),
           color: Colors.purple.shade700,

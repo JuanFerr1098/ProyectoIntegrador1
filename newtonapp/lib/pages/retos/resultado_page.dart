@@ -4,10 +4,12 @@ import 'package:newtonapp/providers/auth.dart';
 import 'package:newtonapp/providers/user_provider.dart';
 
 final AuthService _authS = AuthService();
-final String date = DateTime.now().toString();
 
-class Resultado extends StatefulWidget {
+class Resultado extends StatelessWidget {
+  final String date;
   final String puntaje;
+  final String errores;
+  final String cantPreg;
   final String lvl;
   final String operacion;
   final String tipo;
@@ -16,36 +18,32 @@ class Resultado extends StatefulWidget {
       required this.puntaje,
       required this.lvl,
       required this.operacion,
-      required this.tipo})
+      required this.tipo,
+      required this.errores,
+      required this.cantPreg, 
+      required this.date})
       : super(key: key);
 
-  @override
-  State<Resultado> createState() => _ResultadoState();
-}
-
-class _ResultadoState extends State<Resultado> {
-
-  @override
-  void initState(){
-    actualizarPuntaje();
-    super.initState();
-  }
+  
+  //final String date = DateTime.now().toString();
 
   @override
   Widget build(BuildContext context) {
-    return resultado();
+    return resultado(context);
   }
 
-  Widget resultado() {
-    //actualizarPuntaje();
+  Widget resultado(BuildContext context) {
+    actualizarPuntaje();
     return Scaffold(
       //appBar: myAppBar(context),
       body: Column(
         children: [
-          Text('Su puntaje es ' + widget.puntaje),
+          Text('Su puntaje es ' + puntaje),
           MaterialButton(
             onPressed: () =>
-                Navigator.popUntil(context, ModalRoute.withName('index')),
+                //Navigator.popUntil(context, ModalRoute.withName('index'))
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    'index', ModalRoute.withName('index')),
             child: Text(
               'Volver al inicio',
               style: TextStyle(
@@ -57,6 +55,7 @@ class _ResultadoState extends State<Resultado> {
               ),
             ),
           )
+          // Agregar boton para reintentar
         ],
       ),
     );
@@ -64,14 +63,17 @@ class _ResultadoState extends State<Resultado> {
 
   actualizarPuntaje() {
     Map score = {
-      'lvl': widget.lvl,
-      'tipo': widget.tipo,
-      'puntaje': widget.puntaje,
+      'lvl': lvl,
+      'tipo': tipo,
+      'puntaje': puntaje,
+      'errores': errores,
+      'cantPreguntas': cantPreg,
     };
     UserProvider(uid: _authS.userActualUid())
         .getRealTimeUsers()
         .collection('puntajes')
-        .doc(widget.operacion)
+        .doc(operacion)
         .set({date: score}, SetOptions(merge: true));
   }
+  
 }

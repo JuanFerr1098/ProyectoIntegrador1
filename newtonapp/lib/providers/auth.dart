@@ -3,6 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:newtonapp/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:newtonapp/providers/user_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -16,7 +17,7 @@ class AuthService {
     return UserN(uid: user.uid);
   }
 
-  String userActualUid(){
+  String userActualUid() {
     return _auth.currentUser!.uid;
   }
 
@@ -59,14 +60,15 @@ class AuthService {
       return _userFromFirebaseUser(user!);
     } catch (e) {
       String aviso;
-      if(e.toString().contains('firebase_auth/invalid-email')){
+      if (e.toString().contains('firebase_auth/invalid-email')) {
         aviso = 'Correo inválido';
-      }else if(password == ''){
+      } else if (password == '') {
         aviso = 'Ingrese su contraseña';
       }
       /*else if(e.toString().contains('firebase_auth/wrong-password')){
         aviso = 'Contraseña inválida';
-      }*/else {
+      }*/
+      else {
         aviso = 'Usuario no encontrado';
       }
       Fluttertoast.showToast(
@@ -83,6 +85,8 @@ class AuthService {
 
   Future<void> logOut() async {
     try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.clear();
       return await _auth.signOut();
     } catch (e) {
       //return null;

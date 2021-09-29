@@ -17,6 +17,11 @@ class _SignInPageState extends State<SignInPage> {
   final TextEditingController _passwordController = TextEditingController();
   //Los controller es donde guarda las variables, creo que funciona asi
 
+   @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,6 +112,4 @@ class _SignInPageState extends State<SignInPage> {
           ),
         ));
   }
-
-
 }

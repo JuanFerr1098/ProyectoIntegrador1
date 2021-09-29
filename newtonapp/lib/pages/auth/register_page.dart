@@ -22,6 +22,11 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _passwordController = TextEditingController();
   //Los controller es donde guarda las variables, creo que funciona asi
 
+   @override
+  void dispose() {
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,16 +39,36 @@ class _RegisterPageState extends State<RegisterPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              nameText(),
+              /*nameText(),
               emailText(),
-              passwordText(),
+              passwordText(),*/
+              texto('Ingresa tu Nombre', _nameController, false),
+              texto('Ingresa tu Correo', _emailController, false),
+              texto('Ingresa tu Contraseña', _passwordController, true),
               botonRegistrar(context),
             ],
           ),
         ));
   }
 
-  Widget nameText() {
+  Widget texto(String txt, TextEditingController controller, bool obsText){
+    return Container(
+      //Ingreso del Nombre del Registro
+      padding: const EdgeInsets.all(10),
+      alignment: Alignment.center,
+      child: TextFormField(
+        //Aqui esta la entrada de texto
+        controller: controller,
+        decoration:  InputDecoration(
+          labelText: txt,
+          border: const OutlineInputBorder(),
+        ),
+        obscureText: obsText,
+      ),
+    );
+  }
+
+  /*Widget nameText() {
     return Container(
       //Ingreso del Nombre del Registro
       padding: const EdgeInsets.all(10),
@@ -90,7 +115,7 @@ class _RegisterPageState extends State<RegisterPage> {
         obscureText: true,
       ),
     );
-  }
+  }*/
 
   Widget botonRegistrar(context) {
     return Container(

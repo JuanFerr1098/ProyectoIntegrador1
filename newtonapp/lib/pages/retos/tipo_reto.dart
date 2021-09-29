@@ -4,12 +4,6 @@ import 'package:newtonapp/shared/drawer_menu.dart';
 
 class TipoReto extends StatelessWidget {
   TipoReto({Key? key}) : super(key: key);
-
-  /*@override
-  State<TipoReto> createState() => _TipoRetoState();
-}
-
-class _TipoRetoState extends State<TipoReto> {*/
   final List crearReto = [];
 
   @override
@@ -19,10 +13,11 @@ class _TipoRetoState extends State<TipoReto> {*/
       drawer: DrawerMenu(),
       body: Column(
         children: <Widget>[
-          texto(), 
+          texto(),
           botonTipoReto(context, 'time30s', '30 Segundos'),
-          botonTipoReto(context, '5preg', '5 Preguntas')
-          ],
+          botonTipoReto(context, '5preg', '5 Preguntas'),
+          botonTipoReto2(context, 'memory', 'Memoria'),
+        ],
       ),
     );
   }
@@ -32,7 +27,6 @@ class _TipoRetoState extends State<TipoReto> {*/
   }
 
   Widget botonTipoReto(context, String tipo, String texto) {
-    crearReto.add(tipo);
     return Container(
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
@@ -43,10 +37,31 @@ class _TipoRetoState extends State<TipoReto> {*/
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0),
           ),
-          onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (BuildContext context) => Retos(crearReto: crearReto))),
+          onPressed: () {
+            crearReto.add(tipo);
+            Navigator.push(
+                context, MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                        Retos(crearReto: crearReto)));
+          },
+          child: Text(texto),
+        ));
+  }
+
+  Widget botonTipoReto2(context, String tipo, String texto) {
+    return Container(
+        padding: const EdgeInsets.all(10),
+        alignment: Alignment.center,
+        child: MaterialButton(
+          minWidth: 220.0,
+          height: 60.0,
+          color: Colors.green,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5.0),
+          ),
+          onPressed: () {
+            Navigator.of(context).pushNamed('ComingSoon');
+          },
           child: Text(texto),
         ));
   }

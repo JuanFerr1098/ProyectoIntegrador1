@@ -48,8 +48,8 @@ class DrawerMenu extends StatelessWidget {
             onTap: () => Navigator.of(context).pushNamed('retosZone')),
         const Divider(),
         ListTile(
-          title: const Text('App version 1.0.0'),
-          onTap: () {},
+          title: const Text('Acerca de'),
+          onTap: () => Navigator.of(context).pushNamed('acercaDe'),
         ),
       ],
     );

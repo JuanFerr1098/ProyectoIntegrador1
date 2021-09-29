@@ -6,24 +6,25 @@ class Level extends StatelessWidget {
   const Level({Key? key, required this.crearReto}) : super(key: key);
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: <Widget>[
           texto(),
-          botoneslvl(context, '1cifra', '1 Cifra')
-
+          botoneslvl(context, '1cifra', '1 Cifra'),
+          botoneslvl(context, '2cifra', '2 Cifras'),
+          botoneslvl(context, '3cifra', '3 Cifras'),
+          botoneslvl(context, '4cifra', '4 Cifras'),
         ],
       ),
     );
   }
-  
+
   Widget texto() {
     return const Text('Level');
   }
 
-  Widget botoneslvl(context, String lvl, String texto){
-    crearReto.add(lvl);
+  Widget botoneslvl(context, String lvl, String texto) {
     return Container(
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
@@ -35,10 +36,13 @@ class Level extends StatelessWidget {
             borderRadius: BorderRadius.circular(50.0),
           ),
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(
-        builder: (BuildContext context) => RetosPage(crearReto: crearReto)));
+            crearReto.add(lvl);
+            Navigator.push(
+                context, MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                        RetosPage(crearReto: crearReto)));
           },
           child: Text(texto),
-        )); 
+        ));
   }
 }

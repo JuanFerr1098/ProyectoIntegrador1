@@ -11,6 +11,9 @@ import 'package:newtonapp/pages/auth/register_page.dart';
 import 'package:newtonapp/pages/auth/signin_page.dart';
 import 'package:newtonapp/pages/aprendizaje/suma_tema1.dart';
 import 'package:newtonapp/pages/retos/tipo_reto.dart';
+import 'package:newtonapp/pages/splashscreen.dart';
+import 'package:newtonapp/shared/acerca_de.dart';
+import 'package:newtonapp/shared/coming_soon.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,8 +33,9 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Montserrat',
         primarySwatch: Colors.blue,
       ),
-      home: const Index(),
+      home: const SplahScreen(),
       routes:{
+        'home': (_) => const Index(),
         'login': (_) => const SignInPage(),
         'register': (_) => const RegisterPage(),
         'index': (_) => const IndexPage(),
@@ -41,6 +45,8 @@ class MyApp extends StatelessWidget {
         'aprendizajeSuma': (_) => const AprendizajeSuma(),
         'sumaTema1': (_) => SumaTema1(),
         'retosZone': (_) => TipoReto(),
+        'acercaDe': (_) => const AcercaDe(),
+        'ComingSoon': (_) => const ComingSoon(),
       }
 
     );

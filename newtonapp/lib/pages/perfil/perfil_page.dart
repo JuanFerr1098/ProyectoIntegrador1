@@ -35,17 +35,30 @@ class _PerfilUser extends State<PerfilUser> {
       body: Form(
         child: Column(
           children: <Widget>[
-            nombre(data['nombre']),
-            correo(data['correo']),
+            texto('Hola ' + data['nombre']),
+            texto('Tu correo es ' + data['correo']),
             edad(data['edad']),
-            botonEditPerfil()
+            botonEditPerfil(),
           ],
         ),
       ),
     );
   }
 
-  Widget nombre(String name) {
+  Widget texto(String txt){
+    return Container(
+      padding: const EdgeInsets.all(10),
+        alignment: Alignment.center,
+        child: Text(
+          txt,
+          textAlign: TextAlign.center,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+    );
+  }
+
+  /*Widget nombre(String name) {
     return Container(
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
@@ -67,7 +80,7 @@ class _PerfilUser extends State<PerfilUser> {
           overflow: TextOverflow.ellipsis,
           style: const TextStyle(fontWeight: FontWeight.bold),
         ));
-  }
+  }*/
 
   Widget edad(String? edad) {
     if (edad != null) {
@@ -122,5 +135,5 @@ class _PerfilUser extends State<PerfilUser> {
             onPressed: () => Navigator.of(context).pushNamed('index'));
       }),
     );
-  }
+  }  
 }
