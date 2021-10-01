@@ -9,6 +9,7 @@ class Level extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           texto(),
           botoneslvl(context, '1cifra', '1 Cifra'),
@@ -21,7 +22,7 @@ class Level extends StatelessWidget {
   }
 
   Widget texto() {
-    return const Text('Level');
+    return const Text('Escoja el Level');
   }
 
   Widget botoneslvl(context, String lvl, String texto) {

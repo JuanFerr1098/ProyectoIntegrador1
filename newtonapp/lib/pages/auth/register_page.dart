@@ -22,11 +22,6 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _passwordController = TextEditingController();
   //Los controller es donde guarda las variables, creo que funciona asi
 
-   @override
-  void dispose() {
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -150,5 +145,10 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
           ),
         ));
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 }

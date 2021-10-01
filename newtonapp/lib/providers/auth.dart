@@ -54,9 +54,15 @@ class AuthService {
 
   Future signInWithEmailAndPassword(String email, String password) async {
     try {
+      // Valido el login
       UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       User? user = result.user;
+      // Guar las variables de estado para que no tenga que reloguear de nuevo
+      SharedPreferences em = await SharedPreferences.getInstance();
+      SharedPreferences pw = await SharedPreferences.getInstance();
+      em.setString('email', email);
+      pw.setString('password', password);
       return _userFromFirebaseUser(user!);
     } catch (e) {
       String aviso;

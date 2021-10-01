@@ -56,6 +56,7 @@ class DrawerMenu extends StatelessWidget {
   }
 
   Widget _buildDrawerHeader(String name) {
+    // Se puede usar DrawerHeader, pero toca ver como funciona
     return Container(
         padding: const EdgeInsets.all(50),
         child: Form(

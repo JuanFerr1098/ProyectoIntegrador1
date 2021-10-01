@@ -25,7 +25,7 @@ class Resultado extends StatelessWidget {
       : super(key: key);
 
   
-  //final String date = DateTime.now().toString();
+  //Este widget se carga cada 8 segundos y no se por que
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +37,7 @@ class Resultado extends StatelessWidget {
     return Scaffold(
       //appBar: myAppBar(context),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text('Su puntaje es ' + puntaje),
           MaterialButton(
@@ -54,7 +55,9 @@ class Resultado extends StatelessWidget {
                 //fontWeight: FontWeight.bold,
               ),
             ),
-          )
+          ),
+          Image.network('https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/gif%2Fpatito.gif?alt=media&token=6d4b13d0-56d1-4400-adc8-d5374f863233',
+          width: 300,),
           // Agregar boton para reintentar
         ],
       ),

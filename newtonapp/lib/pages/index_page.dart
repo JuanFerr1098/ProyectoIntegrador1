@@ -1,8 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:newtonapp/providers/auth.dart';
-import 'package:newtonapp/providers/user_provider.dart';
+//import 'package:newtonapp/providers/user_provider.dart';
 import 'package:newtonapp/shared/drawer_menu.dart';
 
 class IndexPage extends StatefulWidget {
@@ -18,7 +18,7 @@ class _IndexPage extends State<IndexPage> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<DocumentSnapshot>(
+    /*return FutureBuilder<DocumentSnapshot>(
         future: UserProvider(uid: _authS.userActualUid()).getUsers(),
         builder:
             (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
@@ -27,7 +27,8 @@ class _IndexPage extends State<IndexPage> {
           } else {
             return const Center(child: CircularProgressIndicator());
           }
-        });
+        });*/
+    return _pantalla(context);
   }
 
   Widget _pantalla(context) {
@@ -136,8 +137,8 @@ class _IndexPage extends State<IndexPage> {
           iconSize: 40.0,
           onPressed: () async {
             await _authS.logOut();
-            Navigator.of(context)
-                .pushNamedAndRemoveUntil('home', (Route<dynamic> route) => false);
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                'home', (Route<dynamic> route) => false);
           },
           icon: const Icon(Icons.logout_rounded),
           color: Colors.purple.shade700,

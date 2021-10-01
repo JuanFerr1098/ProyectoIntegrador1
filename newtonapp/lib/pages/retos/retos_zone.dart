@@ -176,18 +176,33 @@ class _RetosZone extends State<RetosZone> {
     opciones = [resp];
     ///////////////////////////////////////////
     ///Organizar el metodo para poner opciones incorrectas que dependan de la solucion
-    int auxOpc;
-    int i = 1;
-    while (i < 4) {
-      // Corregir para que coincida con cada operacion y lvl
-      auxOpc = random.nextInt(20) + 1;
-      if (!opciones.contains(auxOpc)) {
-        opciones.add(auxOpc);
-        i++;
-      }
+    
+    switch (random.nextInt(4)) {
+      case 0:
+        opciones.add(resp + 1);
+        opciones.add(resp + 2);
+        opciones.add(resp + 3);
+        break;
+      case 1:
+        opciones.add(resp - 1);
+        opciones.add(resp + 1);
+        opciones.add(resp + 2);
+        break;
+      case 2:
+        opciones.add(resp - 2);
+        opciones.add(resp - 1);
+        opciones.add(resp + 1);
+        break;
+      case 3:
+        opciones.add(resp - 3);
+        opciones.add(resp - 2);
+        opciones.add(resp - 1);
+        break;
+      default:
     }
+
     /////////////////////////////////////////////
-    int aux = random.nextInt(3);
+    int aux = random.nextInt(4);
     int op0 = opciones[aux];
     opciones.removeAt(aux);
     aux = random.nextInt(2);
@@ -275,7 +290,12 @@ class _RetosZone extends State<RetosZone> {
         children: <Widget>[
           Expanded(
               flex: 3,
-              child: Text(pregunta[0], style: const TextStyle(fontSize: 50))),
+              child: Center(
+                child: Text(
+                  pregunta[0], 
+                  style: const TextStyle(fontSize: 50),
+                  textAlign: TextAlign.center,),
+              )),
           Expanded(
               flex: 5,
               child: Column(
@@ -288,7 +308,11 @@ class _RetosZone extends State<RetosZone> {
               )),
           Expanded(
             flex: 2,
-            child: Text(showtimer),
+            child: Text(
+              showtimer,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 50),
+              ),
           )
         ],
       ),
