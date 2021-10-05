@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:newtonapp/shared/drawer_menu.dart';
 import 'package:newtonapp/shared/icons.dart';
@@ -8,11 +9,13 @@ class Aprendizaje extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return Scaffold(
       appBar: AppBar(), // Organizar
       drawer: DrawerMenu(),
       backgroundColor: Colors.purple.shade700, //Fondo de la pantalla
-      body: SizedBox(
+      /*body: SizedBox(
         width: double.infinity,
         height: double.infinity,
         child: Column(
@@ -23,7 +26,8 @@ class Aprendizaje extends StatelessWidget {
             botones(context),
           ],
         ),
-      ),
+      ),*/
+      body: botones(context),
     );
   }
 
@@ -59,7 +63,7 @@ class Aprendizaje extends StatelessWidget {
   }
 
   Widget botones(context) {
-    return Container(
+    /*return Container(
       // color: Colors.white60,
       width: double.infinity,
       //height:MediaQuery.of(context).size.height*.5,
@@ -75,6 +79,16 @@ class Aprendizaje extends StatelessWidget {
             botonMult(context),
             botonDiv(context),
           ]),
+    );*/
+    return ListView(
+      scrollDirection: Axis.horizontal,
+      children: <Widget>[
+            //botonlogin(context),
+            botonSuma(context),
+            botonResta(context),
+            botonMult(context),
+            botonDiv(context),
+          ],
     );
   }
 

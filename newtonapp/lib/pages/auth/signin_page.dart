@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:newtonapp/providers/auth.dart';
 
 class SignInPage extends StatefulWidget {
@@ -19,6 +20,8 @@ class _SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return Scaffold(
         //backgroundColor: Colors.tealAccent, //Fondo de la pantalla
         appBar: AppBar(
@@ -27,9 +30,11 @@ class _SignInPageState extends State<SignInPage> {
         ),
         body: Form(
           key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: ListView(
+            //crossAxisAlignment: CrossAxisAlignment.center,
+            //mainAxisAlignment: MainAxisAlignment.center,
+            addAutomaticKeepAlives: false,
+            scrollDirection: Axis.vertical,
             children: <Widget>[
               loginText(),
               passwordText(),
@@ -91,7 +96,7 @@ class _SignInPageState extends State<SignInPage> {
           onPressed: () async {
             if (_formKey.currentState!.validate()) {
               dynamic result = await _authS.signInWithEmailAndPassword(
-                  _emailController.text, _passwordController.text);
+                  _emailController.text, _passwordController.text, true);
               if (result != null) {
                 Navigator.of(context).pushNamedAndRemoveUntil('index', (route) => false);
               }

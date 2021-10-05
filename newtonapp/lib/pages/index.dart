@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 //import 'package:flutter/src/material/colors.dart';
 
@@ -7,6 +8,8 @@ class Index extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return Scaffold(
       //backgroundColor: Colors.purple.shade700, //Fondo de la pantalla
       body: SizedBox(

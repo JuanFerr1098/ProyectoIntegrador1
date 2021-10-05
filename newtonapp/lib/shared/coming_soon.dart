@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 class ComingSoon extends StatelessWidget {
@@ -6,6 +7,8 @@ class ComingSoon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return Scaffold(
       appBar: AppBar(),
       body: Center(

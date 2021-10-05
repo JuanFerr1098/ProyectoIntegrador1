@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:newtonapp/providers/auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-//import 'package:firebase_storage/firebase_storage.dart';
 
 class SplahScreen extends StatefulWidget {
   const SplahScreen({Key? key}) : super(key: key);
@@ -24,6 +24,8 @@ class _SplashScreen extends State<SplahScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return Image.network('https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/gif%2Fnewton.gif?alt=media&token=c1e75077-ae73-416a-9c96-bf30f3a3f052',
     fit: BoxFit.fill,);
     
@@ -48,7 +50,7 @@ class _SplashScreen extends State<SplahScreen> {
     SharedPreferences pw = await SharedPreferences.getInstance();
     //print(em.getString('email').toString() + '\n'+ pw.getString('password').toString());
     dynamic result = await _authS.signInWithEmailAndPassword(
-        em.getString('email').toString(), pw.getString('password').toString());
+        em.getString('email').toString(), pw.getString('password').toString(), false);
     if (result != null) {
       Navigator.of(context).pushNamedAndRemoveUntil('index', (route) => false);
     } else {

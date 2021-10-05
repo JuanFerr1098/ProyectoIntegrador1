@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -69,7 +71,7 @@ class _SumaTema1State extends State<SumaTema1> {
         SizedBox(
           child: Image.network('https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/images%2Ftruco1-2.jpg?alt=media&token=15875dab-eba7-4f4c-aeb4-b1708a5ca2d0'),
           //child: Image(image: AssetImage('../assets/images/truco1-2.jpg'),),
-          //child: Image.asset('../assets/images/truco1-2.jpg'),
+          //child: Image.asset('/images/truco1-2.jpg', package: 'assets',),
           //fit: Boxfit.cover,
           width: 1080,
         ),
@@ -143,7 +145,7 @@ class _SumaTema1State extends State<SumaTema1> {
             borderRadius: BorderRadius.circular(50.0),
           ),
           onPressed: () => buttonCarouselController.nextPage(
-              duration: Duration(milliseconds: 300), curve: Curves.linear),
+              duration: const Duration(milliseconds: 300), curve: Curves.linear),
           child: const Icon(
             //Icons.arrow_forward_ios_rounded,
             MyIcons.right,

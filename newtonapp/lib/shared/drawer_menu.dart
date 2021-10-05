@@ -33,23 +33,46 @@ class DrawerMenu extends StatelessWidget {
         _buildDrawerItem(
             icon: Icons.home,
             text: 'Home',
-            onTap: () => Navigator.of(context).pushNamed('index')),
+            onTap: () {
+              //Navigator.of(context).pop();
+              //Navigator.of(context).pushNamed('index');
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                'index', (Route<dynamic> route) => false);
+            }),
         _buildDrawerItem(
             icon: Icons.account_circle,
             text: 'Perfil',
-            onTap: () => Navigator.of(context).pushNamed('perfil')),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pushNamed('perfil');
+            }),
         _buildDrawerItem(
             icon: Icons.book,
             text: 'Aprendizaje',
-            onTap: () => Navigator.of(context).pushNamed('aprendizaje')),
+            onTap: () {
+              //Navigator.of(context).pop();
+              //Navigator.of(context).pushNamed('aprendizaje');
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                'aprendizaje', ModalRoute.withName('index'));
+            }),
         _buildDrawerItem(
             icon: Icons.my_library_books,
             text: 'Retos',
-            onTap: () => Navigator.of(context).pushNamed('retosZone')),
+            onTap: () {
+              //Navigator.of(context).pop();
+              //Navigator.of(context).pushNamed('retosZone');
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                'retosZone', ModalRoute.withName('index'));
+            }),
         const Divider(),
         ListTile(
           title: const Text('Acerca de'),
-          onTap: () => Navigator.of(context).pushNamed('acercaDe'),
+          onTap: () {
+            //Navigator.pop(context);
+            //Navigator.of(context).pushNamed('acercaDe');
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                'acercaDe', ModalRoute.withName('index'));
+          },
         ),
       ],
     );

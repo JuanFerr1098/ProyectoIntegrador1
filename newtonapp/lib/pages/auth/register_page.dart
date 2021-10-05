@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:newtonapp/providers/auth.dart';
 
@@ -24,6 +25,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.purple.shade700,
@@ -31,8 +34,10 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
         body: Form(
           key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+          child: ListView(
+            //crossAxisAlignment: CrossAxisAlignment.center,
+            addAutomaticKeepAlives: false,
+            scrollDirection: Axis.vertical,
             children: <Widget>[
               /*nameText(),
               emailText(),

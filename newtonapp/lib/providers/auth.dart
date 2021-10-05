@@ -52,7 +52,8 @@ class AuthService {
     }
   }
 
-  Future signInWithEmailAndPassword(String email, String password) async {
+  Future signInWithEmailAndPassword(
+      String email, String password, bool validate) async {
     try {
       // Valido el login
       UserCredential result = await _auth.signInWithEmailAndPassword(
@@ -65,26 +66,28 @@ class AuthService {
       pw.setString('password', password);
       return _userFromFirebaseUser(user!);
     } catch (e) {
-      String aviso;
-      if (e.toString().contains('firebase_auth/invalid-email')) {
-        aviso = 'Correo inválido';
-      } else if (password == '') {
-        aviso = 'Ingrese su contraseña';
-      }
-      /*else if(e.toString().contains('firebase_auth/wrong-password')){
+      if (validate) {
+        String aviso;
+        if (e.toString().contains('firebase_auth/invalid-email')) {
+          aviso = 'Correo inválido';
+        } else if (password == '') {
+          aviso = 'Ingrese su contraseña';
+        }
+        /*else if(e.toString().contains('firebase_auth/wrong-password')){
         aviso = 'Contraseña inválida';
       }*/
-      else {
-        aviso = 'Usuario no encontrado';
+        else {
+          aviso = 'Usuario no encontrado';
+        }
+        Fluttertoast.showToast(
+            msg: aviso,
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.0);
       }
-      Fluttertoast.showToast(
-          msg: aviso,
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0);
       return null;
     }
   }

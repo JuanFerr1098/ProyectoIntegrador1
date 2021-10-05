@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:newtonapp/providers/auth.dart';
 import 'package:newtonapp/providers/user_provider.dart';
 
@@ -19,6 +20,8 @@ class _EditPerfil extends State<EditProfile> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return FutureBuilder<DocumentSnapshot>(
         future: UserProvider(uid: _authS.userActualUid()).getUsers(),
         builder:
@@ -33,7 +36,7 @@ class _EditPerfil extends State<EditProfile> {
         });
   }
 
-  Widget editarPerfil(Map<String, dynamic> data) {
+  Widget editarPerfil(Map<String, dynamic> data) {    
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.purple.shade700,

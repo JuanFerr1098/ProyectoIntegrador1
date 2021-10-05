@@ -85,10 +85,12 @@ class _RetosZone extends State<RetosZone> {
   int totalPreg = 0;
 
   DateTime? date;
+  //late bool _isDisabled;
 
   @override
   void initState() {
     date = DateTime.now();
+    //_isDisabled = false;
     // Inicializar valores del timer
     iniciarTimer();
     starttimer();
@@ -136,7 +138,7 @@ class _RetosZone extends State<RetosZone> {
     });
   }
 
-  // Corregir para que use la función modulo para valores mas congruentes a la dificultad
+  /// Generador de números aleatorios dependiendo del rango
   int generatedNumber(int tam) {
     Random random = Random();
     return random.nextInt(pow(10, tam).toInt() - pow(10, tam - 1).toInt() - 1) +
@@ -150,6 +152,8 @@ class _RetosZone extends State<RetosZone> {
     int num2 = generatedNumber(data[lvl][2].length);
     List<int> opciones;
     String operacion;
+    //////////////////////////////////////////////////////////////////////////////////////
+    /// Generador de preguntas con su respuesta
     switch (data[lvl][1]) {
       case '+':
         resp = num1 + num2;
@@ -170,38 +174,58 @@ class _RetosZone extends State<RetosZone> {
         resp = num1;
         num1 = dividendo;
         break;
-      default: break;
+      default:
+        break;
     }
     operacion = num1.toString() + ' ' + data[lvl][1] + ' ' + num2.toString();
     opciones = [resp];
-    ///////////////////////////////////////////
-    ///Organizar el metodo para poner opciones incorrectas que dependan de la solucion
-    
+    //////////////////////////////////////////////////////////////////////////////////////
+    /// Metodo para poner opciones incorrectas que dependan de la solucion
+    int a;
+    if (data[lvl][0].length == 1 ||
+        (data[lvl][0].length == 2 && data[lvl][1] == '-') ||
+        (data[lvl][0].length == 2 && data[lvl][1] == '/')) {
+      a = 1;
+    } else if ((data[lvl][0].length == 2 && data[lvl][1] == '+') ||
+            //(data[lvl][1] == '+' || data[lvl][1] == '*')) ||
+        (data[lvl][0].length == 3 &&
+            (data[lvl][1] == '-' || data[lvl][1] == '/'))) {
+      a = 5;
+    } else if ((data[lvl][0].length == 2 && data[lvl][1] == '*') ||
+        (data[lvl][0].length == 3 && data[lvl][1] != '-') ||
+        (data[lvl][0].length == 4 &&
+            (data[lvl][1] == '-' || data[lvl][1] == '/'))) {
+      a = 50;
+    } else {
+      a = 500;
+    }
+     
     switch (random.nextInt(4)) {
       case 0:
-        opciones.add(resp + 1);
-        opciones.add(resp + 2);
-        opciones.add(resp + 3);
+        opciones.add(resp + (a * 1));
+        opciones.add(resp + (a * 2));
+        opciones.add(resp + (a * 3));
         break;
       case 1:
-        opciones.add(resp - 1);
-        opciones.add(resp + 1);
-        opciones.add(resp + 2);
+        opciones.add(resp - (a * 1));
+        opciones.add(resp + (a * 1));
+        opciones.add(resp + (a * 2));
         break;
       case 2:
-        opciones.add(resp - 2);
-        opciones.add(resp - 1);
-        opciones.add(resp + 1);
+        opciones.add(resp - (a * 2));
+        opciones.add(resp - (a * 1));
+        opciones.add(resp + (a * 1));
         break;
       case 3:
-        opciones.add(resp - 3);
-        opciones.add(resp - 2);
-        opciones.add(resp - 1);
+        opciones.add(resp - (a * 3));
+        opciones.add(resp - (a * 2));
+        opciones.add(resp - (a * 1));
         break;
       default:
     }
 
-    /////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////
+    /// Reorganizador de las opciones de respuesta
     int aux = random.nextInt(4);
     int op0 = opciones[aux];
     opciones.removeAt(aux);
@@ -221,10 +245,11 @@ class _RetosZone extends State<RetosZone> {
     if (resp == opcionCorrecta) {
       color = Colors.green;
       // Aumento el puntaje que usare luego en otra pantalla
-      puntaje = puntaje + 1;
+      //puntaje++;
+      puntaje = puntaje + timer;
     } else {
       color = Colors.red;
-      errores = errores + 1;
+      errores++;
     }
     totalPreg++;
     setState(() {
@@ -245,6 +270,10 @@ class _RetosZone extends State<RetosZone> {
             cantPreg++;
           } else {
             navegarPuntaje();
+          }
+          if (timer == 0) {
+            errores++;
+            totalPreg++;
           }
           timer = 7;
           break;
@@ -267,7 +296,7 @@ class _RetosZone extends State<RetosZone> {
   }
 
   void navegarPuntaje() {
-    Navigator.push(
+    /*Navigator.push(
         context,
         MaterialPageRoute(
             builder: (BuildContext context) => Resultado(
@@ -278,43 +307,61 @@ class _RetosZone extends State<RetosZone> {
                   operacion: operacion,
                   tipo: tipo,
                   date: date.toString(),
-                )));
+                )));*/
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(
+            builder: (BuildContext context) => Resultado(
+                  puntaje: puntaje.toString(),
+                  errores: errores.toString(),
+                  cantPreg: totalPreg.toString(),
+                  lvl: lvl,
+                  operacion: operacion,
+                  tipo: tipo,
+                  date: date.toString(),
+                )),
+        (route) => false);
   }
 
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
-    return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Expanded(
-              flex: 3,
-              child: Center(
-                child: Text(
-                  pregunta[0], 
-                  style: const TextStyle(fontSize: 50),
-                  textAlign: TextAlign.center,),
-              )),
-          Expanded(
-              flex: 5,
-              child: Column(
-                children: <Widget>[
-                  respuestas(pregunta[1], resp, 'a'),
-                  respuestas(pregunta[2], resp, 'b'),
-                  respuestas(pregunta[3], resp, 'c'),
-                  respuestas(pregunta[4], resp, 'd'),
-                ],
-              )),
-          Expanded(
-            flex: 2,
-            child: Text(
-              showtimer,
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 50),
+    return WillPopScope(
+      onWillPop: () async {
+        return false;
+      },
+      child: Scaffold(
+        body: Column(
+          children: <Widget>[
+            Expanded(
+                flex: 3,
+                child: Center(
+                  child: Text(
+                    pregunta[0],
+                    style: const TextStyle(fontSize: 50),
+                    textAlign: TextAlign.center,
+                  ),
+                )),
+            Expanded(
+                flex: 5,
+                child: Column(
+                  children: <Widget>[
+                    respuestas(pregunta[1], resp, 'a'),
+                    respuestas(pregunta[2], resp, 'b'),
+                    respuestas(pregunta[3], resp, 'c'),
+                    respuestas(pregunta[4], resp, 'd'),
+                  ],
+                )),
+            Expanded(
+              flex: 2,
+              child: Text(
+                showtimer,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 50),
               ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
@@ -328,10 +375,13 @@ class _RetosZone extends State<RetosZone> {
           minWidth: 220.0,
           height: 60.0,
           color: btncolor[k],
+          splashColor: Colors.white,
+          highlightColor: Colors.green,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0),
           ),
           onPressed: () => checkAnswer(resp, sum, k),
+          //onPressed: () => _isDisabled ? false: _disabledButton(resp, sum, k),
           child: Text(
             resp.toString(),
             style: const TextStyle(
@@ -342,4 +392,8 @@ class _RetosZone extends State<RetosZone> {
           ),
         ));
   }
+
+  /*_disabledButton(resp, sum, k){
+    checkAnswer(resp, sum, k);
+  }*/
 }
