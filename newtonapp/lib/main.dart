@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         'login': (_) => const SignInPage(),
         'register': (_) => const RegisterPage(),
         'index': (_) => const IndexPage(),
-        'aprendizaje': (_) => const Aprendizaje(),
+        'aprendizaje': (_) =>  Aprendizaje(),
         'perfil': (_) => const PerfilUser(),
         'editarPerfil': (_) => const EditProfile(),
         'aprendizajeSuma': (_) => const AprendizajeSuma(),

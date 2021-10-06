@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:newtonapp/providers/auth.dart';
+import 'package:newtonapp/providers/user_provider.dart';
 import 'package:newtonapp/shared/drawer_menu.dart';
 import 'package:newtonapp/shared/icons.dart';
 
 class Aprendizaje extends StatelessWidget {
-  const Aprendizaje({Key? key}) : super(key: key);
-
+ Aprendizaje({Key? key}) : super(key: key);
+ final AuthService _authS = AuthService();
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
-      appBar: AppBar(), // Organizar
+      appBar: myAppBar(context), // Organizar
       drawer: DrawerMenu(),
-      backgroundColor: Colors.purple.shade700, //Fondo de la pantalla
+      backgroundColor: Colors.white,
+      //backgroundColor: Colors.purple.shade700, //Fondo de la pantalla
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
@@ -64,16 +68,29 @@ class Aprendizaje extends StatelessWidget {
       width: double.infinity,
       //height:MediaQuery.of(context).size.height*.5,
       padding: const EdgeInsets.all(30),
-      child: Row(
+      child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           //crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            //botonlogin(context),
-            botonSuma(context),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                botonSuma(context),
             botonResta(context),
-            botonMult(context),
+              ]
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+              botonMult(context),
             botonDiv(context),
+              ]
+            ),
+            
+            //botonlogin(context),
+          
+            
           ]),
     );
   }
@@ -83,19 +100,19 @@ class Aprendizaje extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
-          minWidth: 90.0,
-          height: 90.0,
-          color: Colors.white,
+          minWidth: 150.0,
+          height: 150.0,
+          color: const Color.fromRGBO( 145, 99, 203, 1),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50.0),
+            borderRadius: BorderRadius.circular(10.0),
           ),
           onPressed: () {
             Navigator.of(context).pushNamed('aprendizajeSuma');
           },
           child: Icon(
             MyIcons.add,
-            color: Colors.purple.shade700,
-            size: 35,
+            color: Colors.white,
+            size: 50,
           ),
         ));
   }
@@ -105,17 +122,18 @@ class Aprendizaje extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
-          minWidth: 90.0,
-          height: 90.0,
-          color: Colors.white,
+          minWidth: 150.0,
+          height: 150.0,
+          color: const Color.fromRGBO( 0, 180, 216, 1),
+          //color: Colors.white,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50.0),
+            borderRadius: BorderRadius.circular(10.0),
           ),
           onPressed: () {},
           child: Icon(
             MyIcons.minus,
-            color: Colors.purple.shade700,
-            size: 35,
+            color: Colors.white,
+            size: 50,
           ),
         ));
   }
@@ -125,17 +143,18 @@ class Aprendizaje extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
-          minWidth: 90.0,
-          height: 90.0,
-          color: Colors.white,
+          minWidth: 150.0,
+          height: 150.0,
+           color: const Color.fromRGBO( 0, 180, 216, 1),
+          //color: Colors.white,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50.0),
+            borderRadius: BorderRadius.circular(10.0),
           ),
           onPressed: () {},
           child: Icon(
             MyIcons.mult,
-            color: Colors.purple.shade700,
-            size: 35,
+            color: Colors.white,
+            size: 50,
           ),
         ));
   }
@@ -145,18 +164,46 @@ class Aprendizaje extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
-          minWidth: 90.0,
-          height: 90.0,
-          color: Colors.white,
+         minWidth: 150.0,
+          height: 150.0,
+          color: const Color.fromRGBO( 160, 108, 213, 1),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50.0),
+            borderRadius: BorderRadius.circular(10.0),
           ),
           onPressed: () {},
           child: Icon(
             MyIcons.divide,
-            color: Colors.purple.shade700,
-            size: 35,
+            color: Colors.white,
+            size: 50,
           ),
         ));
+  }
+
+    PreferredSizeWidget? myAppBar(context) {
+    return AppBar(
+      backgroundColor:  const Color.fromRGBO( 0, 180, 216, 1),
+      elevation: 0.0,
+      leading: Builder(builder: (context) {
+        return IconButton(
+          iconSize: 40.0,
+          icon: const Icon(Icons.more_vert),
+          color: Colors.white,
+          onPressed: () => Scaffold.of(context).openDrawer(),
+        );
+      }),
+      actions: <Widget>[
+        IconButton(
+          //atras
+          iconSize: 40.0,
+          onPressed: () async {
+            await _authS.logOut();
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+          },
+          icon: const Icon(Icons.logout_rounded),
+          color: Colors.white,
+        ),
+      ],
+    );
   }
 }
