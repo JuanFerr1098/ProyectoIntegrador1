@@ -29,8 +29,8 @@ class Aprendizaje extends StatelessWidget {
             botones(context),
           ],
         ),
-      ),*/
-      body: botones(context),
+      ),
+    
     );
   }
 
@@ -66,7 +66,7 @@ class Aprendizaje extends StatelessWidget {
   }
 
   Widget botones(context) {
-    /*return Container(
+    return Container(
       // color: Colors.white60,
       width: double.infinity,
       //height:MediaQuery.of(context).size.height*.5,
@@ -90,12 +90,9 @@ class Aprendizaje extends StatelessWidget {
             botonDiv(context),
               ]
             ),
-            
-            //botonlogin(context),
-          
-            
+           
           ]),
-    );*/
+    );
     return ListView(
       scrollDirection: Axis.horizontal,
       children: <Widget>[
