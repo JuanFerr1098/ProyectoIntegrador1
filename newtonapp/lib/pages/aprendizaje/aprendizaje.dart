@@ -102,7 +102,7 @@ class Aprendizaje extends StatelessWidget {
         child: MaterialButton(
           minWidth: 150.0,
           height: 150.0,
-          color: const Color.fromRGBO( 145, 99, 203, 1),
+          color: const Color.fromRGBO( 145, 99, 203, 1),//lila
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
@@ -124,7 +124,7 @@ class Aprendizaje extends StatelessWidget {
         child: MaterialButton(
           minWidth: 150.0,
           height: 150.0,
-          color: const Color.fromRGBO( 0, 180, 216, 1),
+          color: const Color.fromRGBO( 0, 180, 216, 1),//turquesa
           //color: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),

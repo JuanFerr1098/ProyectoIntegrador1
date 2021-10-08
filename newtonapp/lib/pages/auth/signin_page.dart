@@ -22,8 +22,8 @@ class _SignInPageState extends State<SignInPage> {
     return Scaffold(
         //backgroundColor: Colors.tealAccent, //Fondo de la pantalla
         appBar: AppBar(
-          backgroundColor: Colors.purple.shade700,
-          title: Text(widget.title),
+          backgroundColor: const Color.fromRGBO( 145, 99, 203, 1),
+          //title: Text(widget.title),
         ),
         body: Form(
           key: _formKey,
@@ -41,6 +41,7 @@ class _SignInPageState extends State<SignInPage> {
 
   Widget loginText() {
     return Container(
+      width: 450.0,
       //Ingreso del Email del Login
       padding: const EdgeInsets.all(10),
       alignment: Alignment.center,
@@ -60,11 +61,13 @@ class _SignInPageState extends State<SignInPage> {
 
   Widget passwordText() {
     return Container(
+      width: 450.0,
       //Ingreso de la Contraseña del Login
       padding: const EdgeInsets.all(10),
       alignment: Alignment.center,
       child: TextFormField(
         //Aqui esta la entrada de texto
+        
         controller: _passwordController,
         decoration: const InputDecoration(
             labelText: 'Ingresa tu Contraseña',
@@ -78,13 +81,14 @@ class _SignInPageState extends State<SignInPage> {
 
   Widget botonIngresar(context) {
     return Container(
+      
         //Boton para ir al Registro de la App
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
           minWidth: 230.0,
           height: 60.0,
-          color: Colors.purple.shade700,
+          color: const Color.fromRGBO( 0, 180, 216, 1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0),
           ),
@@ -100,8 +104,9 @@ class _SignInPageState extends State<SignInPage> {
           child: const Text(
             'Ingresar',
             style: TextStyle(
+              fontFamily: 'QBold', 
               color: Colors.white,
-              fontSize: 20.0,
+              fontSize: 25.0,
               //fontWeight: FontWeight.bold,
             ),
           ),

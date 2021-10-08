@@ -59,9 +59,10 @@ class _IndexPage extends State<IndexPage> {
             Text(
               '¿A donde quieres ir?',
               style: TextStyle(
+                fontFamily: 'QBold', 
                 fontWeight: FontWeight.bold,
                 fontSize: 30.0,
-                color: Colors.purple.shade700,
+                color: const Color.fromRGBO( 145, 99, 203, 1),
               ),
             ),
           ]),
@@ -73,9 +74,9 @@ class _IndexPage extends State<IndexPage> {
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
-          minWidth: 220.0,
+          minWidth: 230.0,
           height: 60.0,
-          color: Colors.purple.shade700,
+          color: const Color.fromRGBO( 0, 180, 216, 1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0),
           ),
@@ -85,6 +86,7 @@ class _IndexPage extends State<IndexPage> {
           child: const Text(
             'Aprendizaje',
             style: TextStyle(
+              fontFamily: 'QBold', 
               color: Colors.white,
               fontSize: 25.0,
               fontWeight: FontWeight.bold,
@@ -98,9 +100,9 @@ class _IndexPage extends State<IndexPage> {
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
-          minWidth: 220.0,
+          minWidth: 230.0,
           height: 60.0,
-          color: Colors.purple.shade700,
+          color: const Color.fromRGBO( 145, 99, 203, 1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0),
           ),
@@ -110,6 +112,7 @@ class _IndexPage extends State<IndexPage> {
           child: const Text(
             'Retos',
             style: TextStyle(
+              fontFamily: 'QBold', 
               color: Colors.white,
               fontSize: 25.0,
               fontWeight: FontWeight.bold,
@@ -126,7 +129,7 @@ class _IndexPage extends State<IndexPage> {
         return IconButton(
           iconSize: 40.0,
           icon: const Icon(Icons.more_vert),
-          color: Colors.purple.shade700,
+         color: const Color.fromRGBO( 0, 180, 216, 1),
           onPressed: () => Scaffold.of(context).openDrawer(),
         );
       }),
@@ -140,7 +143,7 @@ class _IndexPage extends State<IndexPage> {
                 .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
           },
           icon: const Icon(Icons.logout_rounded),
-          color: Colors.purple.shade700,
+          color: const Color.fromRGBO( 0, 180, 216, 1),
         ),
       ],
     );
