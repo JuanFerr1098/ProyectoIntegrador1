@@ -93,7 +93,7 @@ class Aprendizaje extends StatelessWidget {
            
           ]),
     );
-    return ListView(
+    /*return ListView(
       scrollDirection: Axis.horizontal,
       children: <Widget>[
             //botonlogin(context),
@@ -102,7 +102,7 @@ class Aprendizaje extends StatelessWidget {
             botonMult(context),
             botonDiv(context),
           ],
-    );
+    );*/
   }
 
   Widget botonSuma(context) {
