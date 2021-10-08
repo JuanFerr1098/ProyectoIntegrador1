@@ -68,7 +68,7 @@ class Level extends StatelessWidget {
             borderRadius: BorderRadius.circular(30.0),
           ),
           onPressed: () {
-           Navigator.of(context).pushNamedAndRemoveUntil('index', (route) => false);
+           Navigator.of(context).pushNamedAndRemoveUntil('retosZone', ModalRoute.withName('index'));
           },
           child: const Text(
             'Cancelar',

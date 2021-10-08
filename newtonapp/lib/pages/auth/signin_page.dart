@@ -30,11 +30,11 @@ class _SignInPageState extends State<SignInPage> {
         ),
         body: Form(
           key: _formKey,
-          child: ListView(
-            //crossAxisAlignment: CrossAxisAlignment.center,
-            //mainAxisAlignment: MainAxisAlignment.center,
-            addAutomaticKeepAlives: false,
-            scrollDirection: Axis.vertical,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            //addAutomaticKeepAlives: false,
+            //scrollDirection: Axis.vertical,
             children: <Widget>[
               loginText(),
               passwordText(),
