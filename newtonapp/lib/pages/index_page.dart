@@ -127,13 +127,13 @@ class _IndexPage extends State<IndexPage> {
 
   PreferredSizeWidget? myAppBar(context) {
     return AppBar(
-      backgroundColor: Colors.white,
+       backgroundColor:  const Color.fromRGBO( 0, 180, 216, 1),
       elevation: 0.0,
       leading: Builder(builder: (context) {
         return IconButton(
           iconSize: 40.0,
           icon: const Icon(Icons.more_vert),
-         color: const Color.fromRGBO( 0, 180, 216, 1),
+        color: Colors.white,
           onPressed: () => Scaffold.of(context).openDrawer(),
         );
       }),
@@ -147,7 +147,7 @@ class _IndexPage extends State<IndexPage> {
                 'home', (Route<dynamic> route) => false);
           },
           icon: const Icon(Icons.logout_rounded),
-          color: const Color.fromRGBO( 0, 180, 216, 1),
+          color: Colors.white,
         ),
       ],
     );

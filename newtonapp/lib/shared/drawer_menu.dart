@@ -31,8 +31,11 @@ class DrawerMenu extends StatelessWidget {
         _buildDrawerHeader(data['nombre']),
         const Divider(),
         _buildDrawerItem(
+          
             icon: Icons.home,
+            
             text: 'Home',
+            
             onTap: () {
               //Navigator.of(context).pop();
               //Navigator.of(context).pushNamed('index');
@@ -87,7 +90,7 @@ class DrawerMenu extends StatelessWidget {
           children: [
             Icon(
               Icons.account_box,
-              color: Colors.purple.shade700,
+              color: const Color.fromRGBO( 145, 99, 203, 1),
               size: 100.0,
             ),
             Text(name),
@@ -100,10 +103,22 @@ class DrawerMenu extends StatelessWidget {
     return ListTile(
       title: Row(
         children: <Widget>[
-          Icon(icon),
+          Icon(icon,
+          color:const Color.fromRGBO( 0, 180, 216, 1),),
+          
+          
           Padding(
             padding: const EdgeInsets.only(left: 8.0),
-            child: Text(text!),
+            child: Text(text!,
+            style: TextStyle(
+                //color: const Color.fromRGBO( 145, 99, 203, 1),
+                //color: Colors.white,
+                color:Colors.grey,
+                fontFamily: 'PMedium',
+                fontWeight: FontWeight.bold,
+                fontSize: 15.0,
+              ),
+            ),
           )
         ],
       ),

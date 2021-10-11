@@ -195,10 +195,10 @@ class Aprendizaje extends StatelessWidget {
       actions: <Widget>[
         IconButton(
           //atras
-          iconSize: 30.0,
+          iconSize: 35.0,
           onPressed: ()  {
-            Navigator.of(context).pushNamedAndRemoveUntil(
-                'aprendizaje', ModalRoute.withName('index'));
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                'index', (Route<dynamic> route) => false);
             /*await _authS.logOut();
             Navigator.of(context)
                 .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);*/

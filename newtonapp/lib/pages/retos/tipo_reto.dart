@@ -16,10 +16,9 @@ class TipoReto extends StatelessWidget {
       appBar: myAppBar(context), // Organizar
       drawer: DrawerMenu(),
       body: Column(
-       
         children: <Widget>[
           Container(
-            height: MediaQuery.of(context).size.height * .5,           
+            height: MediaQuery.of(context).size.height * .5,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,36 +28,32 @@ class TipoReto extends StatelessWidget {
             ),
           ),
           Container(
-            //height: MediaQuery.of(context).size.height * .5,
             child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                 botonTipoReto(context, 'time30s', '30 Segundos'),
-                 botonTipoReto2(context, 'memory', 'Memoria'),
-                 botonTipoReto(context, '5preg', '5 Preguntas'),
-          
+                botonTipoReto(context, 'time30s', '30 Segundos'),
+                botonTipoReto2(context, 'memory', 'Memoria'),
+                botonTipoReto(context, '5preg', '5 Preguntas'),
               ],
             ),
           ),
-         
         ],
       ),
     );
   }
 
   Widget texto() {
-    return const  Text(
-              'Bienvenido al \nmódulo de Retos',
-
-              style: TextStyle(
-                color: const Color.fromRGBO( 145, 99, 203, 1),
-                //color: Colors.white,
-                fontFamily: 'QBold',
-                fontWeight: FontWeight.bold,
-                fontSize: 40.0,
-              ),
-            );
+    return const Text(
+      'Bienvenido al \nmódulo de Retos\nelija una modalidad:',
+      style: TextStyle(
+        color: const Color.fromRGBO(145, 99, 203, 1),
+        //color: Colors.white,
+        fontFamily: 'QBold',
+        fontWeight: FontWeight.bold,
+        fontSize: 40.0,
+      ),
+    );
   }
 
   Widget botonTipoReto(context, String tipo, String texto) {
@@ -68,7 +63,7 @@ class TipoReto extends StatelessWidget {
         child: MaterialButton(
           minWidth: 230.0,
           height: 60.0,
-          color: const Color.fromRGBO( 0, 180, 216, 1),
+          color: const Color.fromRGBO(0, 180, 216, 1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0),
           ),
@@ -81,14 +76,12 @@ class TipoReto extends StatelessWidget {
                         Retos(crearReto: crearReto)));
           },
           child: Text(texto,
-          
-          style: TextStyle(
-              fontFamily: 'QBold', 
-              color: Colors.white,
-              fontSize: 25.0,
-              fontWeight: FontWeight.bold,)
-
-          ),
+              style: TextStyle(
+                fontFamily: 'QBold',
+                color: Colors.white,
+                fontSize: 25.0,
+                fontWeight: FontWeight.bold,
+              )),
         ));
   }
 
@@ -99,16 +92,17 @@ class TipoReto extends StatelessWidget {
         child: MaterialButton(
           minWidth: 230.0,
           height: 60.0,
-          color: const Color.fromRGBO( 145, 99, 203, 1),
+          color: const Color.fromRGBO(145, 99, 203, 1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0),
           ),
           onPressed: () {
             Navigator.of(context).pushNamed('ComingSoon');
           },
-          child: Text(texto,
-          style: TextStyle(
-              fontFamily: 'QBold', 
+          child: Text(
+            texto,
+            style: TextStyle(
+              fontFamily: 'QBold',
               color: Colors.white,
               fontSize: 25.0,
               fontWeight: FontWeight.bold,
@@ -119,7 +113,7 @@ class TipoReto extends StatelessWidget {
 
   PreferredSizeWidget? myAppBar(context) {
     return AppBar(
-      backgroundColor:  const Color.fromRGBO( 0, 180, 216, 1),
+      backgroundColor: const Color.fromRGBO(0, 180, 216, 1),
       elevation: 0.0,
       leading: Builder(builder: (context) {
         return IconButton(
@@ -132,13 +126,13 @@ class TipoReto extends StatelessWidget {
       actions: <Widget>[
         IconButton(
           //atras
-          iconSize: 40.0,
+          iconSize: 35.0,
           onPressed: () async {
-           // await _authS.logOut();
-            Navigator.of(context)
-                .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                'index', (Route<dynamic> route) => false);
           },
-          icon: const Icon(Icons.logout_rounded),
+          icon: const Icon(Icons.arrow_back_ios_new_rounded),
+
           color: Colors.white,
         ),
       ],
