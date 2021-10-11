@@ -36,7 +36,7 @@ class TipoReto extends StatelessWidget {
               children: <Widget>[
                  botonTipoReto(context, 'time30s', '30 Segundos'),
                  botonTipoReto2(context, 'memory', 'Memoria'),
-          botonTipoReto(context, '5preg', '5 Preguntas'),
+                 botonTipoReto(context, '5preg', '5 Preguntas'),
           
               ],
             ),
@@ -49,7 +49,7 @@ class TipoReto extends StatelessWidget {
 
   Widget texto() {
     return const  Text(
-              'Bienvenido al \nmodulo de Retos',
+              'Bienvenido al \nmódulo de Retos',
 
               style: TextStyle(
                 color: const Color.fromRGBO( 145, 99, 203, 1),

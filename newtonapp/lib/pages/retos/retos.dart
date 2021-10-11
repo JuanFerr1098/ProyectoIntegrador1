@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:newtonapp/pages/retos/level_page.dart';
 import 'package:newtonapp/shared/icons.dart';
+import 'package:newtonapp/shared/drawer_menu.dart';
 
 class Retos extends StatelessWidget {
   final List crearReto;
@@ -17,7 +18,10 @@ class Retos extends StatelessWidget {
         return false;
       },
       child: Scaffold(
-        backgroundColor: Colors.purple.shade700, //Fondo de la pantalla
+              appBar: myAppBar(context), // Organizar
+      drawer: DrawerMenu(),
+        backgroundColor: Colors.white,
+        //backgroundColor: Colors.purple.shade700, //Fondo de la pantalla
         body: SizedBox(
           width: double.infinity,
           height: double.infinity,
@@ -56,11 +60,12 @@ class Retos extends StatelessWidget {
             botonesRetos(context, 'resta', MyIcons.minus),
             botonesRetos(context, 'mult', MyIcons.mult),
             botonesRetos(context, 'div', MyIcons.divide),
-            botonCancelar(context),
+            //botonCancelar(context),
           ]),
     );
   }
 
+  
   Widget botonesRetos(context, String zona, IconData icono) {
     // crearReto.add(zona);
     return Container(
@@ -112,5 +117,65 @@ class Retos extends StatelessWidget {
             ),
           ),
         ));
+  }
+
+  PreferredSizeWidget? myAppBar(context) {
+    return AppBar(
+      backgroundColor:  const Color.fromRGBO( 0, 180, 216, 1),
+      elevation: 0.0,
+      leading: Builder(builder: (context) {
+        return IconButton(
+          iconSize: 40.0,
+          icon: const Icon(Icons.more_vert),
+          color: Colors.white,
+          onPressed: () => Scaffold.of(context).openDrawer(),
+        );
+      }),
+      actions: <Widget>[
+        IconButton(
+          //atras
+          iconSize: 40.0,
+          onPressed: ()  {
+Navigator.of(context).pushNamedAndRemoveUntil('retosZone', ModalRoute.withName('index'));
+            /*await _authS.logOut();
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);*/
+          },
+          icon: const Icon(Icons.close_rounded),
+          color: Colors.white,
+        ),
+      ],
+    );
+  }
+
+    Widget botones(context) {
+    return Container(
+      // color: Colors.white60,
+      width: double.infinity,
+      //height:MediaQuery.of(context).size.height*.5,
+      padding: const EdgeInsets.all(30),
+      child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          //crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+               // botonSuma(context),
+               // botonDiv(context),
+                     ]
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+             // botonMult(context),
+            
+           // botonResta(context),
+              ]
+            ),
+           
+          ]),
+    );
   }
 }

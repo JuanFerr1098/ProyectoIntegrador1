@@ -94,16 +94,6 @@ class Aprendizaje extends StatelessWidget {
            
           ]),
     );
-    /*return ListView(
-      scrollDirection: Axis.horizontal,
-      children: <Widget>[
-            //botonlogin(context),
-            botonSuma(context),
-            botonResta(context),
-            botonMult(context),
-            botonDiv(context),
-          ],
-    );*/
   }
 
   Widget botonSuma(context) {
@@ -205,13 +195,15 @@ class Aprendizaje extends StatelessWidget {
       actions: <Widget>[
         IconButton(
           //atras
-          iconSize: 40.0,
-          onPressed: () async {
-            await _authS.logOut();
+          iconSize: 30.0,
+          onPressed: ()  {
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                'aprendizaje', ModalRoute.withName('index'));
+            /*await _authS.logOut();
             Navigator.of(context)
-                .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+                .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);*/
           },
-          icon: const Icon(Icons.logout_rounded),
+          icon: const Icon(Icons.arrow_back_ios_new_rounded),
           color: Colors.white,
         ),
       ],
