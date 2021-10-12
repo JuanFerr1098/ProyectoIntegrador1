@@ -30,7 +30,7 @@ class Aprendizaje extends StatelessWidget {
           ],
         ),
       ),
-      //body: botones(context),
+    
     );
   }
 
@@ -80,32 +80,20 @@ class Aprendizaje extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 botonSuma(context),
-            botonResta(context),
-              ]
+                botonDiv(context),
+                     ]
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
               botonMult(context),
-            botonDiv(context),
+            
+            botonResta(context),
               ]
             ),
-            
-            //botonlogin(context),
-          
-            
+           
           ]),
     );
-    /*return ListView(
-      scrollDirection: Axis.horizontal,
-      children: <Widget>[
-            //botonlogin(context),
-            botonSuma(context),
-            botonResta(context),
-            botonMult(context),
-            botonDiv(context),
-          ],
-    );*/
   }
 
   Widget botonSuma(context) {
@@ -137,7 +125,7 @@ class Aprendizaje extends StatelessWidget {
         child: MaterialButton(
           minWidth: 150.0,
           height: 150.0,
-          color: const Color.fromRGBO( 0, 180, 216, 1),//turquesa
+          color: const Color.fromRGBO( 145, 99, 203, 1),//turquesa
           //color: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
@@ -179,7 +167,7 @@ class Aprendizaje extends StatelessWidget {
         child: MaterialButton(
          minWidth: 150.0,
           height: 150.0,
-          color: const Color.fromRGBO( 160, 108, 213, 1),
+          color: const Color.fromRGBO( 0, 180, 216, 1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
@@ -207,13 +195,15 @@ class Aprendizaje extends StatelessWidget {
       actions: <Widget>[
         IconButton(
           //atras
-          iconSize: 40.0,
-          onPressed: () async {
-            await _authS.logOut();
+          iconSize: 35.0,
+          onPressed: ()  {
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                'index', (Route<dynamic> route) => false);
+            /*await _authS.logOut();
             Navigator.of(context)
-                .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+                .pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);*/
           },
-          icon: const Icon(Icons.logout_rounded),
+          icon: const Icon(Icons.arrow_back_ios_new_rounded),
           color: Colors.white,
         ),
       ],

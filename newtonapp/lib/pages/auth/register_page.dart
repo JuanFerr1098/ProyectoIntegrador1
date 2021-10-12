@@ -29,15 +29,21 @@ class _RegisterPageState extends State<RegisterPage> {
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.purple.shade700,
-          title: Text(widget.title),
+          backgroundColor: const Color.fromRGBO( 145, 99, 203, 1),
+          title: Text(widget.title,
+          style: TextStyle(
+              fontFamily: 'QRegular', 
+              color: Colors.white,
+              fontSize: 20.0,
+              //fontWeight: FontWeight.bold,
+            ),),
         ),
         body: Form(
           key: _formKey,
-          child: ListView(
-            //crossAxisAlignment: CrossAxisAlignment.center,
-            addAutomaticKeepAlives: false,
-            scrollDirection: Axis.vertical,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+           // addAutomaticKeepAlives: false,
+            //scrollDirection: Axis.vertical,
             children: <Widget>[
               /*nameText(),
               emailText(),
@@ -53,6 +59,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget texto(String txt, TextEditingController controller, bool obsText){
     return Container(
+      width: 450.0,
       //Ingreso del Nombre del Registro
       padding: const EdgeInsets.all(10),
       alignment: Alignment.center,
@@ -61,7 +68,9 @@ class _RegisterPageState extends State<RegisterPage> {
         controller: controller,
         decoration:  InputDecoration(
           labelText: txt,
-          border: const OutlineInputBorder(),
+          border: InputBorder.none,
+          fillColor: Colors.white,
+          filled: true
         ),
         obscureText: obsText,
       ),
@@ -76,7 +85,7 @@ class _RegisterPageState extends State<RegisterPage> {
         child: MaterialButton(
           minWidth: 230.0,
           height: 60.0,
-          color: Colors.purple.shade700,
+          color: const Color.fromRGBO( 0, 180, 216, 1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0),
           ),
@@ -95,8 +104,9 @@ class _RegisterPageState extends State<RegisterPage> {
           child: const Text(
             'Registrar',
             style: TextStyle(
+              fontFamily: 'QBold', 
               color: Colors.white,
-              fontSize: 20.0,
+              fontSize: 25.0,
               //fontWeight: FontWeight.bold,
             ),
           ),

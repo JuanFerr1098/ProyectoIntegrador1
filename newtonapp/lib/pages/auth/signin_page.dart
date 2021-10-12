@@ -33,8 +33,6 @@ class _SignInPageState extends State<SignInPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
-            //addAutomaticKeepAlives: false,
-            //scrollDirection: Axis.vertical,
             children: <Widget>[
               loginText(),
               passwordText(),

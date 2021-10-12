@@ -62,10 +62,10 @@ class _RetosZone extends State<RetosZone> {
 
   // Mapeo de colores de los botones
   Map<String, Color> btncolor = {
-    "a": Colors.purple.shade700,
-    "b": Colors.purple.shade700,
-    "c": Colors.purple.shade700,
-    "d": Colors.purple.shade700,
+    "a": const Color.fromRGBO(0, 180, 216, 1),
+    "b": const Color.fromRGBO(0, 180, 216, 1),
+    "c": const Color.fromRGBO(0, 180, 216, 1),
+    "d": const Color.fromRGBO(0, 180, 216, 1),
   };
   // Tiempo inicial
   String showtimer = '0';
@@ -190,7 +190,7 @@ class _RetosZone extends State<RetosZone> {
         (data[lvl][0].length == 2 && data[lvl][1] == '/')) {
       a = 1;
     } else if ((data[lvl][0].length == 2 && data[lvl][1] == '+') ||
-            //(data[lvl][1] == '+' || data[lvl][1] == '*')) ||
+        //(data[lvl][1] == '+' || data[lvl][1] == '*')) ||
         (data[lvl][0].length == 3 &&
             (data[lvl][1] == '-' || data[lvl][1] == '/'))) {
       a = 5;
@@ -202,7 +202,7 @@ class _RetosZone extends State<RetosZone> {
     } else {
       a = 500;
     }
-     
+
     switch (random.nextInt(4)) {
       case 0:
         opciones.add(resp + (a * 1));
@@ -251,6 +251,7 @@ class _RetosZone extends State<RetosZone> {
       puntaje = puntaje + timer;
     } else {
       color = Colors.red;
+
       errores++;
     }
     totalPreg++;
@@ -290,10 +291,10 @@ class _RetosZone extends State<RetosZone> {
           break;
         default:
       }
-      btncolor["a"] = Colors.purple.shade700;
-      btncolor["b"] = Colors.purple.shade700;
-      btncolor["c"] = Colors.purple.shade700;
-      btncolor["d"] = Colors.purple.shade700;
+      btncolor["a"] = const Color.fromRGBO(0, 180, 216, 1);
+      btncolor["b"] = const Color.fromRGBO(0, 180, 216, 1);
+      btncolor["c"] = const Color.fromRGBO(0, 180, 216, 1);
+      btncolor["d"] = const Color.fromRGBO(0, 180, 216, 1);
       disableAnswer = false;
     });
     starttimer();
@@ -341,28 +342,50 @@ class _RetosZone extends State<RetosZone> {
             Expanded(
                 flex: 3,
                 child: Center(
+                  // Pregunta
                   child: Text(
-                    pregunta[0],
-                    style: const TextStyle(fontSize: 50),
-                    textAlign: TextAlign.center,
+                    pregunta[0]+'=',
+                    style: TextStyle(
+                      color: const Color.fromRGBO(145, 99, 203, 1),
+                      //color: Colors.white,
+                      fontFamily: 'QBold',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 60.0,
+                    ),
                   ),
                 )),
             Expanded(
+                //botones
                 flex: 5,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    respuestas(pregunta[1], resp, 'a'),
-                    respuestas(pregunta[2], resp, 'b'),
-                    respuestas(pregunta[3], resp, 'c'),
-                    respuestas(pregunta[4], resp, 'd'),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          respuestas(pregunta[1], resp, 'a'),
+                          respuestas(pregunta[2], resp, 'b'),
+                        ]),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          respuestas(pregunta[3], resp, 'c'),
+                          respuestas(pregunta[4], resp, 'd'),
+                        ]),
                   ],
                 )),
-            Expanded(
+            Expanded(// timer
               flex: 2,
               child: Text(
                 showtimer,
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 50),
+                 style: TextStyle(
+                      color: const Color.fromRGBO(0, 180, 216, 1),
+                      //color: Colors.white,
+                      fontFamily: 'QBold',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 60.0,
+                    ),
               ),
             )
           ],
@@ -377,11 +400,12 @@ class _RetosZone extends State<RetosZone> {
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
-          minWidth: 220.0,
-          height: 60.0,
+          minWidth: 200.0,
+          height: 150.0,
           color: btncolor[k],
+          //color: const Color.fromRGBO( 0, 180, 216, 1),
           splashColor: Colors.white,
-          highlightColor: Colors.blueGrey,
+          highlightColor: const Color.fromRGBO(145, 99, 203, 1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0),
           ),
@@ -391,10 +415,11 @@ class _RetosZone extends State<RetosZone> {
           //onPressed: () => _isDisabled ? false: _disabledButton(resp, sum, k),
           child: Text(
             resp.toString(),
-            style: const TextStyle(
+            style: TextStyle(
+              fontFamily: 'QBold',
               color: Colors.white,
-              fontSize: 25.0,
-              fontWeight: FontWeight.bold,
+              fontSize: 60.0,
+              //fontWeight: FontWeight.bold,
             ),
           ),
         ));
