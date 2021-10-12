@@ -9,10 +9,21 @@ class AcercaDe extends StatelessWidget {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            iconSize: 40.0,
+            icon: const Icon(Icons.arrow_back_rounded),
+            color: Colors.purple.shade700,
+            onPressed: () => Navigator.of(context)
+                .pushNamedAndRemoveUntil('index', ModalRoute.withName('index')),
+          )
+        ],
+        title: const Text('Acerca De Nosotros'),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[          
+        children: <Widget>[
           Container(
             padding: const EdgeInsets.all(10),
             alignment: Alignment.center,
@@ -47,7 +58,7 @@ class AcercaDe extends StatelessWidget {
                 borderRadius: BorderRadius.circular(25.0),
               ),
               onPressed: () async {
-                Navigator.of(context).pushNamed('ComingSoon');
+                Navigator.of(context).pushNamed('Comentarios');
               },
               child: const Text(
                 'Dejanos tu Comentario',
@@ -63,17 +74,18 @@ class AcercaDe extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             alignment: Alignment.center,
             child: const Text(
-                'Aplicación creada por\n'
-                'Juan Fernando Tamayo Zapata\n'
-                'Deyber Sepulveda Tuberquia\n'
-                'Johnatan Andrés Gómez Monsalve\n'
-                '\nEstudiantes de Ingeniería de Sistemas\n'
-                'En la Universidad de Antioquía\n'
-                '\nPara el Proyecto Integrador 1\n'
-                '\nSupervisado por\n'
-                'Fernando Mora\n'
-                'Oscar Ortega',
-                textAlign: TextAlign.center,),
+              'Aplicación creada por\n'
+              'Juan Fernando Tamayo Zapata\n'
+              'Deyber Sepulveda Tuberquia\n'
+              'Johnatan Andrés Gómez Monsalve\n'
+              '\nEstudiantes de Ingeniería de Sistemas\n'
+              'En la Universidad de Antioquía\n'
+              '\nPara el Proyecto Integrador 1\n'
+              '\nSupervisado por\n'
+              'Fernando Mora\n'
+              'Oscar Ortega',
+              textAlign: TextAlign.center,
+            ),
           ),
         ],
       ),

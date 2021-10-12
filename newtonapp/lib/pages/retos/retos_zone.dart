@@ -79,8 +79,10 @@ class _RetosZone extends State<RetosZone> {
   List pregunta = [];
   int resp = 0;
   int cantPreg = 0; // 5 preg
+  late bool statusButtom;
 
   // Para analisis de la app
+  int aciertos = 0;
   int errores = 0;
   int totalPreg = 0;
 
@@ -90,6 +92,7 @@ class _RetosZone extends State<RetosZone> {
   @override
   void initState() {
     date = DateTime.now();
+    statusButtom = false;
     //_isDisabled = false;
     // Inicializar valores del timer
     iniciarTimer();
@@ -244,8 +247,7 @@ class _RetosZone extends State<RetosZone> {
     Color color;
     if (resp == opcionCorrecta) {
       color = Colors.green;
-      // Aumento el puntaje que usare luego en otra pantalla
-      //puntaje++;
+      aciertos++;
       puntaje = puntaje + timer;
     } else {
       color = Colors.red;
@@ -253,6 +255,7 @@ class _RetosZone extends State<RetosZone> {
     }
     totalPreg++;
     setState(() {
+      statusButtom = !statusButtom;
       btncolor[k] = color;
       canceltimer = true;
       disableAnswer = true;
@@ -263,6 +266,7 @@ class _RetosZone extends State<RetosZone> {
   void nextquestion() {
     canceltimer = false;
     setState(() {
+      statusButtom = !statusButtom;
       switch (tipo) {
         case '5preg':
           if (cantPreg < 4) {
@@ -312,6 +316,7 @@ class _RetosZone extends State<RetosZone> {
         MaterialPageRoute(
             builder: (BuildContext context) => Resultado(
                   puntaje: puntaje.toString(),
+                  aciertos: aciertos.toString(),
                   errores: errores.toString(),
                   cantPreg: totalPreg.toString(),
                   lvl: lvl,
@@ -376,11 +381,13 @@ class _RetosZone extends State<RetosZone> {
           height: 60.0,
           color: btncolor[k],
           splashColor: Colors.white,
-          highlightColor: Colors.green,
+          highlightColor: Colors.blueGrey,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0),
           ),
-          onPressed: () => checkAnswer(resp, sum, k),
+          onPressed: () {
+            statusButtom ? null : checkAnswer(resp, sum, k);
+          },
           //onPressed: () => _isDisabled ? false: _disabledButton(resp, sum, k),
           child: Text(
             resp.toString(),

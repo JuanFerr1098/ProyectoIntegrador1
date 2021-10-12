@@ -61,30 +61,6 @@ class _PerfilUser extends State<PerfilUser> {
     );
   }
 
-  /*Widget nombre(String name) {
-    return Container(
-        padding: const EdgeInsets.all(10),
-        alignment: Alignment.center,
-        child: Text(
-          'Hola, $name!',
-          textAlign: TextAlign.center,
-          overflow: TextOverflow.ellipsis,
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        ));
-  }
-
-  Widget correo(String correo) {
-    return Container(
-        padding: const EdgeInsets.all(10),
-        alignment: Alignment.center,
-        child: Text(
-          'Tu correo es $correo',
-          textAlign: TextAlign.center,
-          overflow: TextOverflow.ellipsis,
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        ));
-  }*/
-
   Widget edad(String? edad) {
     if (edad != null) {
       return Container(

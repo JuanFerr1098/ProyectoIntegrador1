@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:newtonapp/pages/aprendizaje/aprendizaje.dart';
 import 'package:newtonapp/pages/aprendizaje/aprendizaje_suma.dart';
+import 'package:newtonapp/pages/comentarios.dart';
 import 'package:newtonapp/pages/perfil/edit_profile_page.dart';
 import 'package:newtonapp/pages/index.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
         'retosZone': (_) => TipoReto(),
         'acercaDe': (_) => const AcercaDe(),
         'ComingSoon': (_) => const ComingSoon(),
+        'Comentarios': (_) => Comentarios(),
       }
 
     );

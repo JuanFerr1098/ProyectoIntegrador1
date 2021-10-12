@@ -34,8 +34,6 @@ class DrawerMenu extends StatelessWidget {
             icon: Icons.home,
             text: 'Home',
             onTap: () {
-              //Navigator.of(context).pop();
-              //Navigator.of(context).pushNamed('index');
               Navigator.of(context).pushNamedAndRemoveUntil(
                 'index', (Route<dynamic> route) => false);
             }),
@@ -50,8 +48,6 @@ class DrawerMenu extends StatelessWidget {
             icon: Icons.book,
             text: 'Aprendizaje',
             onTap: () {
-              //Navigator.of(context).pop();
-              //Navigator.of(context).pushNamed('aprendizaje');
               Navigator.of(context).pushNamedAndRemoveUntil(
                 'aprendizaje', ModalRoute.withName('index'));
             }),
@@ -59,8 +55,6 @@ class DrawerMenu extends StatelessWidget {
             icon: Icons.my_library_books,
             text: 'Retos',
             onTap: () {
-              //Navigator.of(context).pop();
-              //Navigator.of(context).pushNamed('retosZone');
               Navigator.of(context).pushNamedAndRemoveUntil(
                 'retosZone', ModalRoute.withName('index'));
             }),
@@ -68,8 +62,6 @@ class DrawerMenu extends StatelessWidget {
         ListTile(
           title: const Text('Acerca de'),
           onTap: () {
-            //Navigator.pop(context);
-            //Navigator.of(context).pushNamed('acercaDe');
             Navigator.of(context).pushNamedAndRemoveUntil(
                 'acercaDe', ModalRoute.withName('index'));
           },

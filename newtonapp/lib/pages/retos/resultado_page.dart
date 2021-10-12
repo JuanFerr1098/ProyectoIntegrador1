@@ -9,6 +9,7 @@ final AuthService _authS = AuthService();
 class Resultado extends StatelessWidget {
   final String date;
   final String puntaje;
+  final String aciertos;
   final String errores;
   final String cantPreg;
   final String lvl;
@@ -20,6 +21,7 @@ class Resultado extends StatelessWidget {
       required this.lvl,
       required this.operacion,
       required this.tipo,
+      required this.aciertos,
       required this.errores,
       required this.cantPreg, 
       required this.date})
@@ -72,6 +74,7 @@ class Resultado extends StatelessWidget {
       'lvl': lvl,
       'tipo': tipo,
       'puntaje': puntaje,
+      'aciertos': aciertos,
       'errores': errores,
       'cantPreguntas': cantPreg,
     };

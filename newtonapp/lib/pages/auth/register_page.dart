@@ -68,55 +68,6 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  /*Widget nameText() {
-    return Container(
-      //Ingreso del Nombre del Registro
-      padding: const EdgeInsets.all(10),
-      alignment: Alignment.center,
-      child: TextFormField(
-        //Aqui esta la entrada de texto
-        controller: _nameController,
-        decoration: const InputDecoration(
-          labelText: 'Ingresa tu Nombre',
-          border: OutlineInputBorder(),
-        ),
-      ),
-    );
-  }
-
-  Widget emailText() {
-    return Container(
-      //Ingreso del Correo del Registro
-      padding: const EdgeInsets.all(10),
-      alignment: Alignment.center,
-      child: TextFormField(
-        //Aqui esta la entrada de texto
-        controller: _emailController,
-        decoration: const InputDecoration(
-          labelText: 'Ingresa tu Correo',
-          border: OutlineInputBorder(),
-        ),
-      ),
-    );
-  }
-
-  Widget passwordText() {
-    return Container(
-      //Ingreso de la Contaseña del Registro
-      padding: const EdgeInsets.all(10),
-      alignment: Alignment.center,
-      child: TextFormField(
-        //Aqui esta la entrada de texto
-        controller: _passwordController,
-        decoration: const InputDecoration(
-          labelText: 'Ingresa tu Contraseña',
-          border: OutlineInputBorder(),
-        ),
-        obscureText: true,
-      ),
-    );
-  }*/
-
   Widget botonRegistrar(context) {
     return Container(
         //Boton para ir al Registro de la App
