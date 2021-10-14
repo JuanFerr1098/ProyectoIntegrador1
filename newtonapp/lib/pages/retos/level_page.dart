@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:newtonapp/pages/retos/retos_zone.dart';
 import 'package:flutter/widgets.dart';
-import 'package:newtonapp/shared/icons.dart';
+//import 'package:newtonapp/shared/icons.dart';
 import 'package:newtonapp/shared/drawer_menu.dart';
 
 class Level extends StatelessWidget {
@@ -60,14 +60,14 @@ class Level extends StatelessWidget {
       child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            const Text(
+          children: const <Widget>[
+            Text(
               'Escoje el Nivel\nde dificultad:',
               style: TextStyle(
                 fontFamily: 'QBold',
                 fontWeight: FontWeight.bold,
                 fontSize: 40.0,
-                color: const Color.fromRGBO(145, 99, 203, 1),
+                color: Color.fromRGBO(145, 99, 203, 1),
               ),
             ),
           ]),
@@ -95,7 +95,7 @@ class Level extends StatelessWidget {
           },
           child: Text(
             texto,
-            style: TextStyle(
+            style: const TextStyle(
               fontFamily: 'QBold',
               color: Colors.white,
               fontSize: 25.0,

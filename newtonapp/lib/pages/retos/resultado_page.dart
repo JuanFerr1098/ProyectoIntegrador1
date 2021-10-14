@@ -46,8 +46,8 @@ class Resultado extends StatelessWidget {
         children: [
           Text(
             'Su puntaje es ' + puntaje,
-            style: TextStyle(
-              color: const Color.fromRGBO(145, 99, 203, 1),
+            style: const TextStyle(
+              color: Color.fromRGBO(145, 99, 203, 1),
               //color: Colors.white,
               fontFamily: 'QBold',
               fontWeight: FontWeight.bold,

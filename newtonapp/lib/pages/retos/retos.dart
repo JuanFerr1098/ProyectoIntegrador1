@@ -47,14 +47,14 @@ class Retos extends StatelessWidget {
       child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            const Text(
+          children: const <Widget>[
+            Text(
               'Escoje la\nOperación:',
               style: TextStyle(
                 fontFamily: 'QBold',
                 fontWeight: FontWeight.bold,
                 fontSize: 40.0,
-                color: const Color.fromRGBO(145, 99, 203, 1),
+                color: Color.fromRGBO(145, 99, 203, 1),
               ),
             ),
           ]),

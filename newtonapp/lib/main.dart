@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
           'login': (_) => const SignInPage(),
           'register': (_) => const RegisterPage(),
           'index': (_) => const IndexPage(),
-          'aprendizaje': (_) => Aprendizaje(),
+          'aprendizaje': (_) => const Aprendizaje(),
           'perfil': (_) => const PerfilUser(),
           'editarPerfil': (_) => const EditProfile(),
           'aprendizajeSuma': (_) => const AprendizajeSuma(),

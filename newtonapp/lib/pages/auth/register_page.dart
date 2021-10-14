@@ -31,7 +31,7 @@ class _RegisterPageState extends State<RegisterPage> {
         appBar: AppBar(
           backgroundColor: const Color.fromRGBO( 145, 99, 203, 1),
           title: Text(widget.title,
-          style: TextStyle(
+          style: const TextStyle(
               fontFamily: 'QRegular', 
               color: Colors.white,
               fontSize: 20.0,

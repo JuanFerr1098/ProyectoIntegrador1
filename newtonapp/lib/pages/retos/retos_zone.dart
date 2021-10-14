@@ -336,8 +336,8 @@ class _RetosZone extends State<RetosZone> {
                   // Pregunta
                   child: Text(
                     pregunta[0] + '=',
-                    style: TextStyle(
-                      color: const Color.fromRGBO(145, 99, 203, 1),
+                    style: const TextStyle(
+                      color: Color.fromRGBO(145, 99, 203, 1),
                       //color: Colors.white,
                       fontFamily: 'QBold',
                       fontWeight: FontWeight.bold,
@@ -371,8 +371,8 @@ class _RetosZone extends State<RetosZone> {
               child: Text(
                 showtimer,
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: const Color.fromRGBO(0, 180, 216, 1),
+                style: const TextStyle(
+                  color: Color.fromRGBO(0, 180, 216, 1),
                   //color: Colors.white,
                   fontFamily: 'QBold',
                   fontWeight: FontWeight.bold,
@@ -407,7 +407,7 @@ class _RetosZone extends State<RetosZone> {
           //onPressed: () => _isDisabled ? false: _disabledButton(resp, sum, k),
           child: Text(
             resp.toString(),
-            style: TextStyle(
+            style: const TextStyle(
               fontFamily: 'QBold',
               color: Colors.white,
               fontSize: 60.0,

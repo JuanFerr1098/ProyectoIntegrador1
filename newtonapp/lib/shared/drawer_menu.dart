@@ -80,9 +80,9 @@ class DrawerMenu extends StatelessWidget {
         child: Form(
             child: Column(
           children: [
-            Icon(
+            const Icon(
               Icons.account_box,
-              color: const Color.fromRGBO( 145, 99, 203, 1),
+              color: Color.fromRGBO( 145, 99, 203, 1),
               size: 100.0,
             ),
             Text(name),
@@ -102,7 +102,7 @@ class DrawerMenu extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 8.0),
             child: Text(text!,
-            style: TextStyle(
+            style: const TextStyle(
                 //color: const Color.fromRGBO( 145, 99, 203, 1),
                 //color: Colors.white,
                 color:Colors.grey,

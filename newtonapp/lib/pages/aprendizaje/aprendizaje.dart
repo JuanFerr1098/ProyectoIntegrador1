@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:newtonapp/providers/auth.dart';
 import 'package:newtonapp/shared/drawer_menu.dart';
 import 'package:newtonapp/shared/icons.dart';
 
 class Aprendizaje extends StatelessWidget {
-  Aprendizaje({Key? key}) : super(key: key);
-  final AuthService _authS = AuthService();
+  const Aprendizaje({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
@@ -100,7 +98,7 @@ class Aprendizaje extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pushNamed('aprendizajeSuma');
           },
-          child: Icon(
+          child: const Icon(
             MyIcons.add,
             color: Colors.white,
             size: 50,
@@ -123,7 +121,7 @@ class Aprendizaje extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pushNamed('aprendizajeResta');
           },
-          child: Icon(
+          child: const Icon(
             MyIcons.minus,
             color: Colors.white,
             size: 50,
@@ -146,7 +144,7 @@ class Aprendizaje extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pushNamed('aprendizajeMulti');
           },
-          child: Icon(
+          child: const Icon(
             MyIcons.mult,
             color: Colors.white,
             size: 50,
@@ -168,7 +166,7 @@ class Aprendizaje extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pushNamed('ComingSoon');
           },
-          child: Icon(
+          child: const Icon(
             MyIcons.divide,
             color: Colors.white,
             size: 50,

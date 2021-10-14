@@ -59,7 +59,7 @@ class AprendizajeResta extends StatelessWidget {
           },
           child: Text(
             nombre,
-            style: TextStyle(
+            style: const TextStyle(
               fontFamily: 'QBold',
               color: Colors.white,
               fontSize: 25.0,
@@ -79,7 +79,7 @@ PreferredSizeWidget? myAppBar(context) {
           onPressed: () => Scaffold.of(context).openDrawer(),
         );
       }),
-      title:  Text('Trucos Resta',
+      title:  const Text('Trucos Resta',
         style: TextStyle(
                 fontFamily: 'QBold', 
                 fontWeight: FontWeight.bold,

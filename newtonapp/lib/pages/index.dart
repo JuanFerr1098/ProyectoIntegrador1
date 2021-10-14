@@ -89,7 +89,7 @@ class Index extends StatelessWidget {
             'Login',
             style: TextStyle(
               fontFamily: 'QBold',            
-              color: const Color.fromRGBO( 145, 99, 203, 1),
+              color: Color.fromRGBO( 145, 99, 203, 1),
               fontSize: 35.0,
               fontWeight: FontWeight.bold,
             ),
@@ -116,7 +116,7 @@ class Index extends StatelessWidget {
             'Registro',
             style: TextStyle(
               fontFamily: 'QBold', 
-              color: const Color.fromRGBO( 145, 99, 203, 1),
+              color: Color.fromRGBO( 145, 99, 203, 1),
               fontSize: 35.0,
               fontWeight: FontWeight.bold,
             ),

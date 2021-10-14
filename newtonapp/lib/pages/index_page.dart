@@ -49,14 +49,14 @@ class _IndexPage extends State<IndexPage> {
       child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
+          children: const <Widget>[
             Text(
               '¿A donde quieres ir?',
               style: TextStyle(
                 fontFamily: 'QBold', 
                 fontWeight: FontWeight.bold,
                 fontSize: 30.0,
-                color: const Color.fromRGBO( 145, 99, 203, 1),
+                color: Color.fromRGBO( 145, 99, 203, 1),
               ),
             ),
           ]),

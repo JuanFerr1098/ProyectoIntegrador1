@@ -17,7 +17,7 @@ class TipoReto extends StatelessWidget {
       drawer: DrawerMenu(),
       body: Column(
         children: <Widget>[
-          Container(
+          SizedBox(
             height: MediaQuery.of(context).size.height * .5,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -27,16 +27,14 @@ class TipoReto extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                botonTipoReto(context, 'time30s', '30 Segundos'),
-                //botonTipoReto2(context, 'memory', 'Memoria'),
-                botonTipoReto2(context, '5preg', '5 Preguntas'),
-              ],
-            ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              botonTipoReto(context, 'time30s', '30 Segundos'),
+              //botonTipoReto2(context, 'memory', 'Memoria'),
+              botonTipoReto2(context, '5preg', '5 Preguntas'),
+            ],
           ),
         ],
       ),
@@ -76,7 +74,7 @@ class TipoReto extends StatelessWidget {
                         Retos(crearReto: crearReto)));
           },
           child: Text(texto,
-              style: TextStyle(
+              style: const TextStyle(
                 fontFamily: 'QBold',
                 color: Colors.white,
                 fontSize: 25.0,
@@ -101,7 +99,7 @@ class TipoReto extends StatelessWidget {
           },
           child: Text(
             texto,
-            style: TextStyle(
+            style: const TextStyle(
               fontFamily: 'QBold',
               color: Colors.white,
               fontSize: 25.0,
