@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:newtonapp/shared/drawer_menu.dart';
 
-class AprendizajeSuma extends StatelessWidget {
-  const AprendizajeSuma({Key? key}) : super(key: key);
+class AprendizajeMulti extends StatelessWidget {
+  const AprendizajeMulti({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +36,9 @@ class AprendizajeSuma extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           //crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            botonTema(context,const Color.fromRGBO(145, 99, 203, 1),'Truco 1','sumaTruco1'),
-            botonTema(context,const Color.fromRGBO( 0, 180, 216, 1),'Truco 2','sumaTruco2'),
-            botonTema(context,const Color.fromRGBO(145, 99, 203, 1),'Truco 3','sumaTruco3'),
+            botonTema(context,const Color.fromRGBO(145, 99, 203, 1),'Truco 1','multTruco1'),
+            botonTema(context,const Color.fromRGBO( 0, 180, 216, 1),'Truco 2','multTruco2'),
+            botonTema(context,const Color.fromRGBO(145, 99, 203, 1),'Truco 3','multTruco3'),
           ]),
     );
   }
@@ -79,11 +79,11 @@ PreferredSizeWidget? myAppBar(context) {
           onPressed: () => Scaffold.of(context).openDrawer(),
         );
       }),
-      title:  Text('Trucos Suma',
+      title:  Text('Trucos Multipliación',
         style: TextStyle(
                 fontFamily: 'QBold', 
                 fontWeight: FontWeight.bold,
-                fontSize: 30.0,
+                fontSize: 25.0,
                 color: Colors.white,
               ),),
       actions: <Widget>[

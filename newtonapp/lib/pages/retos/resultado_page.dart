@@ -55,10 +55,7 @@ class Resultado extends StatelessWidget {
             ),
           ),
           volver(context),
-          //operacionvolver(context),
-          /* Image.network('https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/gif%2Fpatito.gif?alt=media&token=6d4b13d0-56d1-4400-adc8-d5374f863233',
-          width: 300,),*/
-          // Agregar boton para reintentar
+
         ],
       ),
     );
