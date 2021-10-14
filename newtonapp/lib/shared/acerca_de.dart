@@ -59,7 +59,7 @@ class AcercaDe extends StatelessWidget {
                 borderRadius: BorderRadius.circular(25.0),
               ),
               onPressed: () async {
-                Navigator.of(context).pushNamed('Comentarios');
+                Navigator.of(context).pushNamed('comentarios');
               },
               child: const Text(
                 'Dejanos tu Comentario',
