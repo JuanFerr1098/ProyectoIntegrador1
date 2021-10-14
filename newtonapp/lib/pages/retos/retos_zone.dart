@@ -248,10 +248,13 @@ class _RetosZone extends State<RetosZone> {
     if (resp == opcionCorrecta) {
       color = Colors.green;
       aciertos++;
-      puntaje = puntaje + timer;
+      if (tipo == '5preg') {
+        puntaje = puntaje + timer;
+      } else if (tipo == 'time30s') {
+        puntaje++;
+      }
     } else {
       color = Colors.red;
-
       errores++;
     }
     totalPreg++;
@@ -301,18 +304,6 @@ class _RetosZone extends State<RetosZone> {
   }
 
   void navegarPuntaje() {
-    /*Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (BuildContext context) => Resultado(
-                  puntaje: puntaje.toString(),
-                  errores: errores.toString(),
-                  cantPreg: totalPreg.toString(),
-                  lvl: lvl,
-                  operacion: operacion,
-                  tipo: tipo,
-                  date: date.toString(),
-                )));*/
     Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(
             builder: (BuildContext context) => Resultado(
@@ -344,7 +335,7 @@ class _RetosZone extends State<RetosZone> {
                 child: Center(
                   // Pregunta
                   child: Text(
-                    pregunta[0]+'=',
+                    pregunta[0] + '=',
                     style: TextStyle(
                       color: const Color.fromRGBO(145, 99, 203, 1),
                       //color: Colors.white,
@@ -374,18 +365,19 @@ class _RetosZone extends State<RetosZone> {
                         ]),
                   ],
                 )),
-            Expanded(// timer
+            Expanded(
+              // timer
               flex: 2,
               child: Text(
                 showtimer,
                 textAlign: TextAlign.center,
-                 style: TextStyle(
-                      color: const Color.fromRGBO(0, 180, 216, 1),
-                      //color: Colors.white,
-                      fontFamily: 'QBold',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 60.0,
-                    ),
+                style: TextStyle(
+                  color: const Color.fromRGBO(0, 180, 216, 1),
+                  //color: Colors.white,
+                  fontFamily: 'QBold',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 60.0,
+                ),
               ),
             )
           ],
