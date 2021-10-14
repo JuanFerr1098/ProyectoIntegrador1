@@ -8,22 +8,9 @@ Cálculo mental, aplicación móvil, niños, álgebra básica, aritmética bási
 
 ### Instalación 🔧
 
-Nosotros tenemos una carpeta en la cual estamos compartiendo el apk del proyecto, llamada apk (preferible hacer esto en el celular)
-```
-Accedes a la carpeta llamada apk
-```
-```
-Abres el archivo llamado app-release.apk
-```
-```
-Buscas el botón de download
-```
-```
-Una vez descargado, lo buscas en tu carpeta de descargas del dispositivo, o donde lo haya guardado
-```
-```
-Lo abres, le das aceptar, y la aplicación quedará lista para usar
-```
+Escanea el código QR y dale permisos de instalación a Google Drive para poderlo instalar
+
+![](https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/vistas%2Fqr.png?alt=media&token=c3109bfa-dfc0-4411-a4bb-768c17343880)
 
 ## Construido con 🛠️
 * Flutter - El entorno de programación
