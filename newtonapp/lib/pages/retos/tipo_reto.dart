@@ -95,7 +95,12 @@ class TipoReto extends StatelessWidget {
             borderRadius: BorderRadius.circular(5.0),
           ),
           onPressed: () {
-            Navigator.of(context).pushNamed('ComingSoon');
+            crearReto.add(tipo);
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                        Retos(crearReto: crearReto)));
           },
           child: Text(
             texto,

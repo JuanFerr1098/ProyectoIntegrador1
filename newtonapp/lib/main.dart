@@ -12,6 +12,7 @@ import 'package:newtonapp/pages/aprendizaje/resta/resta_truco2.dart';
 import 'package:newtonapp/pages/aprendizaje/resta/resta_truco3.dart';
 import 'package:newtonapp/pages/aprendizaje/suma/suma_truco2.dart';
 import 'package:newtonapp/pages/aprendizaje/suma/suma_truco3.dart';
+import 'package:newtonapp/pages/comentarios.dart';
 import 'package:newtonapp/pages/perfil/edit_profile_page.dart';
 import 'package:newtonapp/pages/index.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -68,6 +69,7 @@ class MyApp extends StatelessWidget {
           'retosZone': (_) => TipoReto(),
           'acercaDe': (_) => const AcercaDe(),
           'ComingSoon': (_) => const ComingSoon(),
+          'comentarios': (_) => Comentarios(),
         });
   }
 }
