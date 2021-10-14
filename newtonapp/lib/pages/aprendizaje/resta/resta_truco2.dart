@@ -38,48 +38,6 @@ class _RestaTruco2State extends State<RestaTruco2> {
     );
   }
 
-  Widget carrusel() {
-    return ListView(
-      scrollDirection: Axis.horizontal,
-      children: <Widget>[
-        const SizedBox(
-          child: Image(
-            image: AssetImage('../assets/images/truco1-2.jpg'),
-          ),
-          //child: Image.network('gs://newtonapp-91e99.appspot.com/images/truco1-2.jpg'),
-          //child: Image.asset('../assets/images/truco1-2.jpg'),
-          width: 500.0,
-          //height: 250.0,
-        ),
-        SizedBox(
-          /*child: Image.asset(listOfImage[1].assetName,
-          fit: BoxFit.scaleDown,),*/
-          //*child: Image.asset('../assets/images/truco2.jpg'),
-          child: Image.network(
-              'gs://newtonapp-91e99.appspot.com/images/truco2.jpg'),
-          width: 500.0,
-        ),
-        SizedBox(
-          /*child: Image.asset(listOfImage[2].assetName,
-          fit: BoxFit.scaleDown,),*/
-          //*child: Image.asset('../assets/images/truco3.jpg'),
-          child: Image.network(
-              'gs://newtonapp-91e99.appspot.com/images/truco3.jpg'),
-          width: 500.0,
-        ),
-        SizedBox(
-          /*child: Image.asset(listOfImage[3].assetName,
-          fit: BoxFit.scaleDown,),*/
-          //*child: Image.asset('../assets/images/truco4.jpg'),
-          child: Image.network(
-              'gs://newtonapp-91e99.appspot.com/images/truco4.jpg'),
-          width: 500.0,
-          // color: Colors.yellow,
-        ),
-      ],
-    );
-  }
-
   Widget carrusel2(context) {
     return CarouselSlider(
       items: <Widget>[
