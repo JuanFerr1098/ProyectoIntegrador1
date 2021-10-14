@@ -38,54 +38,12 @@ class _MultTruco3State extends State<MultTruco3> {
     );
   }
 
-  Widget carrusel() {
-    return ListView(
-      scrollDirection: Axis.horizontal,
-      children: <Widget>[
-        const SizedBox(
-          child: Image(
-            image: AssetImage('../assets/images/truco1-2.jpg'),
-          ),
-          //child: Image.network('gs://newtonapp-91e99.appspot.com/images/truco1-2.jpg'),
-          //child: Image.asset('../assets/images/truco1-2.jpg'),
-          width: 500.0,
-          //height: 250.0,
-        ),
-        SizedBox(
-          /*child: Image.asset(listOfImage[1].assetName,
-          fit: BoxFit.scaleDown,),*/
-          //*child: Image.asset('../assets/images/truco2.jpg'),
-          child: Image.network(
-              'gs://newtonapp-91e99.appspot.com/images/truco2.jpg'),
-          width: 500.0,
-        ),
-        SizedBox(
-          /*child: Image.asset(listOfImage[2].assetName,
-          fit: BoxFit.scaleDown,),*/
-          //*child: Image.asset('../assets/images/truco3.jpg'),
-          child: Image.network(
-              'gs://newtonapp-91e99.appspot.com/images/truco3.jpg'),
-          width: 500.0,
-        ),
-        SizedBox(
-          /*child: Image.asset(listOfImage[3].assetName,
-          fit: BoxFit.scaleDown,),*/
-          //*child: Image.asset('../assets/images/truco4.jpg'),
-          child: Image.network(
-              'gs://newtonapp-91e99.appspot.com/images/truco4.jpg'),
-          width: 500.0,
-          // color: Colors.yellow,
-        ),
-      ],
-    );
-  }
-
   Widget carrusel2(context) {
     return CarouselSlider(
       items: <Widget>[
         SizedBox(
           child: Image.network(
-              'https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/images%2Ftruco1-2.jpg?alt=media&token=15875dab-eba7-4f4c-aeb4-b1708a5ca2d0'),
+              'https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/mult%2Ftruco3%2FTruco3_MultP1.jpg?alt=media&token=8a543b74-856f-438f-bc8e-8853d3e21198'),
           //child: Image(image: AssetImage('../assets/images/truco1-2.jpg'),),
           //child: Image.asset('/images/truco1-2.jpg', package: 'assets',),
           //fit: Boxfit.cover,
@@ -93,7 +51,7 @@ class _MultTruco3State extends State<MultTruco3> {
         ),
         SizedBox(
           child: Image.network(
-              'https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/images%2Ftruco2.jpg?alt=media&token=7396cbf6-05b2-4d9a-9e3a-7acbc75947e3'),
+              'https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/mult%2Ftruco3%2FTruco3_MultP2.jpg?alt=media&token=9930b478-ab68-459b-bdbe-f8983dc5a4be'),
           //child: Image.asset(listOfImage[1].assetName,
           //fit: BoxFit.cover,)
           //child: Image.asset('../assets/images/truco2.jpg'),
@@ -103,7 +61,7 @@ class _MultTruco3State extends State<MultTruco3> {
           //child: Image.network('gs://newtonapp-91e99.appspot.com/images/truco3.jpg'),
           //child: Image.asset('../assets/images/truco3.jpg'),
           child: Image.network(
-              'https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/images%2Ftruco3.jpg?alt=media&token=f102b054-1b0c-4f77-9514-71cb0762b332'),
+              'https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/mult%2Ftruco3%2FTruco3_MultP3.jpg?alt=media&token=534af825-d7de-42f9-90f3-76c1b0422aad'),
           width: 1080,
         ),
         SizedBox(
