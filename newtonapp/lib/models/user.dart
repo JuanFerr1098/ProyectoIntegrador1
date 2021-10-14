@@ -11,8 +11,8 @@ class UserN {
   String get name => _name;
   String get age => _age;*/
 
-  final String uid;  
-  UserN({required this.uid});  
+  final String uid;
+  UserN({required this.uid});
 }
 
 class UserData {
@@ -21,6 +21,24 @@ class UserData {
   final String email;
   final String age;
 
-  UserData({required this.uid, required this.name, required this.email, required this.age});
-  
+  UserData(
+      {required this.uid,
+      required this.name,
+      required this.email,
+      required this.age});
+}
+
+class Puntajes {
+  final String fecha;
+  final String datos;
+
+  Puntajes(
+    this.fecha,
+    this.datos,
+  );
+
+  @override
+  String toString() {
+    return '{$fecha, $datos}';
+  }
 }
