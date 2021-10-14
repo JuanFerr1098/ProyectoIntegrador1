@@ -19,16 +19,6 @@ class _IndexPage extends State<IndexPage> {
 
   @override
   Widget build(BuildContext context) {
-    /*return FutureBuilder<DocumentSnapshot>(
-        future: UserProvider(uid: _authS.userActualUid()).getUsers(),
-        builder:
-            (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-          if (snapshot.hasData) {
-            return _pantalla(context);
-          } else {
-            return const Center(child: CircularProgressIndicator());
-          }
-        });*/
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return _pantalla(context);

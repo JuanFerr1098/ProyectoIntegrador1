@@ -99,7 +99,6 @@ class Level extends StatelessWidget {
               fontFamily: 'QBold',
               color: Colors.white,
               fontSize: 25.0,
-              fontWeight: FontWeight.bold,
             ),
           ),
         ));

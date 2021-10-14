@@ -7,8 +7,8 @@ import 'package:newtonapp/shared/drawer_menu.dart';
 import 'package:newtonapp/shared/icons.dart';
 
 class Aprendizaje extends StatelessWidget {
- Aprendizaje({Key? key}) : super(key: key);
- final AuthService _authS = AuthService();
+  Aprendizaje({Key? key}) : super(key: key);
+  final AuthService _authS = AuthService();
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
@@ -30,7 +30,6 @@ class Aprendizaje extends StatelessWidget {
           ],
         ),
       ),
-    
     );
   }
 
@@ -76,22 +75,14 @@ class Aprendizaje extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           //crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                botonSuma(context),
-                botonDiv(context),
-                     ]
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+              botonSuma(context),
+              botonDiv(context),
+            ]),
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
               botonMult(context),
-            
-            botonResta(context),
-              ]
-            ),
-           
+              botonResta(context),
+            ]),
           ]),
     );
   }
@@ -103,7 +94,7 @@ class Aprendizaje extends StatelessWidget {
         child: MaterialButton(
           minWidth: 150.0,
           height: 150.0,
-          color: const Color.fromRGBO( 145, 99, 203, 1),//lila
+          color: const Color.fromRGBO(145, 99, 203, 1), //lila
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
@@ -125,12 +116,14 @@ class Aprendizaje extends StatelessWidget {
         child: MaterialButton(
           minWidth: 150.0,
           height: 150.0,
-          color: const Color.fromRGBO( 145, 99, 203, 1),//turquesa
+          color: const Color.fromRGBO(145, 99, 203, 1), //turquesa
           //color: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed('aprendizajeResta');
+          },
           child: Icon(
             MyIcons.minus,
             color: Colors.white,
@@ -146,12 +139,14 @@ class Aprendizaje extends StatelessWidget {
         child: MaterialButton(
           minWidth: 150.0,
           height: 150.0,
-           color: const Color.fromRGBO( 0, 180, 216, 1),
+          color: const Color.fromRGBO(0, 180, 216, 1),
           //color: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed('aprendizajeMulti');
+          },
           child: Icon(
             MyIcons.mult,
             color: Colors.white,
@@ -165,9 +160,9 @@ class Aprendizaje extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
-         minWidth: 150.0,
+          minWidth: 150.0,
           height: 150.0,
-          color: const Color.fromRGBO( 0, 180, 216, 1),
+          color: const Color.fromRGBO(0, 180, 216, 1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
@@ -180,9 +175,9 @@ class Aprendizaje extends StatelessWidget {
         ));
   }
 
-    PreferredSizeWidget? myAppBar(context) {
+  PreferredSizeWidget? myAppBar(context) {
     return AppBar(
-      backgroundColor:  const Color.fromRGBO( 0, 180, 216, 1),
+      backgroundColor: const Color.fromRGBO(0, 180, 216, 1),
       elevation: 0.0,
       leading: Builder(builder: (context) {
         return IconButton(
@@ -196,8 +191,8 @@ class Aprendizaje extends StatelessWidget {
         IconButton(
           //atras
           iconSize: 35.0,
-          onPressed: ()  {
-              Navigator.of(context).pushNamedAndRemoveUntil(
+          onPressed: () {
+            Navigator.of(context).pushNamedAndRemoveUntil(
                 'index', (Route<dynamic> route) => false);
             /*await _authS.logOut();
             Navigator.of(context)

@@ -45,7 +45,7 @@ class TipoReto extends StatelessWidget {
 
   Widget texto() {
     return const Text(
-      'Bienvenido al \nmódulo de Retos\nelija una modalidad:',
+      'Bienvenido al \nmódulo de Retos,\nelija una modalidad:',
       style: TextStyle(
         color: const Color.fromRGBO(145, 99, 203, 1),
         //color: Colors.white,
