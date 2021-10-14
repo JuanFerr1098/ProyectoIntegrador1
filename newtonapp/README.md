@@ -2,7 +2,7 @@
 
 *Esta es una aplicación móvil, desarrollada en Flutter, con el fin de acercar a los jóven al cálculo mental*
 
-## Key words: 
+### Key words: 📋
 
 Cálculo mental, aplicación móvil, niños, álgebra básica, aritmética básica, ecuaciones lineales
 
