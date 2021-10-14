@@ -1,4 +1,4 @@
-# newtonapp
+# Newton App
 
 A new Flutter project.
 
