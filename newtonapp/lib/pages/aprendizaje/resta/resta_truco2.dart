@@ -43,7 +43,7 @@ class _RestaTruco2State extends State<RestaTruco2> {
       items: <Widget>[
         SizedBox(
           child: Image.network(
-              'https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/images%2Ftruco1-2.jpg?alt=media&token=15875dab-eba7-4f4c-aeb4-b1708a5ca2d0'),
+              'https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/restas%2Ftruco2%2FTruco2_RestaP1.jpg?alt=media&token=59ec83aa-9b28-4daa-8d07-8015c406efe2'),
           //child: Image(image: AssetImage('../assets/images/truco1-2.jpg'),),
           //child: Image.asset('/images/truco1-2.jpg', package: 'assets',),
           //fit: Boxfit.cover,
@@ -51,7 +51,7 @@ class _RestaTruco2State extends State<RestaTruco2> {
         ),
         SizedBox(
           child: Image.network(
-              'https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/images%2Ftruco2.jpg?alt=media&token=7396cbf6-05b2-4d9a-9e3a-7acbc75947e3'),
+              'https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/restas%2Ftruco2%2FTruco2_RestaP2.jpg?alt=media&token=bde325ab-8db0-482c-9140-2751aa765c6c'),
           //child: Image.asset(listOfImage[1].assetName,
           //fit: BoxFit.cover,)
           //child: Image.asset('../assets/images/truco2.jpg'),
@@ -61,15 +61,8 @@ class _RestaTruco2State extends State<RestaTruco2> {
           //child: Image.network('gs://newtonapp-91e99.appspot.com/images/truco3.jpg'),
           //child: Image.asset('../assets/images/truco3.jpg'),
           child: Image.network(
-              'https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/images%2Ftruco3.jpg?alt=media&token=f102b054-1b0c-4f77-9514-71cb0762b332'),
+              'https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/restas%2Ftruco2%2FTruco2_RestaP3.jpg?alt=media&token=752d752e-cbd8-467d-80c6-cc259bf07d5b'),
           width: 1080,
-        ),
-        SizedBox(
-          //child: Image.asset('../assets/images/truco4.jpg'),
-          child: Image.network(
-              'https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/images%2Ftruco4.jpg?alt=media&token=5af27e6e-cc36-4d25-9ce9-938b8844fdae'),
-          width: 1080,
-          // color: Colors.yellow,
         ),
       ],
       carouselController: buttonCarouselController,
