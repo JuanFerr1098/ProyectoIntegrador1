@@ -25,7 +25,7 @@ class AcercaDe extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Container(
+          /*Container(
             padding: const EdgeInsets.all(10),
             alignment: Alignment.center,
             child: MaterialButton(
@@ -47,7 +47,7 @@ class AcercaDe extends StatelessWidget {
                 ),
               ),
             ),
-          ),
+          ),*/
           Container(
             padding: const EdgeInsets.all(10),
             alignment: Alignment.center,

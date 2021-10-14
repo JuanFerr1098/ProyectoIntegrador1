@@ -33,8 +33,8 @@ class TipoReto extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 botonTipoReto(context, 'time30s', '30 Segundos'),
-                botonTipoReto2(context, 'memory', 'Memoria'),
-                botonTipoReto(context, '5preg', '5 Preguntas'),
+                //botonTipoReto2(context, 'memory', 'Memoria'),
+                botonTipoReto2(context, '5preg', '5 Preguntas'),
               ],
             ),
           ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:newtonapp/providers/auth.dart';
-import 'package:newtonapp/providers/user_provider.dart';
 import 'package:newtonapp/shared/drawer_menu.dart';
 import 'package:newtonapp/shared/icons.dart';
 
@@ -166,7 +165,9 @@ class Aprendizaje extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed('ComingSoon');
+          },
           child: Icon(
             MyIcons.divide,
             color: Colors.white,
