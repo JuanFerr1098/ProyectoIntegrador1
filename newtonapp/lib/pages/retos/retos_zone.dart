@@ -50,6 +50,7 @@ class RetosZone extends StatefulWidget {
       : super(key: key);
 
   @override
+  // ignore: no_logic_in_create_state
   _RetosZone createState() => _RetosZone(data, lvl, operacion, tipo);
 }
 
@@ -327,60 +328,62 @@ class _RetosZone extends State<RetosZone> {
       onWillPop: () async {
         return false;
       },
-      child: Scaffold(
-        body: Column(
-          children: <Widget>[
-            Expanded(
-                flex: 3,
-                child: Center(
-                  // Pregunta
-                  child: Text(
-                    pregunta[0] + '=',
-                    style: const TextStyle(
-                      color: Color.fromRGBO(145, 99, 203, 1),
-                      //color: Colors.white,
-                      fontFamily: 'QBold',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 60.0,
+      child: SafeArea(
+        child: Scaffold(
+          body: Column(
+            children: <Widget>[
+              Expanded(
+                  flex: 3,
+                  child: Center(
+                    // Pregunta
+                    child: Text(
+                      pregunta[0] + '=',
+                      style: const TextStyle(
+                        color: Color.fromRGBO(145, 99, 203, 1),
+                        //color: Colors.white,
+                        fontFamily: 'QBold',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 60.0,
+                      ),
                     ),
+                  )),
+              Expanded(
+                  //botones
+                  flex: 5,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            respuestas(pregunta[1], resp, 'a'),
+                            respuestas(pregunta[2], resp, 'b'),
+                          ]),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            respuestas(pregunta[3], resp, 'c'),
+                            respuestas(pregunta[4], resp, 'd'),
+                          ]),
+                    ],
+                  )),
+              Expanded(
+                // timer
+                flex: 2,
+                child: Text(
+                  showtimer,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Color.fromRGBO(0, 180, 216, 1),
+                    //color: Colors.white,
+                    fontFamily: 'QBold',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 60.0,
                   ),
-                )),
-            Expanded(
-                //botones
-                flex: 5,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          respuestas(pregunta[1], resp, 'a'),
-                          respuestas(pregunta[2], resp, 'b'),
-                        ]),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          respuestas(pregunta[3], resp, 'c'),
-                          respuestas(pregunta[4], resp, 'd'),
-                        ]),
-                  ],
-                )),
-            Expanded(
-              // timer
-              flex: 2,
-              child: Text(
-                showtimer,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Color.fromRGBO(0, 180, 216, 1),
-                  //color: Colors.white,
-                  fontFamily: 'QBold',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 60.0,
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -392,8 +395,8 @@ class _RetosZone extends State<RetosZone> {
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
-          minWidth: 200.0,
-          height: 150.0,
+          //minWidth: 50.0,
+          height: 50.0,
           color: btncolor[k],
           //color: const Color.fromRGBO( 0, 180, 216, 1),
           splashColor: Colors.white,
