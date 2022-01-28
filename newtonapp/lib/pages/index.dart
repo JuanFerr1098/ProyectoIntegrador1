@@ -18,16 +18,33 @@ class Index extends StatelessWidget {
           children: <Widget>[
             Container(
               height: MediaQuery.of(context).size.height * 0.4,
-              //color: Colors.black,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-                  Color.fromRGBO(200, 107, 250, 1),
-                  Color.fromRGBO(123, 44, 191, 1),
-                ]),
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(90),
-                    bottomRight: Radius.circular(90)),
+              child: Container(
+                padding: EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                ),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(begin: Alignment.topCenter, colors: [
+                    Color.fromRGBO(200, 107, 250, 1),
+                    Color.fromRGBO(123, 44, 191, 1),
+                  ]),
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(90),
+                      bottomRight: Radius.circular(90)),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                  
+                     Image.asset('../assets/images/logo.png',width: 450,) ,
+                 
+          ]
+        
+                ),
               ),
+              
+              //color: Colors.black,
+
             ),
             Container(
                 height: MediaQuery.of(context).size.height * 0.6,
