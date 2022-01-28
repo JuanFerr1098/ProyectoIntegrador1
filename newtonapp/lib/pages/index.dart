@@ -11,7 +11,8 @@ class Index extends StatelessWidget {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return Scaffold(
-      backgroundColor: const Color.fromRGBO( 145, 99, 203, 1),//Fondo de la pantalla
+      backgroundColor: const Color.fromRGBO(123,44, 191, 1),//Fondo de la pantalla
+      //backgroundColor: const Color.fromRGBO( 145, 99, 203, 1),//Fondo de la pantalla
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
@@ -76,8 +77,9 @@ class Index extends StatelessWidget {
         child: MaterialButton(
           minWidth: 250.0,
           height: 80.0,
+          color: const Color.fromRGBO( 255, 170, 0, 1),
           //color: const Color.fromRGBO( 7, 194, 184, 1), turquesa antiguo
-          color: Colors.white,
+          //color: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0),
           ),
@@ -88,8 +90,9 @@ class Index extends StatelessWidget {
           child: const Text(
             'Login',
             style: TextStyle(
-              fontFamily: 'QBold',            
-              color: const Color.fromRGBO( 145, 99, 203, 1),
+              fontFamily: 'QBold',
+              color: Colors.white,            
+              //color: Color.fromRGBO( 145, 99, 203, 1),
               fontSize: 35.0,
               fontWeight: FontWeight.bold,
             ),
