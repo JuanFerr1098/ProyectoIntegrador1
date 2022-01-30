@@ -17,48 +17,70 @@ class _SignInPageState extends State<SignInPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   //Los controller es donde guarda las variables, creo que funciona asi
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
+
+    var rosa = const Color(0xffc86bfa);
+    var morado = const Color(0xff7b2cbf);
+    var naranjaOscuro = const Color(0xffff7b00);
+
     return Scaffold(
       //backgroundColor: Colors.tealAccent, //Fondo de la pantalla
       body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(begin: Alignment.topCenter, colors: [
+            rosa,
+            morado,
+          ]),
+          /*borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(90),
+                      bottomRight: Radius.circular(90)),*/
+        ),
         child: Column(
           children: <Widget>[
             Container(
               height: MediaQuery.of(context).size.height * 0.4,
               child: Container(
-                padding: EdgeInsets.only(
-                  left: 20,
+                padding: const EdgeInsets.only(
+                  left: 50,
                   right: 20,
                 ),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-                    Color.fromRGBO(200, 107, 250, 1),
-                    Color.fromRGBO(123, 44, 191, 1),
-                  ]),
-                  /*borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(90),
-                      bottomRight: Radius.circular(90)),*/
-                ),
                 child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[]),
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        'Logeo',
+                        style: TextStyle(
+                          fontFamily: 'QBold',
+                          color: Colors.white,
+                          fontSize: 50.0,
+                          //fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                                            Text(
+                        'Bienvenido devuelta.',
+                        style: TextStyle(
+                          fontFamily: 'QBold',
+                          color: Colors.white,
+                          fontSize: 25.0,
+                          //fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ]),
               ),
-
-              //color: Colors.black,
             ),
             Container(
+              //parte blanca
               height: MediaQuery.of(context).size.height * 0.6,
               child: Container(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   left: 50,
                   right: 50,
                 ),
-                decoration: BoxDecoration(
-                  color: Colors.red,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(60),
                       topRight: Radius.circular(60)),
@@ -67,8 +89,18 @@ class _SignInPageState extends State<SignInPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    //titulo(context),
-                    // botones(context),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        //titulo(context),
+                        loginText(),
+                        passwordText(),
+                        botonIngresar(context)
+                      ],
+                    )
+
+                    //passwordText(),
+                    // botonIngresar(context),
                   ],
                 ),
               ),
@@ -76,28 +108,12 @@ class _SignInPageState extends State<SignInPage> {
           ],
         ),
       ),
-      /* appBar: AppBar(
-          backgroundColor: const Color.fromRGBO( 145, 99, 203, 1),
-          //title: Text(widget.title),
-        ),
-        body: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              loginText(),
-              passwordText(),
-              botonIngresar(context),
-            ],
-          ),
-        )*/
     );
   }
 
   Widget loginText() {
     return Container(
-      width: 450.0,
+      width: 350.0,
       //Ingreso del Email del Login
       padding: const EdgeInsets.all(10),
       alignment: Alignment.center,
@@ -117,7 +133,7 @@ class _SignInPageState extends State<SignInPage> {
 
   Widget passwordText() {
     return Container(
-      width: 450.0,
+      width: 350.0,
       //Ingreso de la Contraseña del Login
       padding: const EdgeInsets.all(10),
       alignment: Alignment.center,

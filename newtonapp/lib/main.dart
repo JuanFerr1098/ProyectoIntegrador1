@@ -43,7 +43,10 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           fontFamily: 'Montserrat',
           primarySwatch: Colors.blue,
+         
         ),
+      
+
         home: const SplahScreen(),
         routes: {
           'home': (_) => const Index(),
