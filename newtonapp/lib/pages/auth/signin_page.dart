@@ -44,11 +44,13 @@ class _SignInPageState extends State<SignInPage> {
               height: MediaQuery.of(context).size.height * 0.4,
               child: Container(
                 padding: const EdgeInsets.only(
-                  left: 50,
+                  left: 10,
                   right: 20,
                 ),
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                child: Column(
+                  
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
                         'Logeo',
@@ -62,7 +64,7 @@ class _SignInPageState extends State<SignInPage> {
                                             Text(
                         'Bienvenido devuelta.',
                         style: TextStyle(
-                          fontFamily: 'QBold',
+                          fontFamily: 'PMedium',
                           color: Colors.white,
                           fontSize: 25.0,
                           //fontWeight: FontWeight.bold,
@@ -158,9 +160,10 @@ class _SignInPageState extends State<SignInPage> {
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
-          minWidth: 230.0,
-          height: 60.0,
-          color: const Color.fromRGBO(0, 180, 216, 1),
+          minWidth: 250.0,
+          height: 80.0,
+          color: Color(0xffff7b00),
+          //color: const Color.fromRGBO(0, 180, 216, 1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0),
           ),
