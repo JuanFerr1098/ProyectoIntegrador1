@@ -25,6 +25,8 @@ import 'package:newtonapp/pages/retos/tipo_reto.dart';
 import 'package:newtonapp/pages/splashscreen.dart';
 import 'package:newtonapp/shared/acerca_de.dart';
 import 'package:newtonapp/shared/coming_soon.dart';
+import 'package:newtonapp/pages/prueba/pruebaHome.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -70,6 +72,7 @@ class MyApp extends StatelessWidget {
           'acercaDe': (_) => const AcercaDe(),
           'ComingSoon': (_) => const ComingSoon(),
           'comentarios': (_) => Comentarios(),
+          'prueba': (_) => PruebaHome(),
         });
   }
 }
