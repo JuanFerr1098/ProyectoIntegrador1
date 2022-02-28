@@ -123,7 +123,7 @@ class Index extends StatelessWidget {
             Navigator.of(context).pushNamed('login');
             //Navigator.of(context).pushNamed('index');
           },
-     
+
           child: const Text(
             'Entrar',
             style: TextStyle(
@@ -142,26 +142,23 @@ class Index extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
-          minWidth: 250.0,
-          height: 80.0,
-          
-          color: const Color.fromRGBO(255, 123, 0, 1),
-          //color: const Color.fromRGBO( 0, 180, 216, 1),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          onPressed: () {
-            Navigator.of(context).pushNamed('register');
-          },
-          child: const Text(
-            'Registrarse',
-            style: TextStyle(
-
-              fontFamily: 'QBold', 
-              color: Color.fromRGBO( 145, 99, 203, 1),
-              fontSize: 35.0,
-
-              fontFamily: 'QBold',
-          ),
-        ));
+            minWidth: 250.0,
+            height: 80.0,
+            color: const Color.fromRGBO(255, 123, 0, 1),
+            //color: const Color.fromRGBO( 0, 180, 216, 1),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            onPressed: () {
+              Navigator.of(context).pushNamed('register');
+            },
+            child: const Text(
+              'Registrarse',
+              style: TextStyle(
+                fontFamily: 'QBold',
+                color: Color.fromRGBO(145, 99, 203, 1),
+                fontSize: 35.0,
+              ),
+            )));
   }
+}
