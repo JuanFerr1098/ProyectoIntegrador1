@@ -84,7 +84,6 @@ class _SignInPageState extends State<SignInPage> {
 
   Widget botonIngresar(context) {
     return Container(
-      
         //Boton para ir al Registro de la App
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,

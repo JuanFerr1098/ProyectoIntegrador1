@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:newtonapp/pages/aprendizaje/aprendizaje.dart';
 import 'package:newtonapp/pages/aprendizaje/aprendizaje_multi.dart';
 import 'package:newtonapp/pages/aprendizaje/aprendizaje_resta.dart';
@@ -21,12 +20,12 @@ import 'package:newtonapp/pages/perfil/perfil_page.dart';
 import 'package:newtonapp/pages/auth/register_page.dart';
 import 'package:newtonapp/pages/auth/signin_page.dart';
 import 'package:newtonapp/pages/aprendizaje/suma/suma_truco1.dart';
+import 'package:newtonapp/pages/prueba/prueba_preguntas.dart';
 import 'package:newtonapp/pages/retos/tipo_reto.dart';
 import 'package:newtonapp/pages/splashscreen.dart';
 import 'package:newtonapp/shared/acerca_de.dart';
 import 'package:newtonapp/shared/coming_soon.dart';
-import 'package:newtonapp/pages/prueba/pruebaHome.dart';
-
+import 'package:newtonapp/pages/prueba/prueba_home.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -72,7 +71,8 @@ class MyApp extends StatelessWidget {
           'acercaDe': (_) => const AcercaDe(),
           'ComingSoon': (_) => const ComingSoon(),
           'comentarios': (_) => Comentarios(),
-          'prueba': (_) => PruebaHome(),
+          'prueba': (_) => const PruebaHome(),
+          'pruebapreguntas': (_) => const PruebasZone(),
         });
   }
 }
