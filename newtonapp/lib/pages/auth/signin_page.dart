@@ -17,34 +17,111 @@ class _SignInPageState extends State<SignInPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   //Los controller es donde guarda las variables, creo que funciona asi
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
+
+    var rosa = const Color(0xffc86bfa);
+    var morado = const Color(0xff7b2cbf);
+    var naranjaOscuro = const Color(0xffff7b00);
+
     return Scaffold(
-        //backgroundColor: Colors.tealAccent, //Fondo de la pantalla
-        appBar: AppBar(
-          backgroundColor: const Color.fromRGBO( 145, 99, 203, 1),
-          //title: Text(widget.title),
+      //backgroundColor: Colors.tealAccent, //Fondo de la pantalla
+      body: Form(
+        key: _formKey,
+        child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(begin: Alignment.topCenter, colors: [
+            rosa,
+            morado,
+          ]),
+          /*borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(90),
+                      bottomRight: Radius.circular(90)),*/
         ),
-        body: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              loginText(),
-              passwordText(),
-              botonIngresar(context),
-            ],
-          ),
-        ));
+        child: Column(
+          children: <Widget>[
+            Container(
+              height: MediaQuery.of(context).size.height * 0.4,
+              child: Container(
+                padding: const EdgeInsets.only(
+                  left: 10,
+                  right: 20,
+                ),
+                child: Column(
+                  
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        'Logeo',
+                        style: TextStyle(
+                          fontFamily: 'QBold',
+                          color: Colors.white,
+                          fontSize: 50.0,
+                          //fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                                            Text(
+                        'Bienvenido devuelta.',
+                        style: TextStyle(
+                          fontFamily: 'PMedium',
+                          color: Colors.white,
+                          fontSize: 25.0,
+                          //fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ]),
+              ),
+            ),
+            Container(
+
+              
+              //parte blanca
+              height: MediaQuery.of(context).size.height * 0.6,
+              child: Container(
+                padding: const EdgeInsets.only(
+                  left: 50,
+                  right: 50,
+                ),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(60),
+                      topRight: Radius.circular(60)),
+                ),
+                //color: Colors.black,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        //titulo(context),
+                        loginText(),
+                        passwordText(),
+                        botonIngresar(context)
+                      ],
+                    )
+
+                    //passwordText(),
+                    // botonIngresar(context),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      )
+      
+    );
   }
 
   Widget loginText() {
     return Container(
-      width: 450.0,
+      width: 350.0,
       //Ingreso del Email del Login
       padding: const EdgeInsets.all(10),
       alignment: Alignment.center,
@@ -64,13 +141,13 @@ class _SignInPageState extends State<SignInPage> {
 
   Widget passwordText() {
     return Container(
-      width: 450.0,
+      width: 350.0,
       //Ingreso de la Contraseña del Login
       padding: const EdgeInsets.all(10),
       alignment: Alignment.center,
       child: TextFormField(
         //Aqui esta la entrada de texto
-        
+
         controller: _passwordController,
         decoration: const InputDecoration(
             labelText: 'Ingresa tu Contraseña',
@@ -84,14 +161,15 @@ class _SignInPageState extends State<SignInPage> {
 
   Widget botonIngresar(context) {
     return Container(
-      
+
         //Boton para ir al Registro de la App
         padding: const EdgeInsets.all(10),
         alignment: Alignment.center,
         child: MaterialButton(
-          minWidth: 230.0,
-          height: 60.0,
-          color: const Color.fromRGBO( 0, 180, 216, 1),
+          minWidth: 250.0,
+          height: 80.0,
+          color: Color(0xffff7b00),
+          //color: const Color.fromRGBO(0, 180, 216, 1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0),
           ),
@@ -100,14 +178,15 @@ class _SignInPageState extends State<SignInPage> {
               dynamic result = await _authS.signInWithEmailAndPassword(
                   _emailController.text, _passwordController.text, true);
               if (result != null) {
-                Navigator.of(context).pushNamedAndRemoveUntil('index', (route) => false);
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil('index', (route) => false);
               }
             }
           },
           child: const Text(
             'Ingresar',
             style: TextStyle(
-              fontFamily: 'QBold', 
+              fontFamily: 'QBold',
               color: Colors.white,
               fontSize: 25.0,
               //fontWeight: FontWeight.bold,

@@ -11,16 +11,50 @@ class Index extends StatelessWidget {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return Scaffold(
-      backgroundColor: const Color.fromRGBO( 145, 99, 203, 1),//Fondo de la pantalla
-      body: SizedBox(
-        width: double.infinity,
-        height: double.infinity,
+      // backgroundColor: const Color.fromRGBO(123,44, 191, 1),//Fondo de la pantalla
+      //backgroundColor: const Color.fromRGBO( 145, 99, 203, 1),//Fondo de la pantalla
+      body: Container(
         child: Column(
-          //crossAxisAlignment: CrossAxisAlignment.center,
-          //mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            titulo(context),
-            botones(context),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.4,
+              child: Container(
+                padding: EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                ),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(begin: Alignment.topCenter, colors: [
+                    Color.fromRGBO(200, 107, 250, 1),
+                    Color.fromRGBO(123, 44, 191, 1),
+                  ]),
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(90),
+                      bottomRight: Radius.circular(90)),
+                ),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Image.asset(
+                        '../assets/images/logo.png',
+                        width: 450,
+                      ),
+                    ]),
+              ),
+
+              //color: Colors.black,
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.6,
+              //color: Colors.black,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  //titulo(context),
+                  botones(context),
+                ],
+              ),
+            ),
           ],
         ),
       ),
@@ -58,6 +92,7 @@ class Index extends StatelessWidget {
       width: double.infinity,
       height: MediaQuery.of(context).size.height * .5,
       padding: const EdgeInsets.all(30),
+
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -76,21 +111,26 @@ class Index extends StatelessWidget {
         child: MaterialButton(
           minWidth: 250.0,
           height: 80.0,
+          color: const Color.fromRGBO(255, 123, 0, 1), //naranja
           //color: const Color.fromRGBO( 7, 194, 184, 1), turquesa antiguo
-          color: Colors.white,
+          //color: Colors.white,
+
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5.0),
+            borderRadius: BorderRadius.circular(10.0),
           ),
+
           onPressed: () {
-           Navigator.of(context).pushNamed('login');
-           //Navigator.of(context).pushNamed('index');
+            Navigator.of(context).pushNamed('login');
+            //Navigator.of(context).pushNamed('index');
           },
+     
           child: const Text(
-            'Login',
+            'Entrar',
             style: TextStyle(
-              fontFamily: 'QBold',            
-              color: Color.fromRGBO( 145, 99, 203, 1),
-              fontSize: 35.0,
+              fontFamily: 'QBold',
+              color: Colors.white,
+              //color: Color.fromRGBO( 145, 99, 203, 1),
+              fontSize: 25.0,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -104,23 +144,24 @@ class Index extends StatelessWidget {
         child: MaterialButton(
           minWidth: 250.0,
           height: 80.0,
-          color: Colors.white,
+          
+          color: const Color.fromRGBO(255, 123, 0, 1),
           //color: const Color.fromRGBO( 0, 180, 216, 1),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(5.0),
+            borderRadius: BorderRadius.circular(10.0),
           ),
           onPressed: () {
             Navigator.of(context).pushNamed('register');
           },
           child: const Text(
-            'Registro',
+            'Registrarse',
             style: TextStyle(
+
               fontFamily: 'QBold', 
               color: Color.fromRGBO( 145, 99, 203, 1),
               fontSize: 35.0,
-              fontWeight: FontWeight.bold,
-            ),
+
+              fontFamily: 'QBold',
           ),
         ));
   }
-}
