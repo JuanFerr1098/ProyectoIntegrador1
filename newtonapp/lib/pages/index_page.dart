@@ -34,6 +34,7 @@ class _IndexPage extends State<IndexPage> {
           textoInicial(context),
           botonAprendizaje2(context),
           botonRetos2(context),
+          botonPrueba(context)
         ],
       ),
       backgroundColor: Colors.white, //Color de Fondo
@@ -105,6 +106,32 @@ class _IndexPage extends State<IndexPage> {
           },
           child: const Text(
             'Retos',
+            style: TextStyle(
+              fontFamily: 'QBold', 
+              color: Colors.white,
+              fontSize: 25.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ));
+  }
+
+  Widget botonPrueba(context) {
+    return Container(
+        padding: const EdgeInsets.all(10),
+        alignment: Alignment.center,
+        child: MaterialButton(
+          minWidth: 230.0,
+          height: 60.0,
+          color: const Color.fromRGBO( 0, 180, 216, 1),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5.0),
+          ),
+          onPressed: () {
+            Navigator.of(context).pushNamed('prueba');
+          },
+          child: const Text(
+            'Prueba',
             style: TextStyle(
               fontFamily: 'QBold', 
               color: Colors.white,
