@@ -155,9 +155,11 @@ class Index extends StatelessWidget {
             child: const Text(
               'Registrarse',
               style: TextStyle(
-                fontFamily: 'QBold',
-                color: Color.fromRGBO(145, 99, 203, 1),
-                fontSize: 35.0,
+              fontFamily: 'QBold',
+              color: Colors.white,
+              //color: Color.fromRGBO( 145, 99, 203, 1),
+              fontSize: 25.0,
+              fontWeight: FontWeight.bold,
               ),
             )));
   }
