@@ -27,14 +27,16 @@ class _SignInPageState extends State<SignInPage> {
     var naranjaOscuro = const Color(0xffff7b00);
 
     return Scaffold(
-
+      //backgroundColor: Colors.tealAccent, //Fondo de la pantalla
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(begin: Alignment.topCenter, colors: [
             rosa,
             morado,
           ]),
-
+          /*borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(90),
+                      bottomRight: Radius.circular(90)),*/
         ),
         child: Column(
           children: <Widget>[
@@ -99,6 +101,8 @@ class _SignInPageState extends State<SignInPage> {
                       ],
                     )
 
+                    //passwordText(),
+                    // botonIngresar(context),
                   ],
                 ),
               ),
