@@ -28,7 +28,9 @@ class _SignInPageState extends State<SignInPage> {
 
     return Scaffold(
       //backgroundColor: Colors.tealAccent, //Fondo de la pantalla
-      body: Container(
+      body: Form(
+        key: _formKey,
+        child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(begin: Alignment.topCenter, colors: [
             rosa,
@@ -74,6 +76,8 @@ class _SignInPageState extends State<SignInPage> {
               ),
             ),
             Container(
+
+              
               //parte blanca
               height: MediaQuery.of(context).size.height * 0.6,
               child: Container(
@@ -110,6 +114,8 @@ class _SignInPageState extends State<SignInPage> {
           ],
         ),
       ),
+      )
+      
     );
   }
 
