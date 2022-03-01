@@ -1,7 +1,6 @@
 //import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:newtonapp/providers/auth.dart';
 //import 'package:newtonapp/providers/user_provider.dart';
 import 'package:newtonapp/shared/drawer_menu.dart';

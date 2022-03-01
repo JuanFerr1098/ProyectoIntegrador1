@@ -42,7 +42,7 @@ class _SignInPageState extends State<SignInPage> {
         ),
         child: Column(
           children: <Widget>[
-            Container(
+            SizedBox(
               height: MediaQuery.of(context).size.height * 0.4,
               child: Container(
                 padding: const EdgeInsets.only(
@@ -53,7 +53,7 @@ class _SignInPageState extends State<SignInPage> {
                   
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
+                    children: const <Widget>[
                       Text(
                         'Logeo',
                         style: TextStyle(
@@ -75,9 +75,7 @@ class _SignInPageState extends State<SignInPage> {
                     ]),
               ),
             ),
-            Container(
-
-              
+            SizedBox(
               //parte blanca
               height: MediaQuery.of(context).size.height * 0.6,
               child: Container(
@@ -167,7 +165,7 @@ class _SignInPageState extends State<SignInPage> {
         child: MaterialButton(
           minWidth: 250.0,
           height: 80.0,
-          color: Color(0xffff7b00),
+          color: const Color(0xffff7b00),
           //color: const Color.fromRGBO(0, 180, 216, 1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0),

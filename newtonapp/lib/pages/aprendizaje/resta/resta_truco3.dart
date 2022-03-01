@@ -1,7 +1,4 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:newtonapp/shared/icons.dart';
 
@@ -104,7 +101,7 @@ class _RestaTruco3State extends State<RestaTruco3> {
       backgroundColor:  const Color.fromRGBO( 0, 180, 216, 1),
       automaticallyImplyLeading: false,
       elevation: 0.0,
-        title:  Text('Truco 3 Resta',
+        title:  const Text('Truco 3 Resta',
         style: TextStyle(
                 fontFamily: 'QBold', 
                 fontWeight: FontWeight.bold,

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:newtonapp/pages/retos/retos.dart';
 import 'package:newtonapp/shared/drawer_menu.dart';
-import 'package:flutter/widgets.dart';
 
 class TipoReto extends StatelessWidget {
   TipoReto({Key? key}) : super(key: key);

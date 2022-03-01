@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 //import 'package:flutter/src/material/colors.dart';
 
 class Index extends StatelessWidget {
@@ -13,50 +12,48 @@ class Index extends StatelessWidget {
     return Scaffold(
       // backgroundColor: const Color.fromRGBO(123,44, 191, 1),//Fondo de la pantalla
       //backgroundColor: const Color.fromRGBO( 145, 99, 203, 1),//Fondo de la pantalla
-      body: Container(
-        child: Column(
-          children: <Widget>[
-            Container(
-              height: MediaQuery.of(context).size.height * 0.4,
-              child: Container(
-                padding: EdgeInsets.only(
-                  left: 20,
-                  right: 20,
-                ),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-                    Color.fromRGBO(200, 107, 250, 1),
-                    Color.fromRGBO(123, 44, 191, 1),
+      body: Column(
+        children: <Widget>[
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.4,
+            child: Container(
+              padding: const EdgeInsets.only(
+                left: 20,
+                right: 20,
+              ),
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(begin: Alignment.topCenter, colors: [
+                  Color.fromRGBO(200, 107, 250, 1),
+                  Color.fromRGBO(123, 44, 191, 1),
+                ]),
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(90),
+                    bottomRight: Radius.circular(90)),
+              ),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image.asset(
+                      '../assets/images/logo.png',
+                      width: 450,
+                    ),
                   ]),
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(90),
-                      bottomRight: Radius.circular(90)),
-                ),
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Image.asset(
-                        '../assets/images/logo.png',
-                        width: 450,
-                      ),
-                    ]),
-              ),
+            ),
 
-              //color: Colors.black,
+            //color: Colors.black,
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.6,
+            //color: Colors.black,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                //titulo(context),
+                botones(context),
+              ],
             ),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.6,
-              //color: Colors.black,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  //titulo(context),
-                  botones(context),
-                ],
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

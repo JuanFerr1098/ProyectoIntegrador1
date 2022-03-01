@@ -25,7 +25,7 @@ class _RegisterPageState extends State<RegisterPage> {
   //agregar controles faltantes
   final TextEditingController _edadController = TextEditingController();
 
-  List<String> _lista = ['carro','casa','vaca'];
+  List<String> _lista = ['carro', 'casa', 'vaca'];
   String? selectedValue;
   List<String> items = [
     '1',
@@ -47,20 +47,22 @@ class _RegisterPageState extends State<RegisterPage> {
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color.fromRGBO( 145, 99, 203, 1),
-          title: Text(widget.title,
-          style: const TextStyle(
-              fontFamily: 'QRegular', 
+          backgroundColor: const Color.fromRGBO(145, 99, 203, 1),
+          title: Text(
+            widget.title,
+            style: const TextStyle(
+              fontFamily: 'QRegular',
               color: Colors.white,
               fontSize: 20.0,
               //fontWeight: FontWeight.bold,
-            ),),
+            ),
+          ),
         ),
         body: Form(
           key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-           // addAutomaticKeepAlives: false,
+            // addAutomaticKeepAlives: false,
             //scrollDirection: Axis.vertical,
             children: <Widget>[
               /*nameText(),
@@ -70,61 +72,57 @@ class _RegisterPageState extends State<RegisterPage> {
               texto('Ingresa tu correo', _emailController, false),
               texto('Ingresa tu contraseña', _passwordController, true),
               texto('Ingresa tu edad', _edadController, true),
-              
               Container(
                 width: 410.0,
-child: DropdownButton2(
-            isExpanded: true, //para acoplarlo
-            hint: Row(
-              
-              children: const [
-              
-                SizedBox(
-                  width: 4,
-                ),
-                Expanded(
-                  child: Text(
-                    'Elije tu grado actual',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ],
-            ),
-            items: items
-                .map((item) => DropdownMenuItem<String>(
-                      value: item,
-                      child: Text(
-                        item,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                        ),
-                        overflow: TextOverflow.ellipsis,
+                child: DropdownButton2(
+                  isExpanded: true, //para acoplarlo
+                  hint: Row(
+                    children: const [
+                      SizedBox(
+                        width: 4,
                       ),
-                    ))
-                .toList(),
-            value: selectedValue,
-            onChanged: (value) {
-              setState(() {
-                selectedValue = value as String;
-              });
-            },),
-                ),       
+                      Expanded(
+                        child: Text(
+                          'Elije tu grado actual',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                  items: items
+                      .map((item) => DropdownMenuItem<String>(
+                            value: item,
+                            child: Text(
+                              item,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ))
+                      .toList(),
+                  value: selectedValue,
+                  onChanged: (value) {
+                    setState(() {
+                      selectedValue = value as String;
+                    });
+                  },
+                ),
+              ),
               botonRegistrar(context),
             ],
           ),
         ));
   }
 
-
-
-  Widget texto(String txt, TextEditingController controller, bool obsText){
+  Widget texto(String txt, TextEditingController controller, bool obsText) {
     return Container(
       width: 450.0,
       //Ingreso del Nombre del Registro
@@ -133,12 +131,11 @@ child: DropdownButton2(
       child: TextFormField(
         //Aqui esta la entrada de texto
         controller: controller,
-        decoration:  InputDecoration(
-          labelText: txt,
-          border: InputBorder.none,
-          fillColor: Colors.white,
-          filled: true
-        ),
+        decoration: InputDecoration(
+            labelText: txt,
+            border: InputBorder.none,
+            fillColor: Colors.white,
+            filled: true),
         obscureText: obsText,
       ),
     );
@@ -152,7 +149,7 @@ child: DropdownButton2(
         child: MaterialButton(
           minWidth: 230.0,
           height: 60.0,
-          color: const Color.fromRGBO( 0, 180, 216, 1),
+          color: const Color.fromRGBO(0, 180, 216, 1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0),
           ),
@@ -161,7 +158,7 @@ child: DropdownButton2(
               //await _register();
               dynamic result = await _authS.registerWithEmailAndPassword(
                   _nameController.text,
-                  _emailController.text, 
+                  _emailController.text,
                   _passwordController.text);
               if (result != null) {
                 Navigator.of(context).pushNamed('login');
@@ -171,7 +168,7 @@ child: DropdownButton2(
           child: const Text(
             'Registrar',
             style: TextStyle(
-              fontFamily: 'QBold', 
+              fontFamily: 'QBold',
               color: Colors.white,
               fontSize: 25.0,
               //fontWeight: FontWeight.bold,
