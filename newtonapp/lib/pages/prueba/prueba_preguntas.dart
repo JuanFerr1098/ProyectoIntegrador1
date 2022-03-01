@@ -11,17 +11,17 @@ class PruebasZone extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<DocumentSnapshot>(
-      future: PruebasProvider(uid: 'prueba').getPrueba(),
-      builder: (context, snapshot) {
-        if(snapshot.hasData){
-          Map<String, dynamic>? data =
+        future: PruebasProvider(uid: 'prueba').getPrueba(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            Map<String, dynamic>? data =
                 snapshot.data!.data() as Map<String, dynamic>;
-          List<dynamic> mydata = List<dynamic>.from([data]);
-          return PruebaPreguntas(mydata: mydata);
-        } else {
+            //List<dynamic> mydata = List<dynamic>.from([data]);
+            return PruebaPreguntas(mydata: data);
+          } else {
             return const Center(child: CircularProgressIndicator());
-        }
-      });
+          }
+        });
     // String ruta = "/preguntas/preguntas.json";
     // return FutureBuilder(
     //     future: DefaultAssetBundle.of(context).loadString(ruta, cache: false),
@@ -39,7 +39,8 @@ class PruebasZone extends StatelessWidget {
 }
 
 class PruebaPreguntas extends StatefulWidget {
-  final List mydata;
+  //final List mydata;
+  final Map<String, dynamic> mydata;
   const PruebaPreguntas({Key? key, required this.mydata}) : super(key: key);
 
   @override
@@ -48,7 +49,8 @@ class PruebaPreguntas extends StatefulWidget {
 }
 
 class _PruebaPreguntasState extends State<PruebaPreguntas> {
-  final List mydata;
+  //final List mydata;
+  final Map<dynamic, dynamic> mydata;
   _PruebaPreguntasState(this.mydata);
 
   // Tiempo inicial
@@ -119,14 +121,15 @@ class _PruebaPreguntasState extends State<PruebaPreguntas> {
     });
   }
 
-  hacerPregunta() {}
+  //hacerPregunta() {}
 
   void nextquestion() {
     canceltimer = false;
     timer = 10;
     setState(() {
+      statusButtom = !statusButtom;
       if (numPregunta < 8) {
-        i = mydata[numPregunta];
+        i = numPregunta;
         numPregunta++;
       } else {
         navegarPuntaje();
@@ -157,7 +160,8 @@ class _PruebaPreguntasState extends State<PruebaPreguntas> {
 
   void checkAnswer(String k) {
     Color color;
-    if (mydata[2][i.toString()] == mydata[1][i.toString()][k]) {
+    if (mydata["respuestas"][i.toString()] ==
+        mydata["opciones"][i.toString()][k]) {
       color = Colors.green;
       puntaje = puntaje + 5;
       aciertos++;
@@ -174,15 +178,20 @@ class _PruebaPreguntasState extends State<PruebaPreguntas> {
     Timer(const Duration(seconds: 1), nextquestion);
   }
 
-  Widget respuestas(String k){
+  Widget respuestas(String k) {
     return MaterialButton(
-      onPressed: () {
-        
-      },
-      child: Text(
-        mydata[1][i.toString()][k]
-      ),
+      height: 50.0,
+      splashColor: Colors.white,
+      color: btncolor[k],
+      onPressed: () => statusButtom ? null : checkAnswer(k),
+      child: Text(mydata["opciones"][i.toString()][k]),
     );
+  }
+
+  Widget timerPamtalla(){
+    return Expanded(
+      flex: 2,
+      child: Text(showtimer));
   }
 
   @override
@@ -198,7 +207,7 @@ class _PruebaPreguntasState extends State<PruebaPreguntas> {
                 flex: 3,
                 child: Center(
                   child: Text(
-                    mydata[0][i.toString()],
+                    mydata["preguntas"][i.toString()],
                   ),
                 )),
             Expanded(
@@ -210,22 +219,9 @@ class _PruebaPreguntasState extends State<PruebaPreguntas> {
                     respuestas('b'),
                     respuestas('c'),
                     respuestas('d'),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.center,
-                    //   children: <Widget>[
-                    //     respuestas('a'),
-                    //     respuestas('b'),
-                    //   ],
-                    // ),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.center,
-                    //   children: <Widget>[
-                    //     respuestas('c'),
-                    //     respuestas('d'),
-                    //   ],
-                    // )
                   ],
                 )),
+                timerPamtalla(),
           ],
         ),
       ),
