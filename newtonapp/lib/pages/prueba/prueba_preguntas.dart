@@ -22,24 +22,10 @@ class PruebasZone extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           }
         });
-    // String ruta = "/preguntas/preguntas.json";
-    // return FutureBuilder(
-    //     future: DefaultAssetBundle.of(context).loadString(ruta, cache: false),
-    //     builder: (context, snapshot) {
-    //       if (!snapshot.hasData) {
-    //         return const Center(child: CircularProgressIndicator());
-    //       } else {
-    //       var mydata = jsonDecode(snapshot.data.toString());
-    //         return PruebaPreguntas(
-    //           mydata: mydata,
-    //         );
-    //       }
-    //     });
   }
 }
 
 class PruebaPreguntas extends StatefulWidget {
-  //final List mydata;
   final Map<String, dynamic> mydata;
   const PruebaPreguntas({Key? key, required this.mydata}) : super(key: key);
 
@@ -61,9 +47,6 @@ class _PruebaPreguntasState extends State<PruebaPreguntas> {
   bool disableAnswer = false;
   // Preguntas
   int puntaje = 0;
-  //List pregunta = [];
-  int resp = 0;
-  int i = 1;
   int numPregunta = 1;
   late bool statusButtom;
   // Para analisis de la prueba
@@ -83,12 +66,8 @@ class _PruebaPreguntasState extends State<PruebaPreguntas> {
   void initState() {
     date = DateTime.now();
     statusButtom = false;
-    //_isDisabled = false;
-    // Inicializar valores del timer
     iniciarTimer();
     starttimer();
-    // Crear primera pregunta
-    //hacerPregunta();
     super.initState();
   }
 
@@ -121,15 +100,13 @@ class _PruebaPreguntasState extends State<PruebaPreguntas> {
     });
   }
 
-  //hacerPregunta() {}
-
   void nextquestion() {
     canceltimer = false;
     timer = 10;
     setState(() {
       statusButtom = !statusButtom;
       if (numPregunta < 8) {
-        i = numPregunta;
+        //i = numPregunta;
         numPregunta++;
       } else {
         navegarPuntaje();
@@ -147,7 +124,7 @@ class _PruebaPreguntasState extends State<PruebaPreguntas> {
     Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(
             builder: (BuildContext context) => Resultado(
-                puntaje: puntaje.toString(),
+                puntaje: (puntaje + errores*10 - aciertos*5).toString(),
                 lvl: "0",
                 operacion: "Pruebas",
                 tipo: "Prueba",
@@ -160,10 +137,10 @@ class _PruebaPreguntasState extends State<PruebaPreguntas> {
 
   void checkAnswer(String k) {
     Color color;
-    if (mydata["respuestas"][i.toString()] ==
-        mydata["opciones"][i.toString()][k]) {
+    if (mydata["respuestas"][numPregunta.toString()] ==
+        mydata["opciones"][numPregunta.toString()][k]) {
       color = Colors.green;
-      puntaje = puntaje + 5;
+      puntaje = puntaje + (10-timer);
       aciertos++;
     } else {
       color = Colors.red;
@@ -182,9 +159,10 @@ class _PruebaPreguntasState extends State<PruebaPreguntas> {
     return MaterialButton(
       height: 50.0,
       splashColor: Colors.white,
+      highlightColor: const Color.fromRGBO(145, 99, 203, 1),
       color: btncolor[k],
       onPressed: () => statusButtom ? null : checkAnswer(k),
-      child: Text(mydata["opciones"][i.toString()][k]),
+      child: Text(mydata["opciones"][numPregunta.toString()][k]),
     );
   }
 
@@ -207,7 +185,7 @@ class _PruebaPreguntasState extends State<PruebaPreguntas> {
                 flex: 3,
                 child: Center(
                   child: Text(
-                    mydata["preguntas"][i.toString()],
+                    mydata["preguntas"][numPregunta.toString()],
                   ),
                 )),
             Expanded(

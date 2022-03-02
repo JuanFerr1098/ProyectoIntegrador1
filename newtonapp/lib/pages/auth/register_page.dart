@@ -68,7 +68,7 @@ class _RegisterPageState extends State<RegisterPage> {
               /*nameText(),
               emailText(),
               passwordText(),*/
-              texto('Ingresa tu combre', _nameController, false),
+              texto('Ingresa tu nombre', _nameController, false),
               texto('Ingresa tu correo', _emailController, false),
               texto('Ingresa tu contraseña', _passwordController, true),
               texto('Ingresa tu edad', _edadController, true),
@@ -159,7 +159,8 @@ class _RegisterPageState extends State<RegisterPage> {
               dynamic result = await _authS.registerWithEmailAndPassword(
                   _nameController.text,
                   _emailController.text,
-                  _passwordController.text);
+                  _passwordController.text,
+                  _edadController.text);
               if (result != null) {
                 Navigator.of(context).pushNamed('login');
               }

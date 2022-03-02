@@ -18,8 +18,8 @@ class UserProvider {
     return userData.doc(uid);
   }
 
-  Future<void> createUser(String name, String email) {
-    return userData.doc(uid).set({'nombre': name, 'correo': email});
+  Future<void> createUser(String name, String email, String edad) {
+    return userData.doc(uid).set({'nombre': name, 'correo': email, 'edad': edad});
   }
 
   UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
