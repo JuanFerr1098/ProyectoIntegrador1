@@ -12,49 +12,7 @@ class Index extends StatelessWidget {
     return Scaffold(
       // backgroundColor: const Color.fromRGBO(123,44, 191, 1),//Fondo de la pantalla
       //backgroundColor: const Color.fromRGBO( 145, 99, 203, 1),//Fondo de la pantalla
-      body: Column(
-        children: <Widget>[
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.4,
-            child: Container(
-              padding: const EdgeInsets.only(
-                left: 20,
-                right: 20,
-              ),
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(begin: Alignment.topCenter, colors: [
-                  Color.fromRGBO(200, 107, 250, 1),
-                  Color.fromRGBO(123, 44, 191, 1),
-                ]),
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(90),
-                    bottomRight: Radius.circular(90)),
-              ),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Image.asset(
-                      '../assets/images/logo.png',
-                      width: 450,
-                    ),
-                  ]),
-            ),
-
-            //color: Colors.black,
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.6,
-            //color: Colors.black,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                //titulo(context),
-                botones(context),
-              ],
-            ),
-          ),
-        ],
-      ),
+      body: cuerpo(context),
     );
   }
 
@@ -64,7 +22,6 @@ class Index extends StatelessWidget {
       width: double.infinity,
       height: MediaQuery.of(context).size.height * .5,
       padding: const EdgeInsets.all(50),
-
       child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,6 +38,28 @@ class Index extends StatelessWidget {
             ),
           ]),
     );
+  }
+
+  Widget cuerpo(context) {
+    return SafeArea(
+        child: ListView(
+      children: <Widget>[
+        Container(
+          height: 300,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(begin: Alignment.topCenter, colors: [
+              Color.fromRGBO(200, 107, 250, 1),
+              Color.fromRGBO(123, 44, 191, 1),
+            ]),
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(90),
+                bottomRight: Radius.circular(90)),
+          ),
+          child: const Image(image: AssetImage('assets/images/logo.png')),
+        ),
+        botones(context),
+      ],
+    ));
   }
 
   Widget botones(context) {
@@ -152,11 +131,11 @@ class Index extends StatelessWidget {
             child: const Text(
               'Registrarse',
               style: TextStyle(
-              fontFamily: 'QBold',
-              color: Colors.white,
-              //color: Color.fromRGBO( 145, 99, 203, 1),
-              fontSize: 25.0,
-              fontWeight: FontWeight.bold,
+                fontFamily: 'QBold',
+                color: Colors.white,
+                //color: Color.fromRGBO( 145, 99, 203, 1),
+                fontSize: 25.0,
+                fontWeight: FontWeight.bold,
               ),
             )));
   }
