@@ -26,9 +26,7 @@ class _SplashScreen extends State<SplahScreen> {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
-    return Image.network('https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/gif%2Fnewton.gif?alt=media&token=c1e75077-ae73-416a-9c96-bf30f3a3f052',
-    fit: BoxFit.fill,);
-    
+    return const Image(image: AssetImage('assets/gif/newton.gif'), fit: BoxFit.fill,);
   }
 
   void startTimer() {
@@ -38,17 +36,8 @@ class _SplashScreen extends State<SplahScreen> {
   }
 
   void navigationUser() async {
-    /*SharedPreferences prefs = await SharedPreferences.getInstance();
-    var status = prefs.getBool('isLoggedIn') ?? false;    
-    print(status);
-    if (status) {
-      Navigator.of(context).pushNamedAndRemoveUntil('index', (route) => false);
-    } else {
-      Navigator.of(context).pushNamedAndRemoveUntil('home', (route) => false);
-    }*/
     SharedPreferences em = await SharedPreferences.getInstance();
     SharedPreferences pw = await SharedPreferences.getInstance();
-    //print(em.getString('email').toString() + '\n'+ pw.getString('password').toString());
     dynamic result = await _authS.signInWithEmailAndPassword(
         em.getString('email').toString(), pw.getString('password').toString(), false);
     if (result != null) {
