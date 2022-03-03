@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:newtonapp/providers/auth.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
-
-//final FirebaseFirestore db = FirebaseFirestore.instance;
 
 class RegisterPage extends StatefulWidget {
   /// The page title.
@@ -22,24 +18,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  //agregar controles faltantes
   final TextEditingController _edadController = TextEditingController();
-
-  List<String> _lista = ['carro', 'casa', 'vaca'];
-  String? selectedValue;
-  List<String> items = [
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '10',
-  ];
-  //Los controller es donde guarda las variables, creo que funciona asi
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +33,6 @@ class _RegisterPageState extends State<RegisterPage> {
               fontFamily: 'QRegular',
               color: Colors.white,
               fontSize: 20.0,
-              //fontWeight: FontWeight.bold,
             ),
           ),
         ),
@@ -62,60 +40,11 @@ class _RegisterPageState extends State<RegisterPage> {
           key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            // addAutomaticKeepAlives: false,
-            //scrollDirection: Axis.vertical,
             children: <Widget>[
-              /*nameText(),
-              emailText(),
-              passwordText(),*/
               texto('Ingresa tu nombre', _nameController, false),
               texto('Ingresa tu correo', _emailController, false),
               texto('Ingresa tu contraseña', _passwordController, true),
               texto('Ingresa tu edad', _edadController, true),
-              Container(
-                width: 410.0,
-                child: DropdownButton2(
-                  isExpanded: true, //para acoplarlo
-                  hint: Row(
-                    children: const [
-                      SizedBox(
-                        width: 4,
-                      ),
-                      Expanded(
-                        child: Text(
-                          'Elije tu grado actual',
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  ),
-                  items: items
-                      .map((item) => DropdownMenuItem<String>(
-                            value: item,
-                            child: Text(
-                              item,
-                              style: const TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ))
-                      .toList(),
-                  value: selectedValue,
-                  onChanged: (value) {
-                    setState(() {
-                      selectedValue = value as String;
-                    });
-                  },
-                ),
-              ),
               botonRegistrar(context),
             ],
           ),
@@ -162,6 +91,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   _passwordController.text,
                   _edadController.text);
               if (result != null) {
+                Navigator.pop(context);
                 Navigator.of(context).pushNamed('login');
               }
             }
@@ -172,7 +102,6 @@ class _RegisterPageState extends State<RegisterPage> {
               fontFamily: 'QBold',
               color: Colors.white,
               fontSize: 25.0,
-              //fontWeight: FontWeight.bold,
             ),
           ),
         ));
