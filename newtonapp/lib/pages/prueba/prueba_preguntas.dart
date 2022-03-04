@@ -46,7 +46,7 @@ class _PruebaPreguntasState extends State<PruebaPreguntas> {
   bool canceltimer = false;
   bool disableAnswer = false;
   // Preguntas
-  int puntaje = 0;
+  int puntaje = 100;
   int numPregunta = 1;
   late bool statusButtom;
   // Para analisis de la prueba
@@ -179,28 +179,31 @@ class _PruebaPreguntasState extends State<PruebaPreguntas> {
         return true;
       },
       child: SafeArea(
-        child: Column(
-          children: <Widget>[
-            Expanded(
-                flex: 3,
-                child: Center(
-                  child: Text(
-                    mydata["preguntas"][numPregunta.toString()],
-                  ),
-                )),
-            Expanded(
-                flex: 5,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    respuestas('a'),
-                    respuestas('b'),
-                    respuestas('c'),
-                    respuestas('d'),
-                  ],
-                )),
-                timerPamtalla(),
-          ],
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          body: Column(
+            children: <Widget>[
+              Expanded(
+                  flex: 3,
+                  child: Center(
+                    child: Text(
+                      mydata["preguntas"][numPregunta.toString()],
+                    ),
+                  )),
+              Expanded(
+                  flex: 5,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      respuestas('a'),
+                      respuestas('b'),
+                      respuestas('c'),
+                      respuestas('d'),
+                    ],
+                  )),
+                  timerPamtalla(),
+            ],
+          ),
         ),
       ),
     );

@@ -15,7 +15,7 @@ import 'package:newtonapp/pages/comentarios.dart';
 import 'package:newtonapp/pages/perfil/edit_profile_page.dart';
 import 'package:newtonapp/pages/index.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:newtonapp/pages/index_page.dart';
+import 'package:newtonapp/pages/home.dart';
 import 'package:newtonapp/pages/perfil/perfil_page.dart';
 import 'package:newtonapp/pages/auth/register_page.dart';
 import 'package:newtonapp/pages/auth/signin_page.dart';

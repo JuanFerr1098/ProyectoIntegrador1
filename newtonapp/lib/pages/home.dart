@@ -25,17 +25,17 @@ class _IndexPage extends State<IndexPage> {
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     //return _pantalla(context);
     return FutureBuilder<DocumentSnapshot>(
-      future: UserProvider(uid: _authS.userActualUid()).getUsers(),
-      builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot){
-        if (snapshot.hasData) {
+        future: UserProvider(uid: _authS.userActualUid()).getUsers(),
+        builder:
+            (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+          if (snapshot.hasData) {
             Map<String, dynamic>? data =
                 snapshot.data!.data() as Map<String, dynamic>;
             return _pantalla(context, data);
           } else {
             return const Center(child: CircularProgressIndicator());
           }
-      }
-      );
+        });
   }
 
   Widget _pantalla(context, data) {
@@ -46,23 +46,24 @@ class _IndexPage extends State<IndexPage> {
         body: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              textoInicial(context), 
+              textoInicial(context, data),
               botonPrueba(context)
             ]),
       ));
     } else {
-      return SafeArea(child: Scaffold(appBar: myAppBar(context),
-      drawer: DrawerMenu(),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          textoInicial(context),
-          botonAprendizaje2(context),
-          botonRetos2(context),
-        ])
-      ));
+      return SafeArea(
+          child: Scaffold(
+              appBar: myAppBar(context),
+              drawer: DrawerMenu(),
+              body: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    textoInicial(context, data),
+                    botonAprendizaje2(context),
+                    botonRetos2(context),
+                  ])));
     }
-   /* return Scaffold(
+    /* return Scaffold(
       appBar: myAppBar(context),
       drawer: DrawerMenu(),
       body: Column(
@@ -78,7 +79,7 @@ class _IndexPage extends State<IndexPage> {
     );*/
   }
 
-  Widget textoInicial(context) {
+  Widget textoInicial(context, data) {
     return Container(
       //color: Colors.amber[600],
       width: double.infinity,
@@ -87,10 +88,12 @@ class _IndexPage extends State<IndexPage> {
       child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const <Widget>[
+          children: <Widget>[
             Text(
-              '¿A donde quieres ir?',
-              style: TextStyle(
+              data['prueba']
+                  ? 'Para poder usar la app primero debes realizar la prueba'
+                  : '¿A donde quieres ir?',
+              style: const TextStyle(
                 fontFamily: 'QBold',
                 fontWeight: FontWeight.bold,
                 fontSize: 30.0,
