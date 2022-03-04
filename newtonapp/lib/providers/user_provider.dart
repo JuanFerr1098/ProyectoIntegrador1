@@ -19,7 +19,7 @@ class UserProvider {
   }
 
   Future<void> createUser(String name, String email, String edad) {
-    return userData.doc(uid).set({'nombre': name, 'correo': email, 'edad': edad});
+    return userData.doc(uid).set({'nombre': name, 'correo': email, 'edad': edad, 'prueba': true});
   }
 
   UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
@@ -38,6 +38,10 @@ class UserProvider {
 
   Stream<UserData> get userDataBase {
     return userData.doc(uid).snapshots().map(_userDataFromSnapshot);
+  }
+
+  Future<void> actualizarEstado(){
+    return getRealTimeUsers().set({'prueba': false}, SetOptions(merge: true));
   }
 
   Future<void> actualizarDatos(

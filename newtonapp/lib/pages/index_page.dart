@@ -1,9 +1,12 @@
 //import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:newtonapp/providers/auth.dart';
 //import 'package:newtonapp/providers/user_provider.dart';
 import 'package:newtonapp/shared/drawer_menu.dart';
+
+import '../providers/user_provider.dart';
 
 class IndexPage extends StatefulWidget {
   /// The page title.
@@ -20,11 +23,46 @@ class _IndexPage extends State<IndexPage> {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
-    return _pantalla(context);
+    //return _pantalla(context);
+    return FutureBuilder<DocumentSnapshot>(
+      future: UserProvider(uid: _authS.userActualUid()).getUsers(),
+      builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot){
+        if (snapshot.hasData) {
+            Map<String, dynamic>? data =
+                snapshot.data!.data() as Map<String, dynamic>;
+            return _pantalla(context, data);
+          } else {
+            return const Center(child: CircularProgressIndicator());
+          }
+      }
+      );
   }
 
-  Widget _pantalla(context) {
-    return Scaffold(
+  Widget _pantalla(context, data) {
+    if (data['prueba']) {
+      return SafeArea(
+          child: Scaffold(
+        appBar: myAppBar(context),
+        body: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              textoInicial(context), 
+              botonPrueba(context)
+            ]),
+      ));
+    } else {
+      return SafeArea(child: Scaffold(appBar: myAppBar(context),
+      drawer: DrawerMenu(),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          textoInicial(context),
+          botonAprendizaje2(context),
+          botonRetos2(context),
+        ])
+      ));
+    }
+   /* return Scaffold(
       appBar: myAppBar(context),
       drawer: DrawerMenu(),
       body: Column(
@@ -37,7 +75,7 @@ class _IndexPage extends State<IndexPage> {
         ],
       ),
       backgroundColor: Colors.white, //Color de Fondo
-    );
+    );*/
   }
 
   Widget textoInicial(context) {
@@ -53,10 +91,10 @@ class _IndexPage extends State<IndexPage> {
             Text(
               '¿A donde quieres ir?',
               style: TextStyle(
-                fontFamily: 'QBold', 
+                fontFamily: 'QBold',
                 fontWeight: FontWeight.bold,
                 fontSize: 30.0,
-                color: Color.fromRGBO( 145, 99, 203, 1),
+                color: Color.fromRGBO(145, 99, 203, 1),
               ),
             ),
           ]),
@@ -70,7 +108,7 @@ class _IndexPage extends State<IndexPage> {
         child: MaterialButton(
           minWidth: 230.0,
           height: 60.0,
-          color: const Color.fromRGBO( 0, 180, 216, 1),
+          color: const Color.fromRGBO(0, 180, 216, 1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0),
           ),
@@ -80,7 +118,7 @@ class _IndexPage extends State<IndexPage> {
           child: const Text(
             'Aprendizaje',
             style: TextStyle(
-              fontFamily: 'QBold', 
+              fontFamily: 'QBold',
               color: Colors.white,
               fontSize: 25.0,
               fontWeight: FontWeight.bold,
@@ -96,7 +134,7 @@ class _IndexPage extends State<IndexPage> {
         child: MaterialButton(
           minWidth: 230.0,
           height: 60.0,
-          color: const Color.fromRGBO( 145, 99, 203, 1),
+          color: const Color.fromRGBO(145, 99, 203, 1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0),
           ),
@@ -106,7 +144,7 @@ class _IndexPage extends State<IndexPage> {
           child: const Text(
             'Retos',
             style: TextStyle(
-              fontFamily: 'QBold', 
+              fontFamily: 'QBold',
               color: Colors.white,
               fontSize: 25.0,
               fontWeight: FontWeight.bold,
@@ -122,7 +160,7 @@ class _IndexPage extends State<IndexPage> {
         child: MaterialButton(
           minWidth: 230.0,
           height: 60.0,
-          color: const Color.fromRGBO( 0, 180, 216, 1),
+          color: const Color.fromRGBO(0, 180, 216, 1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5.0),
           ),
@@ -132,7 +170,7 @@ class _IndexPage extends State<IndexPage> {
           child: const Text(
             'Prueba',
             style: TextStyle(
-              fontFamily: 'QBold', 
+              fontFamily: 'QBold',
               color: Colors.white,
               fontSize: 25.0,
               fontWeight: FontWeight.bold,
@@ -143,13 +181,13 @@ class _IndexPage extends State<IndexPage> {
 
   PreferredSizeWidget? myAppBar(context) {
     return AppBar(
-       backgroundColor:  const Color.fromRGBO( 0, 180, 216, 1),
+      backgroundColor: const Color.fromRGBO(0, 180, 216, 1),
       elevation: 0.0,
       leading: Builder(builder: (context) {
         return IconButton(
           iconSize: 40.0,
           icon: const Icon(Icons.more_vert),
-        color: Colors.white,
+          color: Colors.white,
           onPressed: () => Scaffold.of(context).openDrawer(),
         );
       }),

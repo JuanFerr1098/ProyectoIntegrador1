@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../../providers/user_provider.dart';
+import 'package:newtonapp/providers/auth.dart';
+
 //import 'package:flutter/src/material/colors.dart';
+  final AuthService _authS = AuthService(); 
 
 class PruebaHome extends StatelessWidget {
   final String title = 'PruebaHome';
@@ -20,9 +24,7 @@ class PruebaHome extends StatelessWidget {
           //crossAxisAlignment: CrossAxisAlignment.center,
           //mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            titulo(
-              context,
-            )
+            titulo(context)
           ],
         ),
       ),
@@ -58,11 +60,9 @@ Widget titulo(context) {
             ),
             onPressed: () {
             Navigator.of(context).pushNamed('pruebapreguntas');
+            UserProvider(uid: _authS.userActualUid()).actualizarEstado();
             },
-            child: const Text(
-              "Iniciar prueba",
-
-            ),
+            child: const Text("Iniciar prueba"),
           )
         ]),
   );
