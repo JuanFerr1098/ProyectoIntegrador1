@@ -81,7 +81,7 @@ class AcercaDe extends StatelessWidget {
               'Johnatan Andrés Gómez Monsalve\n'
               '\nEstudiantes de Ingeniería de Sistemas\n'
               'En la Universidad de Antioquía\n'
-              '\nPara el Proyecto Integrador 1\n'
+              '\nPara el Proyecto Integrador 1\ny el Proyecto Integrador 2\n'
               '\nSupervisado por\n'
               'Fernando Mora\n'
               'Oscar Ortega',
