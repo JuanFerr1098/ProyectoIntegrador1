@@ -78,7 +78,7 @@ PreferredSizeWidget? myAppBar(context) {
           onPressed: () => Scaffold.of(context).openDrawer(),
         );
       }),
-      title:  const Text('Trucos Multipliación',
+      title:  const Text('Trucos Multiplicación',
         style: TextStyle(
                 fontFamily: 'QBold', 
                 fontWeight: FontWeight.bold,

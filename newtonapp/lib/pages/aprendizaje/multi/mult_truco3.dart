@@ -61,13 +61,13 @@ class _MultTruco3State extends State<MultTruco3> {
               'https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/mult%2Ftruco3%2FTruco3_MultP3.jpg?alt=media&token=534af825-d7de-42f9-90f3-76c1b0422aad'),
           width: 1080,
         ),
-        SizedBox(
+        /*SizedBox(
           //child: Image.asset('../assets/images/truco4.jpg'),
           child: Image.network(
               'https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/images%2Ftruco4.jpg?alt=media&token=5af27e6e-cc36-4d25-9ce9-938b8844fdae'),
           width: 1080,
           // color: Colors.yellow,
-        ),
+        ),*/
       ],
       carouselController: buttonCarouselController,
       options: CarouselOptions(
