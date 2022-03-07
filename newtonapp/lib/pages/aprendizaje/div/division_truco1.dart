@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:newtonapp/shared/icons.dart';
 
-class SumaTruco2 extends StatefulWidget {
-  const SumaTruco2({Key? key}) : super(key: key);
+class DivTruco1 extends StatefulWidget {
+  const DivTruco1 ({Key? key}) : super(key: key);
 
   @override
-  State<SumaTruco2> createState() => _SumaTruco2State();
+  State<DivTruco1> createState() => _DivTruco1State();
 }
 
-class _SumaTruco2State extends State<SumaTruco2> {
+class _DivTruco1State extends State<DivTruco1> {
   CarouselController buttonCarouselController = CarouselController();
 
   @override
@@ -40,7 +40,7 @@ class _SumaTruco2State extends State<SumaTruco2> {
       items: <Widget>[
         SizedBox(
           child: Image.network(
-              'https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/sumas%2Ftruco2%2FTruco2_SumaP1.jpg?alt=media&token=1a252ebb-74c2-488f-b711-a033c4e8ba9a'),
+              'https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/div%2Ftruco1%2FTruco1_DivP1.jpg?alt=media&token=3f2c5659-0cb0-47f0-af29-00262f3cc097'),
           //child: Image(image: AssetImage('../assets/images/truco1-2.jpg'),),
           //child: Image.asset('/images/truco1-2.jpg', package: 'assets',),
           //fit: Boxfit.cover,
@@ -48,7 +48,7 @@ class _SumaTruco2State extends State<SumaTruco2> {
         ),
         SizedBox(
           child: Image.network(
-              'https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/sumas%2Ftruco2%2FTruco2_SumaP2.jpg?alt=media&token=57daacca-cb14-4864-997e-0a7d918f7f15'),
+              'https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/div%2Ftruco1%2FTruco1_DivP2.jpg?alt=media&token=b812e2e8-32fd-46e8-aa72-ee41d00041b8'),
           //child: Image.asset(listOfImage[1].assetName,
           //fit: BoxFit.cover,)
           //child: Image.asset('../assets/images/truco2.jpg'),
@@ -58,7 +58,7 @@ class _SumaTruco2State extends State<SumaTruco2> {
           //child: Image.network('gs://newtonapp-91e99.appspot.com/images/truco3.jpg'),
           //child: Image.asset('../assets/images/truco3.jpg'),
           child: Image.network(
-              'https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/sumas%2Ftruco2%2FTruco2_SumaP3.jpg?alt=media&token=52e8c7d6-8631-473c-87d7-abdba9a0a723'),
+              'https://firebasestorage.googleapis.com/v0/b/newtonapp-91e99.appspot.com/o/div%2Ftruco1%2FTruco1_DivP3.jpg?alt=media&token=463381d8-714c-4d48-8d02-9cd30dbdfb9d'),
           width: 1080,
         ),
       ],
@@ -101,7 +101,7 @@ class _SumaTruco2State extends State<SumaTruco2> {
       backgroundColor:  const Color.fromRGBO( 0, 180, 216, 1),
       automaticallyImplyLeading: false,
       elevation: 0.0,
-        title:  const Text('Truco 2 Suma',
+        title:  const Text('Truco 1 División',
         style: TextStyle(
                 fontFamily: 'QBold', 
                 fontWeight: FontWeight.bold,

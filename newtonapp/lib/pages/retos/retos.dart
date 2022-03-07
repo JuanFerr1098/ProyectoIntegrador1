@@ -63,11 +63,11 @@ class Retos extends StatelessWidget {
   Widget botonesRetos(context, String zona, IconData icono, Color color) {
     // crearReto.add(zona);
     return Container(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(5),
         alignment: Alignment.center,
         child: MaterialButton(
-          minWidth: 150.0,
-          height: 150.0,
+          minWidth: 100.0,
+          height: 100.0,
           color: color,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:newtonapp/pages/aprendizaje/aprendizaje.dart';
+import 'package:newtonapp/pages/aprendizaje/aprendizaje_div.dart';
 import 'package:newtonapp/pages/aprendizaje/aprendizaje_multi.dart';
 import 'package:newtonapp/pages/aprendizaje/aprendizaje_resta.dart';
 import 'package:newtonapp/pages/aprendizaje/aprendizaje_suma.dart';
+import 'package:newtonapp/pages/aprendizaje/div/division_truco1.dart';
 import 'package:newtonapp/pages/aprendizaje/multi/mult_truco1.dart';
 import 'package:newtonapp/pages/aprendizaje/multi/mult_truco2.dart';
 import 'package:newtonapp/pages/aprendizaje/multi/mult_truco3.dart';
@@ -61,6 +63,7 @@ class MyApp extends StatelessWidget {
           'aprendizajeSuma': (_) => const AprendizajeSuma(),
           'aprendizajeResta': (_) => const AprendizajeResta(),
           'aprendizajeMulti': (_) => const AprendizajeMulti(),
+          'aprendizajeDivi': (_) => const AprendizajeDivi(),
           'sumaTruco1': (_) => const SumaTruco1(),
           'sumaTruco2': (_) => const SumaTruco2(),
           'sumaTruco3': (_) => const SumaTruco3(),
@@ -70,6 +73,7 @@ class MyApp extends StatelessWidget {
           'multTruco1': (_) => const MultTruco1(),
           'multTruco2': (_) => const MultTruco2(),
           'multTruco3': (_) => const MultTruco3(),
+          'DivTruco1': (_) => const DivTruco1(),
           'retosZone': (_) => TipoReto(),
           'acercaDe': (_) => const AcercaDe(),
           'ComingSoon': (_) => const ComingSoon(),

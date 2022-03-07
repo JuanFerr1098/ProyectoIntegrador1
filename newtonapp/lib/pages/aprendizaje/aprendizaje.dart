@@ -4,27 +4,28 @@ import 'package:newtonapp/shared/drawer_menu.dart';
 import 'package:newtonapp/shared/icons.dart';
 
 class Aprendizaje extends StatelessWidget {
+  final Color lila = const Color.fromRGBO(145, 99, 203, 1);
+  final Color turquesa = const Color.fromRGBO(0, 180, 216, 1);
+
   const Aprendizaje({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
-    return Scaffold(
-      appBar: myAppBar(context), // Organizar
-      drawer: DrawerMenu(),
-      backgroundColor: Colors.white,
-      //backgroundColor: Colors.purple.shade700, //Fondo de la pantalla
-      body: SizedBox(
-        width: double.infinity,
-        height: double.infinity,
-        child: Column(
-          //crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            //titulo(context),
-            botones(context),
-          ],
-        ),
+    return SafeArea(
+      child: Scaffold(
+        appBar: myAppBar(context), // Organizar
+        drawer: DrawerMenu(),
+        backgroundColor: Colors.white,
+        //backgroundColor: Colors.purple.shade700, //Fondo de la pantalla
+        body: Column(
+            //crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              titulo(context),
+              botones(context),
+            ],
+          ),
       ),
     );
   }
@@ -33,30 +34,19 @@ class Aprendizaje extends StatelessWidget {
     return Container(
       //color: Colors.amber[600],
       width: double.infinity,
-      height: MediaQuery.of(context).size.height * .5,
+      //height: MediaQuery.of(context).size.height * .5,
       padding: const EdgeInsets.all(50),
-
-      child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: const <Widget>[
-            Text(
-              'Bienvenido a',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 30.0,
+      child: const Center(
+        child: Text(
+                'Bienvenido a\nAprendizaje',
+                style: TextStyle(
+                  fontFamily: 'QBold',
+                  color: Colors.purple,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30.0,
+                ),
               ),
-            ),
-            Text(
-              'Aprendizaje',
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 30.0,
-              ),
-            )
-          ]),
+      ),
     );
   }
 
@@ -72,105 +62,39 @@ class Aprendizaje extends StatelessWidget {
           //crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              botonSuma(context),
-              botonDiv(context),
+              boton(context, 'aprendizajeSuma', lila, MyIcons.add),
+              boton(context, 'aprendizajeDivi', turquesa, MyIcons.divide),
             ]),
             Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-              botonMult(context),
-              botonResta(context),
+              boton(context, 'aprendizajeMulti', turquesa, MyIcons.minus),
+              boton(context, 'aprendizajeResta', lila, MyIcons.mult),
             ]),
           ]),
     );
   }
 
-  Widget botonSuma(context) {
+  Widget boton(context, ruta, color, icono) {
     return Container(
-        padding: const EdgeInsets.all(10),
-        alignment: Alignment.center,
-        child: MaterialButton(
-          minWidth: 150.0,
-          height: 150.0,
-          color: const Color.fromRGBO(145, 99, 203, 1), //lila
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          onPressed: () {
-            Navigator.of(context).pushNamed('aprendizajeSuma');
-          },
-          child: const Icon(
-            MyIcons.add,
-            color: Colors.white,
-            size: 50,
-          ),
-        ));
-  }
-
-  Widget botonResta(context) {
-    return Container(
-        padding: const EdgeInsets.all(10),
-        alignment: Alignment.center,
-        child: MaterialButton(
-          minWidth: 150.0,
-          height: 150.0,
-          color: const Color.fromRGBO(145, 99, 203, 1), //turquesa
-          //color: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          onPressed: () {
-            Navigator.of(context).pushNamed('aprendizajeResta');
-          },
-          child: const Icon(
-            MyIcons.minus,
-            color: Colors.white,
-            size: 50,
-          ),
-        ));
-  }
-
-  Widget botonMult(context) {
-    return Container(
-        padding: const EdgeInsets.all(10),
-        alignment: Alignment.center,
-        child: MaterialButton(
-          minWidth: 150.0,
-          height: 150.0,
-          color: const Color.fromRGBO(0, 180, 216, 1),
-          //color: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          onPressed: () {
-            Navigator.of(context).pushNamed('aprendizajeMulti');
-          },
-          child: const Icon(
-            MyIcons.mult,
-            color: Colors.white,
-            size: 50,
-          ),
-        ));
-  }
-
-  Widget botonDiv(context) {
-    return Container(
-        padding: const EdgeInsets.all(10),
-        alignment: Alignment.center,
-        child: MaterialButton(
-          minWidth: 150.0,
-          height: 150.0,
-          color: const Color.fromRGBO(0, 180, 216, 1),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          onPressed: () {
-            Navigator.of(context).pushNamed('ComingSoon');
-          },
-          child: const Icon(
-            MyIcons.divide,
-            color: Colors.white,
-            size: 50,
-          ),
-        ));
+      padding: const EdgeInsets.all(5),
+      alignment: Alignment.center,
+      child: MaterialButton(
+        minWidth: 100,
+        height: 100,
+        color: color,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        onPressed: () {
+          Navigator.of(context).pushNamed(ruta);
+        },
+        child: Icon(
+          icono,
+          //Icon(icono),
+          color: Colors.white,
+          size: 50,
+        ),
+      ),
+    );
   }
 
   PreferredSizeWidget? myAppBar(context) {
