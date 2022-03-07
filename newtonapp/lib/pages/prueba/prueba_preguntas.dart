@@ -124,7 +124,7 @@ class _PruebaPreguntasState extends State<PruebaPreguntas> {
     Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(
             builder: (BuildContext context) => Resultado(
-                puntaje: (puntaje + errores*10 - aciertos*5).toString(),
+                puntaje: (puntaje + errores * 10 - aciertos * 5).toString(),
                 lvl: "0",
                 operacion: "Pruebas",
                 tipo: "Prueba",
@@ -140,7 +140,7 @@ class _PruebaPreguntasState extends State<PruebaPreguntas> {
     if (mydata["respuestas"][numPregunta.toString()] ==
         mydata["opciones"][numPregunta.toString()][k]) {
       color = Colors.green;
-      puntaje = puntaje + (10-timer);
+      puntaje = puntaje + (10 - timer);
       aciertos++;
     } else {
       color = Colors.red;
@@ -156,27 +156,53 @@ class _PruebaPreguntasState extends State<PruebaPreguntas> {
   }
 
   Widget respuestas(String k) {
-    return MaterialButton(
-      height: 50.0,
-      splashColor: Colors.white,
-      highlightColor: const Color.fromRGBO(145, 99, 203, 1),
-      color: btncolor[k],
-      onPressed: () => statusButtom ? null : checkAnswer(k),
-      child: Text(mydata["opciones"][numPregunta.toString()][k]),
+    return Container(
+      padding: const EdgeInsets.all(10),
+      alignment: Alignment.center,
+      child: MaterialButton(
+        minWidth: 150,
+        height: 50.0,
+        splashColor: Colors.white,
+        highlightColor: const Color.fromRGBO(145, 99, 203, 1),
+        color: btncolor[k],
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(5.0),
+        ),
+        onPressed: () => statusButtom ? null : checkAnswer(k),
+        child: Text(
+          mydata["opciones"][numPregunta.toString()][k],
+          style: const TextStyle(
+            fontFamily: 'QBold',
+            color: Colors.white,
+            fontSize: 60.0,
+            //fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
     );
   }
 
-  Widget timerPamtalla(){
+  Widget timerPamtalla() {
     return Expanded(
-      flex: 2,
-      child: Text(showtimer));
+        flex: 2,
+        child: Text(
+          showtimer,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            color: Color.fromRGBO(0, 180, 216, 1),
+            //color: Colors.white,
+            fontFamily: 'QBold',
+            fontWeight: FontWeight.bold,
+            fontSize: 60.0,
+          ),
+        ));
   }
 
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        return true;
+        return false;
       },
       child: SafeArea(
         child: Scaffold(
@@ -188,6 +214,13 @@ class _PruebaPreguntasState extends State<PruebaPreguntas> {
                   child: Center(
                     child: Text(
                       mydata["preguntas"][numPregunta.toString()],
+                      style: const TextStyle(
+                        color: Color.fromRGBO(145, 99, 203, 1),
+                        //color: Colors.white,
+                        fontFamily: 'QBold',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 60.0,
+                      ),
                     ),
                   )),
               Expanded(
@@ -201,7 +234,7 @@ class _PruebaPreguntasState extends State<PruebaPreguntas> {
                       respuestas('d'),
                     ],
                   )),
-                  timerPamtalla(),
+              timerPamtalla(),
             ],
           ),
         ),
